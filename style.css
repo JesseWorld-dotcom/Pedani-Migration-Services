@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+:root {
+  /* BRAND */
+  --primary: #164E8C;        /* Main brand blue, buttons, links */
+  --primary-dark: #0D355F;   /* Hover states, dark sections */
+  --accent: #197edd;         /* Icons, highlights, secondary accents */
+
+  /* BACKGROUNDS */
+  --background: #F1F5F9;     /* Main page background, hero, light sections */
+  --surface: #E8EEF5;        /* Navbar, cards, forms, secondary sections */
+  --surface-light: #F8FAFC; /* Small/light areas where you need more contrast */
+
+  /* TEXT */
+  --text: #172B3A;           /* Headings, main text, navigation */
+  --text-muted: #64748B;     /* Descriptions, subtitles, secondary text */
+  --text-light: #F8FAFC;     /* Text on dark/blue backgrounds */
+
+  /* BORDERS */
+  --border: #D5DEE8;         /* Cards, inputs, dividers */
+
+  /* STATUS */
+  --success: #16805C;        /* Success messages */
+  --error: #C43D3D;           /* Errors and validation */
+}
+body{
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+nav{
+  height: 60px;
+  display: flex;
+  background-color: var(--surface);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(20px);
+}
+nav h5{
+  margin-right: auto;
+  margin-left: 20px;
+}
+nav ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  margin-right: auto;
+  padding-left: 20px;
+}
+nav ul li{
+  transition: background-color 350ms ease,
+              border-bottom 200ms ease;
+  padding: 1em;
+}
+nav ul li:hover{
+  background-color: var(--surface-light);
+  border-bottom: 3px solid var(--accent);
+}
+nav button{
+  margin-right: 20px;
+  padding: 10px 20px;
+  border-radius: 1em;
+  border: none;
+  background-color: var(--accent);
+  color: var(--surface-light);
+}
+nav button:hover{
+  background-color: var(--primary);
+}
+nav button:active{
+  background-color: var(--primary-dark);
+}
+nav a{
+  text-decoration: none;
+  color: var(--text);
+}
