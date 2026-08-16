@@ -9,6 +9,9 @@
   --primary: #164E8C;        /* Main brand blue, buttons, links */
   --primary-dark: #0D355F;   /* Hover states, dark sections */
   --accent: #197edd;         /* Icons, highlights, secondary accents */
+  --accent-dark: hsl(209, 80%, 28%);
+  --accent-lignt: hsl(209, 80%, 68%);;  
+
 
   /* BACKGROUNDS */
   --background: #F1F5F9;     /* Main page background, hero, light sections */
@@ -27,22 +30,23 @@
   --success: #16805C;        /* Success messages */
   --error: #C43D3D;           /* Errors and validation */
 }
-body{
+  body{
   font-family: "Poppins", sans-serif;
   background-color: var(--background);
   color: var(--text);
 }
+/* Navbar */
 nav{
-  height: 60px;
+  height: 3.8rem;
   display: flex;
   background-color: var(--surface);
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(1rem);
 }
 nav h5{
   margin-right: auto;
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 nav ul{
   display: flex;
@@ -51,12 +55,12 @@ nav ul{
   gap: 1rem;
   list-style: none;
   margin-right: auto;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 nav ul li{
   transition: background-color 350ms ease,
               border-bottom 200ms ease;
-  padding: 1em;
+  padding: 1rem;
 }
 nav ul li:hover{
   background-color: var(--surface-light);
@@ -80,58 +84,129 @@ nav a{
   text-decoration: none;
   color: var(--text);
 }
+/* Hero */
 .hero {
   width: 100vw;
-  background-color: var(--background);
+  height: 31.25rem;
+  background: url(/images/hero\ banner.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   color: var(--text);
-  margin-top: 1em;
 
-  display: flex;
-  justify-content: space-around;
+  display: grid;
   align-items: center;
+  justify-items: left;
 
   translate: 0;
+  opacity: 1;
+
+  transition: translate 0.5s ease,
+              opacity 0.5s ease;
+
+  /* translate: 0;
+  opacity: 1;
+
+  transition:
+    translate 0.5s ease,
+    opacity 0.5s ease;
+
+  @starting-style {
+    translate: -50vw;
+    opacity: 0.5;
+  } */
+   @starting-style{
+    translate: -12.5rem;
+    opacity: .5;
+   }
+}
+.hero-text{
+  width: 30rem;
+  padding-left: 1.525rem;
+  font-weight: 450;
+  font-size: clamp(0.6rem, .75rem, .85rem);
+  color: var(--text);
+  line-height: 1.625;
+
+  translate: 0;
+  opacity: 1;
+  rotate: 0;
+  scale: 1;
+
+  transition: translate 1s ease,
+              opacity 1s ease,
+              rotate 1s ease,
+              scale 1s ease;
+
+ /* translate: 0;
   rotate: 0deg;
   scale: 1;
   opacity: 1;
 
-  transition:
-    translate 0.8s ease-out,
-    rotate 0.8s ease-out,
-    scale 0.8s ease-out,
-    opacity 0.8s ease-out;
+     transition:
+    translate 1.5s ease,
+    rotate 1.5s ease,
+    scale 1.5s ease,
+    opacity 1.5s ease;
 
   @starting-style {
     translate: 10 40px;
     rotate: -6deg;
     scale: 0.8;
     opacity: 0.5;
+  } */
+   @starting-style{
+    translate: 6.25;
+    opacity: 0;
+    scale: .25;
+    rotate: 5deg;
+   }
+}
+.hero-text h6{
+  margin-bottom: 0.425rem;
+  color: var(--text-muted);
+}
+.hero-text h2{
+  margin-bottom: 0.4rem;
+}
+.hero-text p{
+  margin-bottom: 0.5rem;
+}
+.hero-buttons{
+  display: inline-flex;
+  gap: 1.25rem;
+}
+.hero-buttons button{
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: .625rem;
+}
+.hero-buttons button:first-child{
+  background-color: oklch(from var(--surface-light) calc(l + 10) c h / .9);
+}
+.hero-buttons button:first-child:hover{
+  background-color: var(--surface);
+}
+.hero-buttons button:first-child:active{
+  background-color: var(--text-muted);
+}
+.hero-buttons button:last-child{
+  background-color: var(--accent-lignt);
+  color: var(--text-light);
+}
+.hero-buttons button:last-child:hover{
+  background-color: var(--accent);
+}
+.hero-buttons button:last-child:active{
+  background-color: var(--accent-dark);
+}
+/* Accessiblity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
-.hero-text{
-  width: 500px;
-}
-.hero img{
-  width: 500px;
-  height: 350px;
-  border-radius: 8px;
-
-  translate: 0;
-  scale: 1;
-  rotate: 0;
-  opacity: 1;
-
-  transition: 
-  translate 0.5s ease,
-  rotate 0.5s ease,
-  scale 0.5s ease,
-  opacity 0.5s ease;
-
-  @starting-style{
-    translate: 1px 40px;
-    rotate: 18deg;
-    scale: 0.5;
-    opacity: 0.5;
-  }
-}
-

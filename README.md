@@ -343,3 +343,26 @@ Variable	Use it for
 ##Typography
 
 I'd use Poppins 600–700 for headings and 400–500 for body text.
+
+size guide:
+20px  → 1.25rem
+10px  → 0.625rem
+500px → 31.25rem
+100px → 6.25rem
+50px  → 3.125rem
+25px  → 1.5625rem
+250px → 15.625rem
+350px → 21.875rem
+
+##flags:
+
+🇬🇧 GB — United Kingdom
+🇨🇦 CA — Canada
+🇪🇸 ES — Spain
+🇮🇹 IT — Italy
+🇩🇪 DE — Germany
+🇶🇦 QA — Qatar
+🇰🇼 KW — Kuwait
+🇦🇺 AU — Australia
+🇨🇭 CH — Switzerland
+🇸🇪 SE — Sweden
