@@ -345,8 +345,10 @@ Variable	Use it for
 I'd use Poppins 600–700 for headings and 400–500 for body text.
 
 size guide:
+5px  → 0.3125rem
+10px → 0.625rem
+15px → 0.9375rem
 20px  → 1.25rem
-10px  → 0.625rem
 500px → 31.25rem
 100px → 6.25rem
 50px  → 3.125rem
@@ -366,3 +368,17 @@ size guide:
 🇦🇺 AU — Australia
 🇨🇭 CH — Switzerland
 🇸🇪 SE — Sweden
+
+##for sub-section in destination class
+Icon	Font Awesome name	Class
+✈️	Plane Departure	fa-plane-departure
+📄	File Lines	fa-file-lines
+👥	User Group	fa-user-group
+💼	Briefcase	fa-briefcase
+🛡️	Shield Halved	fa-shield-halved
+
+<i class="fa-solid fa-shield-halved"></i>
+<i class="fa-solid fa-briefcase"></i>
+<i class="fa-regular fa-user-group"></i>
+<i class="fa-regular fa-file-lines"></i>
+<i class="fa-solid fa-plane"></i>
