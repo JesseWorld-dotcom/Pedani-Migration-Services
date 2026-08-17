@@ -23,10 +23,10 @@
 
 <body>
 
-<nav>
+<nav class="navbar">
+
   <h5>Pedani Migration Services</h5>
 
-  <!-- Mobile menu button -->
   <button
     class="menu-toggle"
     type="button"
@@ -36,15 +36,33 @@
     <i class="fa-solid fa-bars"></i>
   </button>
 
-  <ul class="nav-menu">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about.html">About Us</a></li>
-    <li><a href="/services.html">Services</a></li>
-    <li><a href="/destination.html">Destinations</a></li>
-    <li><a href="/contact.html">Contact Us</a></li>
-  </ul>
+  <!-- Mobile overlay -->
+  <div class="nav-overlay"></div>
 
-  <button class="nav-cta">Start Your Journey</button>
+  <div class="nav-side-menu">
+
+    <button class="menu-close" type="button" aria-label="Close navigation">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about.html">About Us</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/destination.html">Destinations</a></li>
+      <li><a href="/contact.html">Contact Us</a></li>
+    </ul>
+
+    <button class="nav-side-cta">
+      Start Your Journey
+    </button>
+
+  </div>
+
+  <button class="nav-cta">
+    Start Your Journey
+  </button>
+
 </nav>
 
   <!-- Hero SEction -->

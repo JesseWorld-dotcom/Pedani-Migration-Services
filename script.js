@@ -1,94 +1,96 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================================
-     MOBILE NAVBAR
-  ================================= */
+  /* =====================================================
+     MOBILE NAVIGATION
+  ===================================================== */
 
+  const navbar = document.querySelector(".navbar");
   const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector("nav");
-  const navLinks = document.querySelectorAll("nav ul li a");
+  const menuClose = document.querySelector(".menu-close");
+  const navOverlay = document.querySelector(".nav-overlay");
+  const navLinks = document.querySelectorAll(".nav-side-menu a");
 
-  if (menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("menu-open");
 
-      menuToggle.setAttribute("aria-expanded", isOpen);
+  function openMenu() {
 
-      // Change hamburger ↔ X
-      const icon = menuToggle.querySelector("i");
+    navbar.classList.add("menu-open");
 
-      if (isOpen) {
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-      } else {
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-      }
-    });
+    document.body.classList.add("menu-open");
+
+    menuToggle.setAttribute("aria-expanded", "true");
+
+    const icon = menuToggle.querySelector("i");
+
+    icon.classList.remove("fa-bars");
   }
 
-  // Close menu when a navigation link is clicked
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("menu-open");
 
-      if (menuToggle) {
-        menuToggle.setAttribute("aria-expanded", "false");
+  function closeMenu() {
 
-        const icon = menuToggle.querySelector("i");
+    navbar.classList.remove("menu-open");
 
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-      }
-    });
+    document.body.classList.remove("menu-open");
+
+    menuToggle.setAttribute("aria-expanded", "false");
+
+    const icon = menuToggle.querySelector("i");
+
+    icon.classList.remove("fa-xmark");
+    icon.classList.add("fa-bars");
+  }
+
+
+  menuToggle?.addEventListener("click", () => {
+
+    if (navbar.classList.contains("menu-open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+
   });
 
 
-  /* ================================
+  menuClose?.addEventListener("click", closeMenu);
+
+  navOverlay?.addEventListener("click", closeMenu);
+
+
+  navLinks.forEach(link => {
+
+    link.addEventListener("click", closeMenu);
+
+  });
+
+
+  /* =====================================================
      DESTINATION SLIDER
-  ================================= */
+  ===================================================== */
 
   const destinationContainer =
-    document.querySelector(".img-container");
+    document.querySelector(".destination .img-container");
 
   const destinationItems =
-    document.querySelectorAll(".img-container .img-item");
+    document.querySelectorAll(".destination .img-item");
+
+  const destinationPrev =
+    document.querySelector(".destination-prev");
+
+  const destinationNext =
+    document.querySelector(".destination-next");
+
+  const destinationDots =
+    document.querySelector(".destination-dots");
+
 
   let destinationIndex = 0;
-  let destinationTimer = null;
 
-  const mobileBreakpoint = 700;
-
-
-  function createDestinationControls() {
-
-    // Don't create controls twice
-    if (document.querySelector(".destination-controls")) {
-      return;
-    }
-
-    const controls = document.createElement("div");
-
-    controls.className = "destination-controls";
-
-    controls.innerHTML = `
-      <button class="destination-prev" aria-label="Previous destination">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <div class="destination-dots"></div>
-
-      <button class="destination-next" aria-label="Next destination">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    `;
-
-    destinationContainer.after(controls);
+  let destinationTimer;
 
 
-    // Create dots
-    const dotsContainer =
-      controls.querySelector(".destination-dots");
+  /* Create destination dots */
+
+  if (destinationDots) {
 
     destinationItems.forEach((_, index) => {
 
@@ -102,108 +104,132 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       dot.addEventListener("click", () => {
+
         destinationIndex = index;
+
         showDestination(destinationIndex);
+
         restartDestinationTimer();
+
       });
 
-      dotsContainer.appendChild(dot);
+      destinationDots.appendChild(dot);
+
     });
 
-
-    controls
-      .querySelector(".destination-prev")
-      .addEventListener("click", () => {
-
-        destinationIndex--;
-
-        if (destinationIndex < 0) {
-          destinationIndex = destinationItems.length - 1;
-        }
-
-        showDestination(destinationIndex);
-        restartDestinationTimer();
-      });
-
-
-    controls
-      .querySelector(".destination-next")
-      .addEventListener("click", () => {
-
-        destinationIndex++;
-
-        if (destinationIndex >= destinationItems.length) {
-          destinationIndex = 0;
-        }
-
-        showDestination(destinationIndex);
-        restartDestinationTimer();
-      });
   }
 
 
   function showDestination(index) {
 
-    if (window.innerWidth > mobileBreakpoint) {
-      return;
-    }
+    if (!destinationContainer) return;
 
-    destinationItems.forEach((item, i) => {
+    const isMobile = window.innerWidth <= 700;
 
-      item.classList.toggle(
-        "active",
-        i === index
-      );
+    if (!isMobile) return;
+
+
+    const slideWidth =
+      destinationContainer.clientWidth;
+
+    destinationContainer.scrollTo({
+
+      left: slideWidth * index,
+
+      behavior: "smooth"
 
     });
 
 
-    // Update dots
+    updateDestinationDots();
+
+  }
+
+
+  function updateDestinationDots() {
+
     const dots =
       document.querySelectorAll(".destination-dot");
 
-    dots.forEach((dot, i) => {
+    dots.forEach((dot, index) => {
+
       dot.classList.toggle(
         "active",
-        i === index
+        index === destinationIndex
       );
+
     });
+
   }
 
 
-  function startDestinationSlider() {
+  function nextDestination() {
 
-    if (window.innerWidth > mobileBreakpoint) {
-      return;
+    destinationIndex++;
+
+    if (
+      destinationIndex >=
+      destinationItems.length
+    ) {
+
+      destinationIndex = 0;
+
     }
-
-    createDestinationControls();
 
     showDestination(destinationIndex);
 
-    destinationTimer = setInterval(() => {
-
-      destinationIndex++;
-
-      if (destinationIndex >= destinationItems.length) {
-        destinationIndex = 0;
-      }
-
-      showDestination(destinationIndex);
-
-    }, 4000);
   }
 
 
-  function stopDestinationSlider() {
+  function previousDestination() {
+
+    destinationIndex--;
+
+    if (destinationIndex < 0) {
+
+      destinationIndex =
+        destinationItems.length - 1;
+
+    }
+
+    showDestination(destinationIndex);
+
+  }
+
+
+  destinationNext?.addEventListener(
+    "click",
+    () => {
+
+      nextDestination();
+
+      restartDestinationTimer();
+
+    }
+  );
+
+
+  destinationPrev?.addEventListener(
+    "click",
+    () => {
+
+      previousDestination();
+
+      restartDestinationTimer();
+
+    }
+  );
+
+
+  function startDestinationTimer() {
+
+    if (window.innerWidth > 700) return;
 
     clearInterval(destinationTimer);
 
-    destinationTimer = null;
+    destinationTimer =
+      setInterval(nextDestination, 4000);
 
-    destinationItems.forEach(item => {
-      item.classList.remove("active");
-    });
   }
 
 
@@ -211,64 +237,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clearInterval(destinationTimer);
 
-    destinationTimer = setInterval(() => {
+    startDestinationTimer();
 
-      destinationIndex++;
-
-      if (destinationIndex >= destinationItems.length) {
-        destinationIndex = 0;
-      }
-
-      showDestination(destinationIndex);
-
-    }, 4000);
   }
 
 
-  /* ================================
+  /* =====================================================
      TESTIMONIAL SLIDER
-  ================================= */
+  ===================================================== */
 
   const testimonialContainer =
     document.querySelector(".testimonial-grid");
 
-  const testimonials =
+  const testimonialCards =
     document.querySelectorAll(".testimonial-card");
 
+  const testimonialPrev =
+    document.querySelector(".testimonial-prev");
+
+  const testimonialNext =
+    document.querySelector(".testimonial-next");
+
+  const testimonialDots =
+    document.querySelector(".testimonial-dots");
+
+
   let testimonialIndex = 0;
-  let testimonialTimer = null;
+
+  let testimonialTimer;
 
 
-  function createTestimonialControls() {
+  /* Create testimonial dots */
 
-    if (document.querySelector(".testimonial-controls")) {
-      return;
-    }
+  if (testimonialDots) {
 
-    const controls = document.createElement("div");
-
-    controls.className = "testimonial-controls";
-
-    controls.innerHTML = `
-      <button class="testimonial-prev" aria-label="Previous testimonial">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <div class="testimonial-dots"></div>
-
-      <button class="testimonial-next" aria-label="Next testimonial">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    `;
-
-    testimonialContainer.after(controls);
-
-
-    const dotsContainer =
-      controls.querySelector(".testimonial-dots");
-
-
-    testimonials.forEach((_, index) => {
+    testimonialCards.forEach((_, index) => {
 
       const dot = document.createElement("button");
 
@@ -289,108 +292,124 @@ document.addEventListener("DOMContentLoaded", () => {
 
       });
 
-      dotsContainer.appendChild(dot);
+      testimonialDots.appendChild(dot);
+
     });
 
-
-    controls
-      .querySelector(".testimonial-prev")
-      .addEventListener("click", () => {
-
-        testimonialIndex--;
-
-        if (testimonialIndex < 0) {
-          testimonialIndex = testimonials.length - 1;
-        }
-
-        showTestimonial(testimonialIndex);
-
-        restartTestimonialTimer();
-
-      });
-
-
-    controls
-      .querySelector(".testimonial-next")
-      .addEventListener("click", () => {
-
-        testimonialIndex++;
-
-        if (testimonialIndex >= testimonials.length) {
-          testimonialIndex = 0;
-        }
-
-        showTestimonial(testimonialIndex);
-
-        restartTestimonialTimer();
-
-      });
   }
 
 
   function showTestimonial(index) {
 
-    if (window.innerWidth > mobileBreakpoint) {
-      return;
-    }
+    if (!testimonialContainer) return;
 
-    testimonials.forEach((card, i) => {
+    const isMobile =
+      window.innerWidth <= 700;
 
-      card.classList.toggle(
-        "active",
-        i === index
-      );
+    if (!isMobile) return;
+
+
+    const slideWidth =
+      testimonialContainer.clientWidth;
+
+    testimonialContainer.scrollTo({
+
+      left: slideWidth * index,
+
+      behavior: "smooth"
 
     });
 
+
+    updateTestimonialDots();
+
+  }
+
+
+  function updateTestimonialDots() {
 
     const dots =
       document.querySelectorAll(".testimonial-dot");
 
-    dots.forEach((dot, i) => {
+    dots.forEach((dot, index) => {
 
       dot.classList.toggle(
         "active",
-        i === index
+        index === testimonialIndex
       );
 
     });
+
   }
 
 
-  function startTestimonialSlider() {
+  function nextTestimonial() {
 
-    if (window.innerWidth > mobileBreakpoint) {
-      return;
+    testimonialIndex++;
+
+    if (
+      testimonialIndex >=
+      testimonialCards.length
+    ) {
+
+      testimonialIndex = 0;
+
     }
-
-    createTestimonialControls();
 
     showTestimonial(testimonialIndex);
 
-    testimonialTimer = setInterval(() => {
-
-      testimonialIndex++;
-
-      if (testimonialIndex >= testimonials.length) {
-        testimonialIndex = 0;
-      }
-
-      showTestimonial(testimonialIndex);
-
-    }, 5000);
   }
 
 
-  function stopTestimonialSlider() {
+  function previousTestimonial() {
+
+    testimonialIndex--;
+
+    if (testimonialIndex < 0) {
+
+      testimonialIndex =
+        testimonialCards.length - 1;
+
+    }
+
+    showTestimonial(testimonialIndex);
+
+  }
+
+
+  testimonialNext?.addEventListener(
+    "click",
+    () => {
+
+      nextTestimonial();
+
+      restartTestimonialTimer();
+
+    }
+  );
+
+
+  testimonialPrev?.addEventListener(
+    "click",
+    () => {
+
+      previousTestimonial();
+
+      restartTestimonialTimer();
+
+    }
+  );
+
+
+  function startTestimonialTimer() {
+
+    if (window.innerWidth > 700) return;
 
     clearInterval(testimonialTimer);
 
-    testimonialTimer = null;
+    testimonialTimer =
+      setInterval(nextTestimonial, 5000);
 
-    testimonials.forEach(card => {
-      card.classList.remove("active");
-    });
   }
 
 
@@ -398,184 +417,138 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clearInterval(testimonialTimer);
 
-    testimonialTimer = setInterval(() => {
+    startTestimonialTimer();
 
-      testimonialIndex++;
+  }
 
-      if (testimonialIndex >= testimonials.length) {
-        testimonialIndex = 0;
-      }
+
+  /* =====================================================
+     RESPONSIVE SETUP
+  ===================================================== */
+
+  function setupSliders() {
+
+    if (window.innerWidth <= 700) {
+
+      showDestination(destinationIndex);
 
       showTestimonial(testimonialIndex);
 
-    }, 5000);
-  }
+      startDestinationTimer();
 
-
-  /* ================================
-     TOUCH / SWIPE SUPPORT
-  ================================= */
-
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-
-  // Destination swipe
-  if (destinationContainer) {
-
-    destinationContainer.addEventListener(
-      "touchstart",
-      e => {
-
-        touchStartX = e.changedTouches[0].screenX;
-
-      },
-      { passive: true }
-    );
-
-
-    destinationContainer.addEventListener(
-      "touchend",
-      e => {
-
-        touchEndX = e.changedTouches[0].screenX;
-
-        handleDestinationSwipe();
-
-      },
-      { passive: true }
-    );
-  }
-
-
-  function handleDestinationSwipe() {
-
-    const distance =
-      touchStartX - touchEndX;
-
-    if (Math.abs(distance) < 50) {
-      return;
-    }
-
-    if (distance > 0) {
-
-      // Swipe left
-      destinationIndex++;
-
-      if (destinationIndex >= destinationItems.length) {
-        destinationIndex = 0;
-      }
+      startTestimonialTimer();
 
     } else {
 
-      // Swipe right
-      destinationIndex--;
+      clearInterval(destinationTimer);
 
-      if (destinationIndex < 0) {
-        destinationIndex = destinationItems.length - 1;
-      }
+      clearInterval(testimonialTimer);
+
     }
 
-    showDestination(destinationIndex);
-
-    restartDestinationTimer();
   }
 
 
-  // Testimonial swipe
-  if (testimonialContainer) {
-
-    testimonialContainer.addEventListener(
-      "touchstart",
-      e => {
-
-        touchStartX = e.changedTouches[0].screenX;
-
-      },
-      { passive: true }
-    );
+  setupSliders();
 
 
-    testimonialContainer.addEventListener(
-      "touchend",
-      e => {
-
-        touchEndX = e.changedTouches[0].screenX;
-
-        handleTestimonialSwipe();
-
-      },
-      { passive: true }
-    );
-  }
-
-
-  function handleTestimonialSwipe() {
-
-    const distance =
-      touchStartX - touchEndX;
-
-    if (Math.abs(distance) < 50) {
-      return;
-    }
-
-    if (distance > 0) {
-
-      testimonialIndex++;
-
-      if (testimonialIndex >= testimonials.length) {
-        testimonialIndex = 0;
-      }
-
-    } else {
-
-      testimonialIndex--;
-
-      if (testimonialIndex < 0) {
-        testimonialIndex = testimonials.length - 1;
-      }
-    }
-
-    showTestimonial(testimonialIndex);
-
-    restartTestimonialTimer();
-  }
-
-
-  /* ================================
-     RESPONSIVE INITIALIZATION
-  ================================= */
-
-  function handleResponsiveSliders() {
-
-    if (window.innerWidth <= mobileBreakpoint) {
-
-      if (!destinationTimer) {
-        startDestinationSlider();
-      }
-
-      if (!testimonialTimer) {
-        startTestimonialSlider();
-      }
-
-    } else {
-
-      stopDestinationSlider();
-
-      stopTestimonialSlider();
-
-    }
-  }
-
-
-  // Initial check
-  handleResponsiveSliders();
-
-
-  // Handle resizing
   window.addEventListener(
     "resize",
-    handleResponsiveSliders
+    setupSliders
+  );
+
+
+  /* =====================================================
+     SWIPE SUPPORT
+  ===================================================== */
+
+  let destinationStartX = 0;
+  let testimonialStartX = 0;
+
+
+  destinationContainer?.addEventListener(
+    "touchstart",
+    event => {
+
+      destinationStartX =
+        event.touches[0].clientX;
+
+    },
+    { passive: true }
+  );
+
+
+  destinationContainer?.addEventListener(
+    "touchend",
+    event => {
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const distance =
+        destinationStartX - endX;
+
+
+      if (Math.abs(distance) < 50) return;
+
+
+      if (distance > 0) {
+
+        nextDestination();
+
+      } else {
+
+        previousDestination();
+
+      }
+
+      restartDestinationTimer();
+
+    },
+    { passive: true }
+  );
+
+
+  testimonialContainer?.addEventListener(
+    "touchstart",
+    event => {
+
+      testimonialStartX =
+        event.touches[0].clientX;
+
+    },
+    { passive: true }
+  );
+
+
+  testimonialContainer?.addEventListener(
+    "touchend",
+    event => {
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const distance =
+        testimonialStartX - endX;
+
+
+      if (Math.abs(distance) < 50) return;
+
+
+      if (distance > 0) {
+
+        nextTestimonial();
+
+      } else {
+
+        previousTestimonial();
+
+      }
+
+      restartTestimonialTimer();
+
+    },
+    { passive: true }
   );
 
 });
