@@ -18,25 +18,35 @@
   name="description"
   content="PEDANI Migration Service provides professional study, work, tourist and visit visa assistance for the UK, Canada, Spain, Italy, Germany and other European destinations."
 >
+<script src="/script.js" defer></script>
 </head>
 
 <body>
 
-  <nav>
-    <h5>Pedani Migration Services</h5>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Destinations</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
+<nav>
+  <h5>Pedani Migration Services</h5>
 
-    <button>Start Your Journey</button>
-  </nav>
-  <main>
-    
-  </main>
+  <!-- Mobile menu button -->
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+  >
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <ul class="nav-menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About Us</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/destination.html">Destinations</a></li>
+    <li><a href="/contact.html">Contact Us</a></li>
+  </ul>
+
+  <button class="nav-cta">Start Your Journey</button>
+</nav>
+
   <!-- Hero SEction -->
   <div class="hero">
     <div class="hero-text">
@@ -55,75 +65,157 @@
   </div>
 
     <!-- Destination -->
-     <div class="destination">
-      <h2>Popular Destinations <i class="fa-solid fa-plane"></i></h2><br>
-      <!-- Images -->
-      <div class="img-container">
-        <div class="img-item"><img src="/images/london.png" alt="London">
-        <p><span class="fi fi-gb"></span> UK</p></div>
-        <div class="img-item"><img src="/images/canada.png" alt="Canada">
-        <p><span class="fi fi-ca"></span> Canada</p></div>
-        <div class="img-item"><img src="/images/germany.png" alt="Germany">
-        <p><span class="fi fi-de"></span> Germany</p></div>
-        <div class="img-item"><img src="/images/spain.png" alt="Spain">
-        <p><span class="fi fi-es"></span> Spain</p></div>
-        <div class="img-item"><img src="/images/italy.png" alt="Italy">
-        <p><span class="fi fi-it"></span> Italy</p></div>
+
+<div class="destination">
+
+  <h2>
+    Popular Destinations
+    <i class="fa-solid fa-plane"></i>
+  </h2>
+
+  <div class="destination-slider">
+
+    <button
+      class="destination-arrow destination-prev"
+      type="button"
+      aria-label="Previous destination"
+    >
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="img-container">
+
+      <div class="img-item">
+        <img src="/images/london.png" alt="London">
+        <p>
+          <span class="fi fi-gb"></span>
+          UK
+        </p>
       </div>
 
-      <!-- Sub section -->
-      <h2 style="margin-bottom: .9125rem;">
-        Our Visa & Immigration Services
-      </h2>
-      <div class="immigration">
-        <div class="immigration-item">
-          <i class="fa-solid fa-shield-halved"></i>
-          <h4> Visa Assistance</h4>
-          <h6>Expert help with tourist, student, work, and business visa
-             applications for multiple countries.</h6>
-        </div>
-        <div class="immigration-item">
-          <i class="fa-solid fa-briefcase"></i>
-          <h4>Business Migration</h4>
-          <h6>Specialized services for entrepreneurs and business owner looking
-             to migrate, including advice on investor and business visas. </h6>
-        </div>
-        <div class="immigration-item">
-          <i class="fa-solid fa-user-group"></i>
-          <h4>Family Sponsorship</h4>
-          <h6> Help with family reunification programs, including spousal, 
-            parental, and dependent child sponsorship. </h6>
-        </div>
-        <div class="immigration-item">
-          <i class="fa-regular fa-file-lines"></i>
-          <h4>Relocation Services</h4>
-          <h6> Complete relocation support, including assistance with accommodation,
-             schooling, healthcare, and local registration.</h6>
-        </div>
+      <div class="img-item">
+        <img src="/images/canada.png" alt="Canada">
+        <p>
+          <span class="fi fi-ca"></span>
+          Canada
+        </p>
       </div>
-      <button class="services">View All Services</button>
-    
-     <div class="analytics">
-  <div class="stat">
-    <strong>5+</strong>
-    <span>Years of<br>Experience</span>
+
+      <div class="img-item">
+        <img src="/images/germany.png" alt="Germany">
+        <p>
+          <span class="fi fi-de"></span>
+          Germany
+        </p>
+      </div>
+
+      <div class="img-item">
+        <img src="/images/spain.png" alt="Spain">
+        <p>
+          <span class="fi fi-es"></span>
+          Spain
+        </p>
+      </div>
+
+      <div class="img-item">
+        <img src="/images/italy.png" alt="Italy">
+        <p>
+          <span class="fi fi-it"></span>
+          Italy
+        </p>
+      </div>
+
+    </div>
+
+    <button
+      class="destination-arrow destination-next"
+      type="button"
+      aria-label="Next destination"
+    >
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
   </div>
 
-  <div class="stat">
-    <strong>5K+</strong>
-    <span>Happy<br>Clients</span>
+  <!-- Slider indicators -->
+  <div class="destination-dots"></div>
+
+
+  <!-- Services -->
+
+  <h2 class="services-heading">
+    Our Visa & Immigration Services
+  </h2>
+
+  <div class="immigration">
+
+    <div class="immigration-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h4>Visa Assistance</h4>
+      <h6>
+        Expert help with tourist, student, work, and business
+        visa applications for multiple countries.
+      </h6>
+    </div>
+
+    <div class="immigration-item">
+      <i class="fa-solid fa-briefcase"></i>
+      <h4>Business Migration</h4>
+      <h6>
+        Specialized services for entrepreneurs and business
+        owners looking to migrate.
+      </h6>
+    </div>
+
+    <div class="immigration-item">
+      <i class="fa-solid fa-user-group"></i>
+      <h4>Family Sponsorship</h4>
+      <h6>
+        Help with family reunification programs, including
+        spousal, parental, and dependent child sponsorship.
+      </h6>
+    </div>
+
+    <div class="immigration-item">
+      <i class="fa-regular fa-file-lines"></i>
+      <h4>Relocation Services</h4>
+      <h6>
+        Complete relocation support including accommodation,
+        schooling, healthcare, and local registration.
+      </h6>
+    </div>
+
   </div>
 
-  <div class="stat">
-    <strong>95%</strong>
-    <span>Success<br>Rate</span>
+  <button class="services">
+    View All Services
+  </button>
+
+  <!-- Analytics -->
+  <div class="analytics">
+
+    <div class="stat">
+      <strong>5+</strong>
+      <span>Years of<br>Experience</span>
+    </div>
+
+    <div class="stat">
+      <strong>5K+</strong>
+      <span>Happy<br>Clients</span>
+    </div>
+
+    <div class="stat">
+      <strong>95%</strong>
+      <span>Success<br>Rate</span>
+    </div>
+
+    <div class="stat">
+      <strong>15</strong>
+      <span>Countries<br>Covered</span>
+    </div>
+
   </div>
 
-  <div class="stat">
-    <strong>15</strong>
-    <span>Countries<br>Covered</span>
-  </div>
-</div>
 </div>
 <section class="about">
   <div class="about-image">
@@ -171,5 +263,233 @@
     </button>
   </div>
 </section>
+<section class="testimonials">
+
+  <h2>What Our Clients Say</h2>
+
+  <div class="testimonial-slider">
+
+    <button
+      class="testimonial-arrow testimonial-prev"
+      type="button"
+      aria-label="Previous testimonial"
+    >
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="testimonial-grid">
+
+      <article class="testimonial-card">
+
+        <div class="stars">★★★★★</div>
+
+        <p>
+          “Pedani Migration Services made my Canada study
+          visa process so easy and stress-free.
+          Highly recommended!”
+        </p>
+
+        <div class="client">
+          <img src="/images/amaka.png" alt="Amaka U.">
+
+          <div>
+            <strong>Amaka U.</strong>
+            <span>Canada</span>
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="testimonial-card">
+
+        <div class="stars">★★★★★</div>
+
+        <p>
+          “Professional, transparent and reliable.
+          I got my UK work visa faster than I expected.”
+        </p>
+
+        <div class="client">
+          <img src="/images/tunde.png" alt="Tunde O.">
+
+          <div>
+            <strong>Tunde O.</strong>
+            <span>United Kingdom</span>
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="testimonial-card">
+
+        <div class="stars">★★★★★</div>
+
+        <p>
+          “Their team guided me through every step.
+          Today, I'm living my dream in Australia.
+          Thank you Pedani!”
+        </p>
+
+        <div class="client">
+          <img src="/images/sarah.png" alt="Sarah A.">
+
+          <div>
+            <strong>Sarah A.</strong>
+            <span>Germany</span>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+
+    <button
+      class="testimonial-arrow testimonial-next"
+      type="button"
+      aria-label="Next testimonial"
+    >
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+  </div>
+
+  <div class="testimonial-dots"></div>
+
+  <a href="#" class="reviews-btn">
+    Read More Reviews
+  </a>
+
+</section>
+
+<!-- Banner -->
+ <div class="journey-banner">
+    <!-- Left Scenic Image -->
+    <div class="banner-image-container">
+        <!-- Replace with your own landscape image URL -->
+        <img src="/images/canada.png" alt="Mountain Lake Landscape">
+    </div>
+
+    <!-- Center Text -->
+    <div class="banner-content">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Book a consultation with our experts today.</p>
+    </div>
+
+    <!-- Right Form & Flight Graphic -->
+    <div class="banner-action">
+        <input type="email" class="banner-input" placeholder="Enter your email">
+        <button class="banner-btn">Book Now</button>
+        
+        <!-- Flight Path Graphic -->
+        <div class="flight-graphic">
+            <img src="/images/banner-plane.png" alt="a plane with lines following it">
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-main">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/images/logo 3 modified.png" alt="Pedani Migration Services">
+      </div>
+
+      <p>
+        Your trusted partner in global<br>
+        migration and travel solutions.
+      </p>
+
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="#" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <a href="#" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="#" aria-label="Whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+
+      <a href="/">Home</a>
+      <a href="/about.html">About Us</a>
+      <a href="/services.html">Services</a>
+      <a href="/destinations.html">Countries</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-column">
+      <h4>Our Services</h4>
+
+      <a href="#">Study Visa</a>
+      <a href="#">Work Visa</a>
+      <a href="#">Family Sponsorship</a>
+      <a href="#">Permanent Residency</a>
+      <a href="#">Visitor Visa</a>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-column">
+      <h4>Resources</h4>
+
+      <a href="#">Visa Guide</a>
+      <a href="#">Blog</a>
+      <a href="#">FAQ</a>
+      <a href="#">Checklists</a>
+      <a href="#">News</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-column contact">
+      <h4>Contact Us</h4>
+
+      <a href="tel:+2347039112857">
+        <i class="fa-solid fa-phone"></i>
+        +234 703 911 2857
+      </a>
+
+      <a href="mailto:info@pedanimigration.com">
+        <i class="fa-solid fa-envelope"></i>
+        info@pedanimigration.com
+      </a>
+
+      <span>
+        <i class="fa-solid fa-location-dot"></i>
+        Lagos, Nigeria
+      </span>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Pedani Migration Services. All rights reserved.</p>
+
+    <div>
+      <a href="#">Privacy Policy</a>
+      <span>|</span>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
