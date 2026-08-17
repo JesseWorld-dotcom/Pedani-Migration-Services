@@ -26,7 +26,7 @@ body {
   --surface-light: #F8FAFC;
   --surface-light-blue: rgb(233, 244, 253);
   --surface-light-blue-text: rgb(10, 66, 199);
-  --navbar-clr: hsla(215, 40%, 90%, 0.85);
+  --navbar-clr: hsla(215, 40%, 90%, 0.5125);
   --banner-btn-active: linear-gradient(135deg, #2563EB, #3B82F6);
   --text: #172B3A;
   --text-muted: #64748B;
@@ -44,7 +44,7 @@ body {
   align-items: center;
   gap: 1rem;
   background-color: var(--navbar-clr);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1rem);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -186,7 +186,9 @@ body {
   max-width: 100%;
   text-align: center;
 }
-
+.destination h2 .fa-plane{
+  rotate: -30deg;
+}
 .destination h2::before {
   content: '';
   position: absolute;
@@ -202,16 +204,22 @@ body {
 .destination-slider {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .img-container {
   width: min(980px, 100%);
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: .5rem;
   padding: 1rem 0;
 }
-
+.img-item{
+  display: flex;
+  justify-content: center;
+}
 .img-container .img-item {
   width: 200px;
   min-width: 0;
@@ -596,8 +604,11 @@ section.about {
   color: var(--text-light);
   text-decoration: none;
   border-radius: 50%;
+  padding: 0.3125rem;
 }
-
+.social-links a:hover{
+  background-color: var(--primary);
+}
 .footer-column {
   display: flex;
   flex-direction: column;
@@ -663,7 +674,7 @@ section.about {
    TABLET
    ========================= */
 
-@media (min-width: 701px) and (max-width: 1100px) {
+@media (min-width: 705px) and (max-width: 1100px) {
 
   /* ---------- Global ---------- */
   html,
@@ -903,12 +914,11 @@ section.about {
   .about-content h2 {
     font-size: clamp(1.2rem, 2.4vw, 1.7rem);
   }
-
   .about-content p,
   .about-features li {
     font-size: clamp(.68rem, 1.05vw, .8rem);
+    padding: 0 auto;
   }
-
   /* ---------- Testimonials ---------- */
   .testimonials {
     width: min(94%, 70rem);
@@ -948,6 +958,7 @@ section.about {
 
   .banner-content h2 {
     font-size: clamp(.9rem, 1.8vw, 1.3rem);
+    margin-top: .625rem;
   }
 
   .banner-content p {
@@ -993,7 +1004,12 @@ section.about {
   .footer-column {
     min-width: 0;
   }
-
+  .footer-column a{
+    color: var(--text-light);
+  }
+  .footer-column a:link:hover{
+    color: var(--text-muted);
+  }
   .footer-column a,
   .footer-column span {
     font-size: .62rem;
@@ -1004,12 +1020,11 @@ section.about {
   }
 }
 
-
 /* =========================================================
    NARROW TABLETS: 701px–850px
    Prevent navbar and content from becoming cramped.
    ========================================================= */
-@media (min-width: 701px) and (max-width: 850px) {
+@media (min-width: 705px) and (max-width: 850px) {
 
   .navbar {
     padding: 0 .75rem;
@@ -1186,13 +1201,26 @@ section.about {
 
   .hero {
     min-height: 28rem;
+    background: url(/images/hero\ banner.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .hero-text {
     width: 90%;
     padding-left: 1rem;
   }
-
+.hero-text p{
+  color: var(--text);
+}
+.hero-text h2{
+  color: var(--text);
+}
+.hero-text h6{
+  color: var(--text-muted);
+}
   .destination {
     width: calc(100% - 1rem);
     overflow: visible;
