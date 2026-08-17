@@ -1,0 +1,418 @@
+
+/* =========================================================
+   PEDANI — TABLET RESPONSIVE FIX
+   Designed for 701px–1100px
+   Append this AFTER your existing CSS.
+   ========================================================= */
+
+@media (min-width: 701px) and (max-width: 1100px) {
+
+  /* ---------- Global ---------- */
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Navbar ---------- */
+  .navbar {
+    width: 100%;
+    min-height: 3.8rem;
+    padding: 0 1.25rem;
+    gap: 1rem;
+  }
+
+  .navbar h5 {
+    flex: 0 0 auto;
+    font-size: clamp(.72rem, 1.2vw, .9rem);
+    white-space: nowrap;
+  }
+
+  /* Tablet uses the normal desktop nav, but makes it compact */
+  .nav-side-menu {
+    display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+    z-index: auto;
+    flex: 1 1 auto;
+  }
+
+  .nav-side-menu .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(.35rem, 1.2vw, .9rem);
+    width: 100%;
+  }
+
+  .nav-side-menu .nav-menu li {
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .nav-side-menu .nav-menu a {
+    display: inline-flex;
+    width: auto;
+    padding: .35rem .4rem;
+    border-radius: .4rem;
+    font-size: clamp(.65rem, 1.15vw, .78rem);
+    white-space: nowrap;
+  }
+
+  .nav-side-menu .nav-menu a:hover {
+    transform: none;
+    background-color: var(--surface-light-blue);
+    color: var(--primary);
+  }
+
+  .nav-side-cta,
+  .menu-close,
+  .nav-overlay {
+    display: none;
+  }
+
+  .navbar > .nav-cta {
+    display: block;
+    flex: 0 0 auto;
+    padding: .5rem .75rem;
+    border-radius: .7rem;
+    font-size: clamp(.62rem, 1vw, .75rem);
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    width: 100%;
+    min-height: clamp(25rem, 48vw, 31.25rem);
+    height: auto;
+    background-position: center;
+  }
+
+  .hero-text {
+    width: min(42vw, 31rem);
+    padding-left: clamp(1.5rem, 4vw, 3rem);
+    padding-right: 1rem;
+  }
+
+  .hero-text h2 {
+    font-size: clamp(1.5rem, 3vw, 2.15rem);
+  }
+
+  .hero-text p {
+    font-size: clamp(.72rem, 1.1vw, .88rem);
+  }
+
+  .hero-buttons {
+    flex-wrap: wrap;
+    gap: .6rem;
+  }
+
+  /* ---------- Destination ---------- */
+  .destination {
+    width: min(94%, 70rem);
+    padding: .75rem 1rem;
+    overflow: hidden;
+  }
+
+  .destination h2 {
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+  }
+
+  .destination-slider {
+    width: 100%;
+  }
+
+  .destination .img-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: .55rem;
+    padding-bottom: 1rem;
+  }
+
+  .destination .img-item {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .destination .img-item img {
+    width: 100%;
+    aspect-ratio: 1.25 / 1;
+    object-fit: cover;
+  }
+
+  .destination .img-item p {
+    font-size: clamp(.65rem, 1vw, .8rem);
+    translate: .35rem -.3rem;
+  }
+
+  /* Slider controls aren't needed on tablet */
+  .destination-arrow,
+  .destination-dots {
+    display: none;
+  }
+
+  /* ---------- Immigration / Services ---------- */
+  .immigration {
+    width: 100%;
+    max-width: 66rem;
+    padding: 0 .5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+  }
+
+  .immigration-item {
+    width: 100%;
+    min-width: 0;
+    min-height: 10rem;
+    height: auto;
+    padding: .75rem;
+  }
+
+  .immigration-item h4 {
+    font-size: clamp(.85rem, 1.4vw, 1rem);
+  }
+
+  .immigration-item h6 {
+    font-size: clamp(.62rem, 1.05vw, .75rem);
+    line-height: 1.45;
+  }
+
+  .services {
+    margin: 1rem auto;
+    display: block;
+  }
+
+  /* ---------- Analytics ---------- */
+  .analytics {
+    width: min(94%, 60rem);
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1rem auto;
+  }
+
+  .stat {
+    padding: .5rem .35rem;
+  }
+
+  .stat strong {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+  }
+
+  .stat span {
+    font-size: clamp(.55rem, .9vw, .68rem);
+  }
+
+  /* ---------- About ---------- */
+  section.about {
+    width: min(94%, 70rem);
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .about-image,
+  .about-content {
+    min-width: 0;
+    flex: 1 1 50%;
+  }
+
+  .about-image {
+    padding-left: 0;
+  }
+
+  .about-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .about-content {
+    padding-left: 0;
+  }
+
+  .about-content h2 {
+    font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  }
+
+  .about-content p,
+  .about-features li {
+    font-size: clamp(.68rem, 1.05vw, .8rem);
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials {
+    width: min(94%, 70rem);
+    padding: .625rem;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .75rem;
+  }
+
+  .testimonial-card {
+    min-width: 0;
+    padding: .8rem;
+  }
+
+  .testimonial-card p {
+    font-size: clamp(.62rem, .95vw, .72rem);
+  }
+
+  /* ---------- Journey Banner ---------- */
+  .journey-banner {
+    width: min(94%, 70rem);
+    max-width: none;
+    min-height: 8rem;
+  }
+
+  .banner-image-container {
+    flex: 0 0 27%;
+    height: 8rem;
+  }
+
+  .banner-content {
+    min-width: 0;
+    padding: 0 .8rem;
+  }
+
+  .banner-content h2 {
+    font-size: clamp(.9rem, 1.8vw, 1.3rem);
+  }
+
+  .banner-content p {
+    font-size: clamp(.6rem, 1vw, .75rem);
+  }
+
+  .banner-action {
+    flex: 0 0 auto;
+    padding-right: .8rem;
+    gap: .45rem;
+  }
+
+  .banner-input {
+    width: clamp(8rem, 16vw, 12rem);
+    padding: .55rem .65rem;
+    font-size: .7rem;
+  }
+
+  .banner-btn {
+    padding: .55rem .75rem;
+    font-size: .7rem;
+  }
+
+  .flight-graphic {
+    display: none;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    padding: 2rem 1.25rem .75rem;
+  }
+
+  .footer-main {
+    width: min(100%, 70rem);
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+  }
+
+  .footer-column {
+    min-width: 0;
+  }
+
+  .footer-column a,
+  .footer-column span {
+    font-size: .62rem;
+  }
+
+  .footer-bottom {
+    width: min(100%, 70rem);
+  }
+}
+
+
+/* =========================================================
+   NARROW TABLETS: 701px–850px
+   Prevent navbar and content from becoming cramped.
+   ========================================================= */
+@media (min-width: 701px) and (max-width: 850px) {
+
+  .navbar {
+    padding: 0 .75rem;
+  }
+
+  .navbar h5 {
+    max-width: 8.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-side-menu .nav-menu {
+    gap: .2rem;
+  }
+
+  .nav-side-menu .nav-menu a {
+    padding: .3rem .25rem;
+    font-size: .62rem;
+  }
+
+  .navbar > .nav-cta {
+    padding: .45rem .55rem;
+    font-size: .6rem;
+  }
+
+  .hero-text {
+    width: min(48vw, 28rem);
+    padding-left: 1.5rem;
+  }
+
+  .destination .img-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .destination .img-item:nth-child(n+4) {
+    display: none;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testimonial-card:nth-child(3) {
+    display: none;
+  }
+
+  .journey-banner {
+    flex-wrap: wrap;
+  }
+
+  .banner-image-container {
+    flex: 0 0 30%;
+  }
+
+  .banner-action {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding: .75rem;
+  }
+
+  .banner-input {
+    width: min(15rem, 45%);
+  }
+}

@@ -6,19 +6,16 @@
   <title>Pedani Migration Services | Study Abroad & Migration Services</title>
   <link rel="shortcut icon" href="/images/favicon2.png" type="image/x-icon">
 
-  <!-- Flags CDN -->
-   <link rel="stylesheet" 
-   href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
 
-   <!-- Font Awesome -->
-    <link rel="stylesheet"
+  <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
   <link rel="stylesheet" href="style.css">
-<meta
-  name="description"
-  content="PEDANI Migration Service provides professional study, work, tourist and visit visa assistance for the UK, Canada, Spain, Italy, Germany and other European destinations."
->
-<script src="/script.js" defer></script>
+  <meta name="description"
+    content="PEDANI Migration Service provides professional study, work, tourist and visit visa assistance for the UK, Canada, Spain, Italy, Germany and other European destinations.">
+  <script src="/script.js" defer></script>
 </head>
 
 <body>
@@ -27,18 +24,9 @@
 
   <h5>Pedani Migration Services</h5>
 
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
-  >
-    <i class="fa-solid fa-bars"></i>
-  </button>
-
-  <!-- Mobile overlay -->
-  <div class="nav-overlay"></div>
-
+  <!-- Desktop navigation lives inside nav-side-menu.
+       CSS turns this into a normal horizontal nav on desktop
+       and a slide-in menu on mobile. -->
   <div class="nav-side-menu">
 
     <button class="menu-close" type="button" aria-label="Close navigation">
@@ -55,34 +43,40 @@
 
     <button class="nav-side-cta">
       Start Your Journey
-    </button>
-
+    </button> 
   </div>
 
   <button class="nav-cta">
     Start Your Journey
   </button>
 
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="nav-overlay"></div>
 </nav>
 
-  <!-- Hero SEction -->
-  <div class="hero">
-    <div class="hero-text">
-      <h6>Pedani for Visa</h6>
-      <h2>We Make Your Travel Dreams Come True.</h2>
-      <p>Expert visa, migration and travel support, including study and
-         work visas, UK & Canada admissions, international tuition 
-         payments, tourist and visit visas, financial documentation, and
-          court registry services.
-      </p>
-      <div class="hero-buttons">
-        <button>Get Started</button>
-        <button>Book a Consultation</button>
-      </div>
-    </div>    
+<div class="hero">
+  <div class="hero-text">
+    <h6>Pedani for Visa</h6>
+    <h2>We Make Your Travel Dreams Come True.</h2>
+    <p>
+      Expert visa, migration and travel support, including study and
+      work visas, UK & Canada admissions, international tuition
+      payments, tourist and visit visas, financial documentation, and
+      court registry services.
+    </p>
+    <div class="hero-buttons">
+      <button>Get Started</button>
+      <button>Book a Consultation</button>
+    </div>
   </div>
-
-    <!-- Destination -->
+</div>
 
 <div class="destination">
 
@@ -93,11 +87,8 @@
 
   <div class="destination-slider">
 
-    <button
-      class="destination-arrow destination-prev"
-      type="button"
-      aria-label="Previous destination"
-    >
+    <button class="destination-arrow destination-prev" type="button"
+      aria-label="Previous destination">
       <i class="fa-solid fa-chevron-left"></i>
     </button>
 
@@ -105,61 +96,39 @@
 
       <div class="img-item">
         <img src="/images/london.png" alt="London">
-        <p>
-          <span class="fi fi-gb"></span>
-          UK
-        </p>
+        <p><span class="fi fi-gb"></span> UK</p>
       </div>
 
       <div class="img-item">
         <img src="/images/canada.png" alt="Canada">
-        <p>
-          <span class="fi fi-ca"></span>
-          Canada
-        </p>
+        <p><span class="fi fi-ca"></span> Canada</p>
       </div>
 
       <div class="img-item">
         <img src="/images/germany.png" alt="Germany">
-        <p>
-          <span class="fi fi-de"></span>
-          Germany
-        </p>
+        <p><span class="fi fi-de"></span> Germany</p>
       </div>
 
       <div class="img-item">
         <img src="/images/spain.png" alt="Spain">
-        <p>
-          <span class="fi fi-es"></span>
-          Spain
-        </p>
+        <p><span class="fi fi-es"></span> Spain</p>
       </div>
 
       <div class="img-item">
         <img src="/images/italy.png" alt="Italy">
-        <p>
-          <span class="fi fi-it"></span>
-          Italy
-        </p>
+        <p><span class="fi fi-it"></span> Italy</p>
       </div>
 
     </div>
 
-    <button
-      class="destination-arrow destination-next"
-      type="button"
-      aria-label="Next destination"
-    >
+    <button class="destination-arrow destination-next" type="button"
+      aria-label="Next destination">
       <i class="fa-solid fa-chevron-right"></i>
     </button>
 
   </div>
 
-  <!-- Slider indicators -->
   <div class="destination-dots"></div>
-
-
-  <!-- Services -->
 
   <h2 class="services-heading">
     Our Visa & Immigration Services
@@ -205,11 +174,8 @@
 
   </div>
 
-  <button class="services">
-    View All Services
-  </button>
+  <button class="services">View All Services</button>
 
-  <!-- Analytics -->
   <div class="analytics">
 
     <div class="stat">
@@ -233,14 +199,13 @@
     </div>
 
   </div>
-
 </div>
+
 <section class="about">
+
   <div class="about-image">
-    <img 
-      src="/images/home about.png" 
-      alt="Traveler standing in an airport terminal"
-    >
+    <img src="/images/home about.png"
+      alt="Traveler standing in an airport terminal">
   </div>
 
   <div class="about-content">
@@ -258,116 +223,82 @@
     </p>
 
     <ul class="about-features">
-      <li>
-        <i class="fa-solid fa-circle-check"></i>
-        Expert advice from certified consultants
-      </li>
-
-      <li>
-        <i class="fa-solid fa-circle-check"></i>
-        High success rate and transparent process
-      </li>
-
-      <li>
-        <i class="fa-solid fa-circle-check"></i>
-        End-to-end support, every step of the way
-      </li>
+      <li><i class="fa-solid fa-circle-check"></i>
+        Expert advice from certified consultants</li>
+      <li><i class="fa-solid fa-circle-check"></i>
+        High success rate and transparent process</li>
+      <li><i class="fa-solid fa-circle-check"></i>
+        End-to-end support, every step of the way</li>
     </ul>
 
     <button class="about-btn">
-      <a href="/about.html">
-      Learn More
-    </a>
+      <a href="/about.html">Learn More</a>
     </button>
   </div>
 </section>
+
 <section class="testimonials">
 
   <h2>What Our Clients Say</h2>
 
   <div class="testimonial-slider">
 
-    <button
-      class="testimonial-arrow testimonial-prev"
-      type="button"
-      aria-label="Previous testimonial"
-    >
+    <button class="testimonial-arrow testimonial-prev" type="button"
+      aria-label="Previous testimonial">
       <i class="fa-solid fa-chevron-left"></i>
     </button>
 
     <div class="testimonial-grid">
 
       <article class="testimonial-card">
-
         <div class="stars">★★★★★</div>
-
         <p>
           “Pedani Migration Services made my Canada study
-          visa process so easy and stress-free.
-          Highly recommended!”
+          visa process so easy and stress-free. Highly recommended!”
         </p>
-
         <div class="client">
           <img src="/images/amaka.png" alt="Amaka U.">
-
           <div>
             <strong>Amaka U.</strong>
             <span>Canada</span>
           </div>
         </div>
-
       </article>
 
-
       <article class="testimonial-card">
-
         <div class="stars">★★★★★</div>
-
         <p>
           “Professional, transparent and reliable.
           I got my UK work visa faster than I expected.”
         </p>
-
         <div class="client">
           <img src="/images/tunde.png" alt="Tunde O.">
-
           <div>
             <strong>Tunde O.</strong>
             <span>United Kingdom</span>
           </div>
         </div>
-
       </article>
 
-
       <article class="testimonial-card">
-
         <div class="stars">★★★★★</div>
-
         <p>
           “Their team guided me through every step.
-          Today, I'm living my dream in Australia.
-          Thank you Pedani!”
+          Today, I'm living my dream in Australia. Thank you Pedani!”
         </p>
-
         <div class="client">
           <img src="/images/sarah.png" alt="Sarah A.">
-
           <div>
             <strong>Sarah A.</strong>
             <span>Germany</span>
           </div>
         </div>
-
       </article>
 
     </div>
 
-    <button
-      class="testimonial-arrow testimonial-next"
-      type="button"
-      aria-label="Next testimonial"
-    >
+    <button class="testimonial-arrow testimonial-next" type="button"
+      aria-label="Next testimonial">
       <i class="fa-solid fa-chevron-right"></i>
     </button>
 
@@ -375,45 +306,40 @@
 
   <div class="testimonial-dots"></div>
 
-  <a href="#" class="reviews-btn">
-    Read More Reviews
-  </a>
-
+  <a href="#" class="reviews-btn">Read More Reviews</a>
 </section>
 
-<!-- Banner -->
- <div class="journey-banner">
-    <!-- Left Scenic Image -->
-    <div class="banner-image-container">
-        <!-- Replace with your own landscape image URL -->
-        <img src="/images/canada.png" alt="Mountain Lake Landscape">
-    </div>
+<div class="journey-banner">
 
-    <!-- Center Text -->
-    <div class="banner-content">
-        <h2>Ready to Start Your Journey?</h2>
-        <p>Book a consultation with our experts today.</p>
-    </div>
+  <div class="banner-image-container">
+    <img src="/images/canada.png" alt="Mountain Lake Landscape">
+  </div>
 
-    <!-- Right Form & Flight Graphic -->
-    <div class="banner-action">
-        <input type="email" class="banner-input" placeholder="Enter your email">
-        <button class="banner-btn">Book Now</button>
-        
-        <!-- Flight Path Graphic -->
-        <div class="flight-graphic">
-            <img src="/images/banner-plane.png" alt="a plane with lines following it">
-        </div>
+  <div class="banner-content">
+    <h2>Ready to Start Your Journey?</h2>
+    <p>Book a consultation with our experts today.</p>
+  </div>
+
+  <div class="banner-action">
+    <input type="email" class="banner-input"
+      placeholder="Enter your email">
+    <button class="banner-btn">Book Now</button>
+
+    <div class="flight-graphic">
+      <img src="/images/banner-plane.png"
+        alt="a plane with lines following it">
     </div>
+  </div>
 </div>
-<!-- Footer -->
- <footer class="footer">
+
+<footer class="footer">
+
   <div class="footer-main">
 
-    <!-- Brand -->
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="/images/logo 3 modified.png" alt="Pedani Migration Services">
+        <img src="/images/logo 3 modified.png"
+          alt="Pedani Migration Services">
       </div>
 
       <p>
@@ -425,29 +351,23 @@
         <a href="#" aria-label="Facebook">
           <i class="fa-brands fa-facebook-f"></i>
         </a>
-
         <a href="#" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
         </a>
-
         <a href="#" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
-
         <a href="#" aria-label="YouTube">
           <i class="fa-brands fa-youtube"></i>
         </a>
-
         <a href="#" aria-label="Whatsapp">
           <i class="fa-brands fa-whatsapp"></i>
         </a>
       </div>
     </div>
 
-    <!-- Quick Links -->
     <div class="footer-column">
       <h4>Quick Links</h4>
-
       <a href="/">Home</a>
       <a href="/about.html">About Us</a>
       <a href="/services.html">Services</a>
@@ -455,10 +375,8 @@
       <a href="/contact.html">Contact</a>
     </div>
 
-    <!-- Services -->
     <div class="footer-column">
       <h4>Our Services</h4>
-
       <a href="#">Study Visa</a>
       <a href="#">Work Visa</a>
       <a href="#">Family Sponsorship</a>
@@ -466,10 +384,8 @@
       <a href="#">Visitor Visa</a>
     </div>
 
-    <!-- Resources -->
     <div class="footer-column">
       <h4>Resources</h4>
-
       <a href="#">Visa Guide</a>
       <a href="#">Blog</a>
       <a href="#">FAQ</a>
@@ -477,7 +393,6 @@
       <a href="#">News</a>
     </div>
 
-    <!-- Contact -->
     <div class="footer-column contact">
       <h4>Contact Us</h4>
 
@@ -508,6 +423,8 @@
       <a href="#">Terms & Conditions</a>
     </div>
   </div>
+
 </footer>
+
 </body>
 </html>
