@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeMenu() {
 
     navbar.classList.remove("menu-open");
+    navOverlay.classList.remove("menu-open")
 
     document.body.classList.remove("menu-open");
 
@@ -552,3 +553,68 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 });
+
+// Counter Effect
+  const counters = document.querySelectorAll(".stat strong");
+  const analytics = document.querySelector(".analytics");
+
+  function animateCounter(counter) {
+    const target = Number(counter.dataset.target);
+    const suffix = counter.dataset.suffix || "";
+
+    const duration = 2000; // 2 seconds
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Smooth ease-out animation
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+
+      const currentValue = Math.floor(easeOut * target);
+
+      // Special formatting for 5000 → 5K+
+      if (suffix === "K+") {
+        counter.textContent =
+          (currentValue / 1000).toFixed(currentValue >= 1000 ? 1 : 0) + "K+";
+      } else {
+        counter.textContent = currentValue + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        // Make sure the final number is exact
+        if (suffix === "K+") {
+          counter.textContent = (target) + "K+";
+        } else {
+          counter.textContent = target + suffix;
+        }
+      }
+    }
+
+    requestAnimationFrame(updateCounter);
+  }
+
+  // Start animation when analytics enters the screen
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+          counters.forEach(counter => {
+            animateCounter(counter);
+          });
+
+          // Prevent animation from running again
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.5
+    }
+  );
+
+  observer.observe(analytics);
