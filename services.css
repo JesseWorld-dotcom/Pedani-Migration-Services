@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+:root {
+  --primary: #164E8C;
+  --primary-dark: #0D355F;
+  --accent: hsl(209, 85%, 50%);
+  --accent-dark: hsl(209, 80%, 28%);
+  --accent-lignt: hsl(209, 60%, 50%);
+  --background: #F1F5F9;
+  --surface: hsl(212, 39%, 94%);
+  --surface-light: #F8FAFC;
+  --surface-light-blue: rgb(233, 244, 253);
+  --surface-light-blue-text: rgb(10, 66, 199);
+  --navbar-clr: hsla(215, 40%, 90%, 0.5125);
+  --banner-btn-active: linear-gradient(135deg, #2563EB, #3B82F6);
+  --text: #172B3A;
+  --text-muted: #64748B;
+  --text-light: #F8FAFC;
+  --border: #D5DEE8;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+  min-height: 3.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--navbar-clr);
+  backdrop-filter: blur(1rem);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 1.25rem;
+}
+
+.navbar h5 {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.navbar > .nav-side-menu {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.5rem, 1.5vw, 1.25rem);
+  list-style: none;
+  margin: 0 auto;
+}
+
+.nav-menu a {
+  display: block;
+  padding: .45rem .55rem;
+  text-decoration: none;
+  color: var(--text);
+  font-size: .85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: .45rem;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--primary);
+  background: var(--surface-light-blue);
+}
+
+.nav-cta,
+.nav-side-cta {
+  border: none;
+  border-radius: 1rem;
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-cta:hover,
+.nav-side-cta:hover {
+  background-color: var(--primary);
+}
+
+.nav-cta:active,
+.nav-side-cta:active {
+  background-color: var(--primary-dark);
+  transform: scale(.98);
+}
+
+.menu-toggle,
+.menu-close,
+.nav-overlay {
+  display: none;
+}
+/* hero */
