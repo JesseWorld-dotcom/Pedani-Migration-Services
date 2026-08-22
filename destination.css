@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--background);
+  color: var(--text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+:root {
+  --primary: #164E8C;
+  --primary-dark: #0D355F;
+  --accent: hsl(209, 85%, 50%);
+  --accent-dark: hsl(209, 80%, 28%);
+  --accent-lignt: hsl(209, 60%, 50%);
+  --background: #F1F5F9;
+  --surface: hsl(212, 39%, 94%);
+  --surface-light: #F8FAFC;
+  --surface-light-blue: rgb(233, 244, 253);
+  --surface-light-blue-text: rgb(10, 66, 199);
+  --navbar-clr: hsla(215, 40%, 90%, 0.5125);
+  --banner-btn-active: linear-gradient(135deg, #2563EB, #3B82F6);
+  --text: #172B3A;
+  --text-muted: #64748B;
+  --text-light: #F8FAFC;
+  --border: #D5DEE8;
+  --margin-btm: clamp(.625rem, 1.25rem, 1.625rem);
+  --p-font-size: clamp(.35rem, 2vw, .6125rem);
+  --subtitle-font-size: clamp(.3125rem, 1.625vw, .625rem);
+  --subtitle-font-size-big: clamp(.425rem, 1.75vw, .75rem);
+  --heading-font-size: clamp(.9125rem, 4vw, 1.215rem);
+  --heading-font-size-sm: clamp(.9125rem, 3.5vw, 1.25rem);
+  --preview-bk: rgba(0, 0, 123, 0.2);
+  --heading-font-size-big: clamp(.9125rem, 4.5vw, 1.3125rem);
+  --heading-p-font-size: clamp(.5rem, 4vw, .825rem);
+  --heading-font-size-xx: clamp(.9125rem, 5vw, 1.625rem);
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+  min-height: 3.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--navbar-clr);
+  backdrop-filter: blur(1rem);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 1.25rem;
+}
+
+.navbar h5 {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.navbar > .nav-side-menu {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.5rem, 1.5vw, 1.25rem);
+  list-style: none;
+  margin: 0 auto;
+}
+
+.nav-menu a {
+  display: block;
+  padding: .45rem .55rem;
+  text-decoration: none;
+  color: var(--text);
+  font-size: .85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: .45rem;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--primary);
+  background: var(--surface-light-blue);
+}
+
+.nav-cta,
+.nav-side-cta {
+  border: none;
+  border-radius: 1rem;
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-cta:hover,
+.nav-side-cta:hover {
+  background-color: var(--primary);
+}
+
+.nav-cta:active,
+.nav-side-cta:active {
+  background-color: var(--primary-dark);
+  transform: scale(.98);
+}
+
+.menu-toggle,
+.menu-close,
+.nav-overlay {
+  display: none;
+}

@@ -191,14 +191,14 @@ body {
 /* About */
 .about{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: clamp(.625rem, 1.25rem, 1.625rem);
     margin-bottom: clamp(.625rem, 1.25rem, 1.625rem);
 }
 .about-content{
     padding-left: min(.625rem, 6%);
-    padding-right: min(.625rem, 15%); 
+    padding-right: min(.625rem, 10%); 
     width: min(30rem, 50%);
     max-width: 705px;
 }
