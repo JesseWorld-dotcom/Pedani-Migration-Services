@@ -34,8 +34,8 @@
     </button>
 
     <ul class="nav-menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about.html">About Us</a></li>
+      <li><a href="/index.html">Home</a></li>
+      <li class="active"><a href="/about.html">About Us</a></li>
       <li><a href="/services.html">Services</a></li>
       <li><a href="/destination.html">Destinations</a></li>
       <li><a href="/contact.html">Contact Us</a></li>
@@ -47,7 +47,9 @@
   </div>
 
   <button class="nav-cta">
-    Start Your Journey
+   <a href="/contact.html">
+     Start Your Journey
+   </a>
   </button>
 
   <button
@@ -69,7 +71,9 @@
         helping individuals, families, and businesses navigate
         the complexities of global migration.</p>
          <button class="hero-btn">
-          Get Started
+          <a href="/contact.html">
+            Get Started
+          </a>
          </button>
     </div>
   </div>
@@ -136,135 +140,277 @@
   </div>
   <br><br>
   <!-- Testimonial -->
-    <div class="test-head-cont">
-    <h2 class="test-head">What Our Client Say</h2>
-   </div>
-   <section class="testimonial">
+   <section
+  id="testimonial"
+  aria-labelledby="testimonial-title"
+>
+  <div class="testimonial-heading">
+    <span>Testimonials</span>
+    <h2 id="testimonial-title">What Our Clients Say</h2>
+  </div>
 
-    <div class="testimonial-slider">
-      <article class="testimonials-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          “Pedani Migration Services made my Canada study
-          visa process so easy and stress-free. Highly recommended!”
-        </p>
-        <div class="clients">
-          <img src="/images/amaka.png" alt="Amaka U.">
-          <div>
-            <strong>Amaka U.</strong>
-            <span>Canada</span>
-          </div>
-        </div>
-      </article>
+  <div
+    class="testimonial-slider"
+    tabindex="0"
+    aria-label="Client testimonials"
+  >
 
-      <article class="testimonials-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          “Professional, transparent and reliable.
-          I got my UK work visa faster than I expected.”
-        </p>
-        <div class="clients">
-          <img src="/images/tunde.png" alt="Tunde O.">
-          <div>
-            <strong>Tunde O.</strong>
-            <span>United Kingdom</span>
-          </div>
-        </div>
-      </article>
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-1"
+    >
+      <div
+        class="stars"
+        aria-label="5 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★★
+      </div>
 
-      <article class="testimonials-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          “Their team guided me through every step.
-          Today, I'm living my dream in Germany. Thank you Pedani!”
-        </p>
-        <div class="clients">
-          <img src="/images/sarah.png" alt="Sarah A.">
-          <div>
-            <strong>Sarah A.</strong>
-            <span>Germany</span>
-          </div>
-        </div>
-      </article> 
+      <p>
+        “Pedani Migration Services made my Canada study
+        visa process so easy and stress-free. Highly recommended!”
+      </p>
 
-      <!-- Added more -->
-      <article class="testimonials-card">
-        <div class="stars">★★★★</div>
-        <p>
-          “I’m really thankful to Pedani for making my trip to Ireland
-           so easy. Their guidance made the whole travel process smooth and stress-free for me.”
-        </p>
-        <div class="clients">
-          <img src="/images/chinedu.png" alt="">
-          <div>
-            <strong>Chinedu C.</strong>
-            <span>Ireland</span>
-          </div>
+      <div class="clients">
+        <img
+          src="/images/amaka.png"
+          alt="Portrait of Amaka U."
+        >
+
+        <div>
+          <strong id="testimonial-client-1">Amaka U.</strong>
+          <span>Canada</span>
         </div>
-      </article>
-      <article class="testimonials-card">
-        <div class="stars">★★★★</div>
-        <p>
-          “I’m so grateful to Pedani for making my journey to Italy
-           so easy and stress-free. Everything went smoothly, and I truly enjoyed my trip.”
-        </p>
-        <div class="clients">
-          <img src="/images/amina.png" alt="">
-          <div>
-            <strong>Amina O.</strong>
-            <span>Italy</span>
-          </div>
-        </div>
-      </article>
-      <article class="testimonials-card">
-        <div class="stars">★★★★</div>
-        <p>
-          “I want to thank Pedani for making my travel to Australia so 
-           simple and seamless. Their support made the entire process much easier for me.”
-        </p>
-        <div class="clients">
-          <img src="/images/oluwaseun.png" alt="">
-          <div>
-            <strong>Oluwaseun P.</strong>
-            <span>Australia</span>
-          </div>
-        </div>
-      </article>
-      <article class="testimonials-card">
-        <div class="stars">★★★★★</div>
-        <p>
-          “I had a hard time with other immigration 
-          companies, but Pedani made my Spain journey
-           much easier. I’m really grateful!”
-        </p>
-        <div class="clients">
-          <img src="/images/ayomide.png" alt="">
-          <div>
-            <strong>Ayomide E.</strong>
-            <span>Spain</span>
-          </div>
-        </div>
-      </article>
-      <article class="testimonials-card">
-        <div class="stars">★★★★</div>
-        <p>
-          “After struggling with other immigration 
-          companies, I’m glad I found Pedani. They
-           made my Dubai travel process so much easier!”
-        </p>
-        <div class="clients">
-          <img src="/images/ngozi.png" alt="">
-          <div>
-            <strong>Ngozi D.</strong>
-            <span>Dubai</span>
-          </div>
-        </div>
-      </article>
+      </div>
+    </article>
 
 
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-2"
+    >
+      <div
+        class="stars"
+        aria-label="5 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★★
+      </div>
+
+      <p>
+        “Professional, transparent and reliable.
+        I got my UK work visa faster than I expected.”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/tunde.png"
+          alt="Portrait of Tunde O."
+        >
+
+        <div>
+          <strong id="testimonial-client-2">Tunde O.</strong>
+          <span>United Kingdom</span>
+        </div>
+      </div>
+    </article>
+
+
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-3"
+    >
+      <div
+        class="stars"
+        aria-label="5 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★★
+      </div>
+
+      <p>
+        “Their team guided me through every step.
+        Today, I'm living my dream in Germany. Thank you Pedani!”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/sarah.png"
+          alt="Portrait of Sarah A."
+        >
+
+        <div>
+          <strong id="testimonial-client-3">Sarah A.</strong>
+          <span>Germany</span>
+        </div>
+      </div>
+    </article>
+
+
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-4"
+    >
+      <div
+        class="stars"
+        aria-label="4 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★☆
+      </div>
+
+      <p>
+        “I’m really thankful to Pedani for making my trip to Ireland
+        so easy. Their guidance made the whole travel process
+        smooth and stress-free for me.”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/chinedu.png"
+          alt="Portrait of Chinedu C."
+        >
+
+        <div>
+          <strong id="testimonial-client-4">Chinedu C.</strong>
+          <span>Ireland</span>
+        </div>
+      </div>
+    </article>
+
+
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-5"
+    >
+      <div
+        class="stars"
+        aria-label="4 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★☆
+      </div>
+
+      <p>
+        “I’m so grateful to Pedani for making my journey to Italy
+        so easy and stress-free. Everything went smoothly,
+        and I truly enjoyed my trip.”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/amina.png"
+          alt="Portrait of Amina O."
+        >
+
+        <div>
+          <strong id="testimonial-client-5">Amina O.</strong>
+          <span>Italy</span>
+        </div>
+      </div>
+    </article>
+
+
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-6"
+    >
+      <div
+        class="stars"
+        aria-label="4 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★☆
+      </div>
+
+      <p>
+        “I want to thank Pedani for making my travel to Australia
+        so simple and seamless. Their support made the entire
+        process much easier for me.”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/oluwaseun.png"
+          alt="Portrait of Oluwaseun P."
+        >
+
+        <div>
+          <strong id="testimonial-client-6">Oluwaseun P.</strong>
+          <span>Australia</span>
+        </div>
+      </div>
+    </article>
+
+
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-7"
+    >
+      <div
+        class="stars"
+        aria-label="5 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★★
+      </div>
+
+      <p>
+        “I had a hard time with other immigration companies,
+        but Pedani made my Spain journey much easier.
+        I’m really grateful!”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/ayomide.png"
+          alt="Portrait of Ayomide E."
+        >
+
+        <div>
+          <strong id="testimonial-client-7">Ayomide E.</strong>
+          <span>Spain</span>
+        </div>
+      </div>
+    </article>
+
+
+    <article
+      class="testimonials-card"
+      aria-labelledby="testimonial-client-8"
+    >
+      <div
+        class="stars"
+        aria-label="4 out of 5 stars"
+        aria-hidden="true"
+      >
+        ★★★★☆
+      </div>
+
+      <p>
+        “After struggling with other immigration companies,
+        I’m glad I found Pedani. They made my Dubai travel
+        process so much easier!”
+      </p>
+
+      <div class="clients">
+        <img
+          src="/images/ngozi.png"
+          alt="Portrait of Ngozi D."
+        >
+
+        <div>
+          <strong id="testimonial-client-8">Ngozi D.</strong>
+          <span>Dubai</span>
+        </div>
+      </div>
+    </article>
 
   </div>
 
+  <!-- JavaScript fallback controls are inserted here -->
+  <div class="testimonial-fallback-controls"></div>
 </section>
 
 <!-- Banner -->
@@ -277,7 +423,7 @@
       <h2>Ready to Start Your Journey?</h2>
       <p>Let us help you turn your travel and migration dreams into reality.</p>
     </div>
-    <a href="#consultation" class="cta-button">Book a Consultation</a>
+    <a href="/contact.html" class="cta-button">Book a Consultation</a>
   </div>
 </div>
     <!-- Main ends -->
@@ -297,19 +443,10 @@
       </p>
 
       <div class="social-links">
-        <a href="#" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
+        <a href="https://x.com/odalopeezie?s=11" aria-label="Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
         </a>
-        <a href="#" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="#" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a href="#" aria-label="Whatsapp">
+        <a href="tel:+2347039112857" aria-label="Whatsapp">
           <i class="fa-brands fa-whatsapp"></i>
         </a>
       </div>
@@ -320,7 +457,7 @@
       <a href="/">Home</a>
       <a href="/about.html">About Us</a>
       <a href="/services.html">Services</a>
-      <a href="/destinations.html">Countries</a>
+      <a href="/destinations.html">Destinations</a>
       <a href="/contact.html">Contact</a>
     </div>
 
@@ -334,11 +471,11 @@
 
     <div class="footer-column">
       <h4>Resources</h4>
-      <a href="#">Visa Guide</a>
-      <a href="#">Blog</a>
-      <a href="#">FAQ</a>
-      <a href="#">Checklists</a>
-      <a href="#">News</a>
+      <a href="/pages/visa-guides.html">Visa Guides</a>
+<a href="/pages/blog.html">Blog</a>
+<a href="/pages/faqs.html">FAQs</a>
+<a href="/pages/checklists.html">Checklists</a>
+<a href="/pages/news.html">News</a>
     </div>
 
     <div class="footer-column contact">

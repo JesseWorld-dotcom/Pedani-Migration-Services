@@ -107,3 +107,330 @@ const observers = new IntersectionObserver(
 counters.forEach((counter) => {
   observers.observe(counter);
 });
+
+// For testimonial (Improved Accessibility)
+
+// Testimonial — Modern CSS + JavaScript Fallback
+
+document.addEventListener("DOMContentLoaded", () => {
+  const testimonialSection = document.querySelector("#testimonial");
+  const slider = testimonialSection?.querySelector(".testimonial-slider");
+  const controls = testimonialSection?.querySelector(
+    ".testimonial-fallback-controls"
+  );
+
+  if (!testimonialSection || !slider || !controls) return;
+
+  const cards = [
+    ...slider.querySelectorAll(".testimonials-card")
+  ];
+
+  if (!cards.length) return;
+
+
+  /* =========================================
+     CHECK MODERN CSS SUPPORT
+  ========================================= */
+
+  const supportsScrollMarkers =
+    CSS.supports("scroll-marker-group: after") &&
+    CSS.supports(
+      "selector(.testimonials-card::scroll-marker)"
+    );
+
+  const supportsScrollButtons =
+    CSS.supports(
+      "selector(.testimonial-slider::scroll-button(left))"
+    ) &&
+    CSS.supports(
+      "selector(.testimonial-slider::scroll-button(right))"
+    );
+
+  const supportsModernTestimonials =
+    supportsScrollMarkers &&
+    supportsScrollButtons;
+
+
+  /* =========================================
+     MODERN BROWSER
+     
+     Let CSS handle the controls.
+  ========================================= */
+
+  if (supportsModernTestimonials) {
+    return;
+  }
+
+
+  /* =========================================
+     FALLBACK
+  ========================================= */
+
+  testimonialSection.classList.add("js-fallback");
+
+
+  /* =========================================
+     PREVIOUS BUTTON
+  ========================================= */
+
+  const previousButton = document.createElement("button");
+
+  previousButton.type = "button";
+  previousButton.className =
+    "testimonial-fallback-prev";
+
+  previousButton.setAttribute(
+    "aria-label",
+    "Previous testimonial"
+  );
+
+  previousButton.textContent = "←";
+
+
+  /* =========================================
+     NEXT BUTTON
+  ========================================= */
+
+  const nextButton = document.createElement("button");
+
+  nextButton.type = "button";
+  nextButton.className =
+    "testimonial-fallback-next";
+
+  nextButton.setAttribute(
+    "aria-label",
+    "Next testimonial"
+  );
+
+  nextButton.textContent = "→";
+
+
+  /* =========================================
+     DOTS
+  ========================================= */
+
+  const dotsContainer = document.createElement("div");
+
+  dotsContainer.className =
+    "testimonial-fallback-dots";
+
+  dotsContainer.setAttribute(
+    "role",
+    "group"
+  );
+
+  dotsContainer.setAttribute(
+    "aria-label",
+    "Choose a testimonial"
+  );
+
+
+  const dots = cards.map((card, index) => {
+
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+
+    dot.className =
+      "testimonial-fallback-dot";
+
+    dot.setAttribute(
+      "aria-label",
+      `Go to testimonial ${index + 1}`
+    );
+
+    dot.setAttribute(
+      "aria-current",
+      index === 0 ? "true" : "false"
+    );
+
+    dot.addEventListener("click", () => {
+      goToSlide(index);
+    });
+
+    dotsContainer.appendChild(dot);
+
+    return dot;
+  });
+
+
+  /* =========================================
+     INSERT CONTROLS
+  ========================================= */
+
+  controls.append(
+    previousButton,
+    dotsContainer,
+    nextButton
+  );
+
+
+  /* =========================================
+     STATE
+  ========================================= */
+
+  let currentIndex = 0;
+
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+
+  /* =========================================
+     GO TO SLIDE
+  ========================================= */
+
+  function goToSlide(index) {
+
+    currentIndex = Math.max(
+      0,
+      Math.min(index, cards.length - 1)
+    );
+
+    cards[currentIndex].scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "nearest",
+      inline: "start"
+    });
+
+    updateControls();
+  }
+
+
+  /* =========================================
+     UPDATE CONTROLS
+  ========================================= */
+
+  function updateControls() {
+
+    previousButton.disabled =
+      currentIndex === 0;
+
+    nextButton.disabled =
+      currentIndex === cards.length - 1;
+
+
+    dots.forEach((dot, index) => {
+
+      dot.setAttribute(
+        "aria-current",
+        index === currentIndex
+          ? "true"
+          : "false"
+      );
+
+    });
+  }
+
+
+  /* =========================================
+     PREVIOUS
+  ========================================= */
+
+  previousButton.addEventListener("click", () => {
+
+    if (currentIndex > 0) {
+      goToSlide(currentIndex - 1);
+    }
+
+  });
+
+
+  /* =========================================
+     NEXT
+  ========================================= */
+
+  nextButton.addEventListener("click", () => {
+
+    if (currentIndex < cards.length - 1) {
+      goToSlide(currentIndex + 1);
+    }
+
+  });
+
+
+  /* =========================================
+     MANUAL SCROLL
+  ========================================= */
+
+  let scrollTimeout;
+
+  slider.addEventListener(
+    "scroll",
+    () => {
+
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+
+        const sliderLeft =
+          slider.getBoundingClientRect().left;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+
+        cards.forEach((card, index) => {
+
+          const distance = Math.abs(
+            card.getBoundingClientRect().left -
+            sliderLeft
+          );
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+
+        });
+
+
+        currentIndex = closestIndex;
+
+        updateControls();
+
+      }, 100);
+
+    },
+    { passive: true }
+  );
+
+
+  /* =========================================
+     KEYBOARD
+  ========================================= */
+
+  slider.addEventListener("keydown", (event) => {
+
+    if (event.key === "ArrowRight") {
+
+      event.preventDefault();
+
+      if (currentIndex < cards.length - 1) {
+        goToSlide(currentIndex + 1);
+      }
+
+    }
+
+
+    if (event.key === "ArrowLeft") {
+
+      event.preventDefault();
+
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+
+    }
+
+  });
+
+
+  /* =========================================
+     INITIAL STATE
+  ========================================= */
+
+  updateControls();
+
+});
