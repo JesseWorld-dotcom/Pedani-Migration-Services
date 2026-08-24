@@ -1,384 +1,167 @@
-# Pedani-Migration-Services
-Pedani Migration Services
-is a migration company and they asked me to make their website for them
- the website structure:
- HOME
- ├── Introduction
- ├── Services
- ├── Destinations
- ├── Why Choose Us
- └── CTA
-
-ABOUT
- ├── Who We Are
- ├── Mission
- └── Why PEDANI
-
-SERVICES
- ├── Study Abroad
- ├── Visa Assistance
- ├── Migration Services
- └── Travel Assistance
-
-DESTINATIONS
- ├── Canada
- ├── UK
- ├── Australia
- └── Other destinations
-
-CONTACT
- ├── Contact Form
- ├── Phone
- ├── Email
- └── WhatsApp
-
- scale it so it fits well as a favicon
-Edit
-Edit
-Edit
-
-Yes. Think of the palette as having jobs, not just colors. For your PEDANI site, I'd use it like this:
+# ✈️ Pedani Migration Services
 
-:root {
-  --primary: #063B8C;
-  --primary-dark: #032B68;
-  --accent: #2F80ED;
+> A modern, responsive website for a Nigerian migration, visa, study-abroad and travel consultancy.
 
+## 🌍 Overview
 
-  --background: #F8FAFC;
-  --surface: #FFFFFF;
-
-
-  --text: #172033;
-  --text-muted: #64748B;
-
+Pedani Migration Services is a professional web platform designed to help individuals explore international travel, study-abroad and migration opportunities.
 
-  --border: #E2E8F0;
+The website provides visitors with clear information about available services, destinations, visa guidance and travel resources while maintaining a modern, trustworthy and responsive user experience.
 
+The project was built with a strong focus on **clean UI design, accessibility, responsiveness and maintainable front-end code**.
 
-  --success: #16A34A;
-  --error: #DC2626;
-}
-1. --background → main page background
+---
 
-Use it on the overall page.
+## ✨ Features
 
-body {
-  background: var(--background);
-  color: var(--text);
-}
+- 🏠 Modern homepage
+- 🌍 Destination exploration
+- 🛂 Visa guide section
+- 🎓 Study-abroad information
+- ✈️ Travel and migration services
+- 📰 News and travel insights
+- 🔎 News category filtering
+- 💬 Client testimonials
+- 📱 Fully responsive design
+- ♿ Accessibility-focused HTML
+- ⚡ JavaScript-enhanced interactions
+- 🎨 Modern CSS animations and transitions
+- 📋 Contact and enquiry sections
+- 🔗 Footer resource navigation
 
-This keeps the website slightly softer than pure white.
+---
 
-2. --surface → things sitting on the background
+## 📄 Pages
 
-Use white for:
+The website includes:
 
-Cards
-Navbar
-Forms
-Dropdowns
-Modals
-.card {
-  background: var(--surface);
-}
-3. --text → important text
+- **Home**
+- **About**
+- **Services**
+- **Destinations**
+- **Visa Guide**
+- **News**
+- **Contact**
 
-Use for:
+Additional resources are accessible through the website footer.
 
-H1
-H2
-H3
-Navigation
-Important paragraphs
-h1,
-h2,
-h3 {
-  color: var(--text);
-}
-4. --text-muted → secondary text
+---
 
-Use for:
+## 🛠️ Technologies
 
-Descriptions
-Small text
-Supporting information
-Form hints
-.card p {
-  color: var(--text-muted);
-}
+### Frontend
 
-Don't use this for your main headings.
+- HTML5
+- CSS3
+- JavaScript
+- CSS Grid
+- CSS Flexbox
+- Responsive Design
+- CSS Custom Properties
+- Modern CSS features
+- Semantic HTML
 
-5. --primary → your main brand color
+### Other Tools
 
-This is your most important blue.
+- Visual Studio Code
+- Git
+- GitHub
+- Font Awesome
+- Google Fonts
 
-Use it for:
+---
 
-Main CTA buttons
-Important links
-Active navigation
-Icons
-Brand elements
-.btn-primary {
-  background: var(--primary);
-  color: white;
-}
-6. --primary-dark → hover/darker states
+## 🎨 Design
 
-Don't use this everywhere. Mainly use it to create hierarchy.
+The website uses a clean and professional visual system designed around trust, clarity and accessibility.
 
-.btn-primary:hover {
-  background: var(--primary-dark);
-}
+### Design characteristics
 
-You can also use it for very strong headings or dark sections.
+- Professional blue colour palette
+- Responsive layouts
+- Card-based content sections
+- Rounded UI components
+- Subtle shadows
+- Smooth interactions
+- Mobile-first considerations
+- Accessible focus states
+- Reduced-motion support
 
-7. --accent → small highlights
+---
 
-Your lighter blue should be used sparingly.
+## 📱 Responsive Design
 
-Good for:
+Pedani is designed to work across different screen sizes.
 
-Icons
-Small highlights
-Badges
-Decorative elements
-Secondary buttons
-.icon {
-  color: var(--accent);
-}
+The layout adapts for:
 
-Don't make every button --accent.
-
-8. --border → subtle separation
-
-Use it for:
-
-Card borders
-Input borders
-Dividers
-Navbar borders
-input {
-  border: 1px solid var(--border);
-}
-9. --success / --error
-
-Only use these when the meaning requires it.
-
-.success {
-  color: var(--success);
-}
-
-
-.error {
-  color: var(--error);
-}
-
-For example:
-
-Success: Application submitted ✓
-Error: Please enter a valid email.
-
-A typical PEDANI page
-
-I'd structure the colors roughly like:
-
-BODY
-  ↓
-#F8FAFC  ← background
-
-
-NAVBAR
-  ↓
-#FFFFFF  ← surface
-
-
-HERO
-  ↓
-#F8FAFC
-  ↓
-Dark text
-  ↓
-Blue CTA (#063B8C)
-
-
-SERVICES
-  ↓
-White cards (#FFFFFF)
-  ↓
-Dark headings (#172033)
-  ↓
-Muted descriptions (#64748B)
-  ↓
-Blue icons (#2F80ED)
-
-
-CTA SECTION
-  ↓
-Deep blue (#063B8C)
-  ↓
-White text
-  ↓
-White button
-The main rule
-
-Don't try to use every variable in every section.
-
-Your dominant combination should be:
-
-Off-white background + white surfaces + dark text + deep blue CTAs + muted gray secondary text.
-
-That will give PEDANI the clean, professional look you're going for.
-
- note for the background e.g navbar, hero
-
-Ahh, you mean you want notes beside each color explaining where to use it, especially backgrounds. Like this:
-
-:root {
-  /* BRAND */
-  --primary: #063B8C;       /* Main buttons, links, active states */
-  --primary-dark: #032B68;  /* Button hover, dark sections */
-  --accent: #2F80ED;        /* Icons, highlights, small accents */
-
-
-  /* BACKGROUNDS */
-  --background: #F8FAFC;    /* Main page, hero, alternating sections */
-  --surface: #FFFFFF;       /* Navbar, cards, forms, footer content */
-
-
-  /* TEXT */
-  --text: #172033;          /* Headings, main body text, navigation */
-  --text-muted: #64748B;    /* Descriptions, subtitles, secondary text */
-
-
-  /* BORDERS */
-  --border: #E2E8F0;        /* Inputs, cards, dividers */
-
-
-  /* STATUS */
-  --success: #16A34A;       /* Success messages, confirmations */
-  --error: #DC2626;         /* Errors, validation messages */
-}
-Background specifically
---background → Hero, main page, light sections
---surface    → Navbar, cards, forms, white sections
---primary    → Dark CTA sections / important brand sections
-
-So for example:
-
-body {
-  background: var(--background);
-}
-
-
-.navbar {
-  background: var(--surface);
-}
-
-
-.hero {
-  background: var(--background);
-}
-
-
-.services {
-  background: var(--surface);
-}
-
-
-.cta {
-  background: var(--primary);
-}
-
-That gives you a nice rhythm of light → white → light → blue throughout the page.
-
-pls change the color palette to be clean and modern and maybe reduce the white a little bit and when ur done give me code in root element and collor guide
-
-Yeah — I'd move away from pure white + strong blue everywhere and use a slightly warmer/cooler neutral system. That will make PEDANI feel more modern, premium, and trustworthy while still matching the blue in the logo.
-
-Root palette
-:root {
-  /* BRAND */
-  --primary: #164E8C;        /* Main brand blue, buttons, links */
-  --primary-dark: #0D355F;   /* Hover states, dark sections */
-  --accent: #3B82C4;         /* Icons, highlights, secondary accents */
-
-
-  /* BACKGROUNDS */
-  --background: #F1F5F9;     /* Main page background, hero, light sections */
-  --surface: #E8EEF5;        /* Navbar, cards, forms, secondary sections */
-  --surface-light: #F8FAFC; /* Small/light areas where you need more contrast */
-
-
-  /* TEXT */
-  --text: #172B3A;           /* Headings, main text, navigation */
-  --text-muted: #64748B;     /* Descriptions, subtitles, secondary text */
-  --text-light: #F8FAFC;     /* Text on dark/blue backgrounds */
-
-
-  /* BORDERS */
-  --border: #D5DEE8;         /* Cards, inputs, dividers */
-
-
-  /* STATUS */
-  --success: #16805C;        /* Success messages */
-  --error: #C43D3D;           /* Errors and validation */
-}
-🎨 Color guide
-Variable	Use it for
---primary	Main buttons, important links, active navigation
---primary-dark	Button hover, footer, strong CTA sections
---accent	Icons, small highlights, secondary buttons
---background	Main page background, hero, light sections
---surface	Navbar, cards, forms, secondary sections
---surface-light	Small areas that need to stand out slightly
---text	Headings, navigation, important text
---text-muted	Paragraphs, descriptions, subtitles
---text-light	Text placed over blue/dark backgrounds
---border	Card borders, input borders, dividers
---success	Successful actions/messages
---error	Errors/validation
-##Typography
-
-I'd use Poppins 600–700 for headings and 400–500 for body text.
-
-size guide:
-5px  → 0.3125rem
-10px → 0.625rem
-15px → 0.9375rem
-20px  → 1.25rem
-500px → 31.25rem
-100px → 6.25rem
-50px  → 3.125rem
-25px  → 1.5625rem
-250px → 15.625rem
-350px → 21.875rem
-
-##flags:
-
-🇬🇧 GB — United Kingdom
-🇨🇦 CA — Canada
-🇪🇸 ES — Spain
-🇮🇹 IT — Italy
-🇩🇪 DE — Germany
-🇶🇦 QA — Qatar
-🇰🇼 KW — Kuwait
-🇦🇺 AU — Australia
-🇨🇭 CH — Switzerland
-🇸🇪 SE — Sweden
-
-##for sub-section in destination class
-Icon	Font Awesome name	Class
-✈️	Plane Departure	fa-plane-departure
-📄	File Lines	fa-file-lines
-👥	User Group	fa-user-group
-💼	Briefcase	fa-briefcase
-🛡️	Shield Halved	fa-shield-halved
-
-<i class="fa-solid fa-shield-halved"></i>
-<i class="fa-solid fa-briefcase"></i>
-<i class="fa-regular fa-user-group"></i>
-<i class="fa-regular fa-file-lines"></i>
-<i class="fa-solid fa-plane"></i>
+- 💻 Desktop
+- 💻 Laptop
+- 📱 Mobile
+- 📟 Tablet
+
+CSS media queries are used to adjust navigation, grids, cards, typography, spacing and content layouts depending on the viewport size.
+
+---
+
+## ⚡ JavaScript Features
+
+JavaScript is used to provide interactive functionality throughout the website.
+
+Examples include:
+
+- News filtering
+- Testimonial controls
+- Dynamic content interactions
+- Navigation interactions
+- Accessibility enhancements
+- Responsive behaviour
+- Fallback functionality for browser compatibility
+
+---
+
+## ♿ Accessibility
+
+Accessibility was considered throughout the project.
+
+The website uses:
+
+- Semantic HTML elements
+- ARIA labels where appropriate
+- Keyboard-accessible controls
+- Visible focus states
+- Descriptive image `alt` text
+- Reduced-motion support
+- Proper heading hierarchy
+- Accessible interactive elements
+
+---
+
+## 📁 Project Structure
+
+```text
+Pedani-Migration-Services/
+│
+├── index.html
+├── about.html
+├── services.html
+├── destinations.html
+├── visa-guide.html
+├── news.html
+├── contact.html
+│
+├── style.css
+│
+├── script.js
+│
+├── images/
+│   ├── logo.png
+│   ├── news-featured.jpg
+│   ├── news-visa.jpg
+│   ├── news-travel.jpg
+│   ├── news-destination.jpg
+│   ├── news-student.jpg
+│   ├── news-passport.jpg
+│   └── news-airport.jpg
+│
+└── README.md
