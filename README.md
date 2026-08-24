@@ -39,9 +39,8 @@ The website includes:
 - **About**
 - **Services**
 - **Destinations**
-- **Visa Guide**
-- **News**
 - **Contact**
+- **Resources**
 
 Additional resources are accessible through the website footer.
 
