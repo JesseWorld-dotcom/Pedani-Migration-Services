@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Visa & Travel FAQs | PEDANI Migration Services</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Find answers to common questions about visas, study abroad, travel documentation and migration services with PEDANI Migration Services."
+    content="Find answers to common visa, travel and migration questions with Pedani Migration Services."
   >
-    <!-- Google Font -->
+
+  <title>FAQs | Pedani Migration Services</title>
+
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -18,7 +23,8 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-    <!-- Font awesome cdn link -->
+
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -29,24 +35,36 @@
 
 <body>
 
-  <!-- Page header -->
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <header class="resource-header">
-    <a href="index.html" class="back-link">
-      <i class="fa-solid fa-arrow-left"></i>
-      <span>Back to website</span>
+
+    <a href="index.html" class="brand" aria-label="Back to Pedani website">
+      <span class="brand-mark">
+        <img src="/images/logo 3 modified.png" alt="LOgo">
+      </span>
+
+      <span class="brand-text">
+        PEDANI
+        <small>Migration Services</small>
+      </span>
     </a>
 
-    <a href="index.html" class="brand">
-      <span class="brand-mark">P</span>
-      <span>PEDANI</span>
-    </a>
 
     <div class="header-actions">
+
+      <a href="/index.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to website</span>
+      </a>
+
       <button
         class="theme-toggle"
         type="button"
-        aria-label="Switch colour theme"
-        title="Switch theme"
+        aria-label="Switch theme"
+        aria-pressed="false"
       >
         <i class="fa-solid fa-moon"></i>
       </button>
@@ -55,20 +73,25 @@
         Talk to an Expert
         <i class="fa-solid fa-arrow-right"></i>
       </a>
+
     </div>
+
   </header>
 
 
   <main>
 
-    <!-- Hero -->
+    <!-- =========================
+         HERO
+    ========================== -->
+
     <section class="faq-hero">
 
-      <div class="hero-content">
+      <div class="hero-content reveal">
 
         <span class="eyebrow">
           <i class="fa-regular fa-circle-question"></i>
-          PEDANI RESOURCE CENTRE
+          FAQ RESOURCE CENTRE
         </span>
 
         <h1>
@@ -77,12 +100,152 @@
         </h1>
 
         <p>
-          Find straightforward answers to common questions about
-          visas, study abroad, travel documentation and the
-          application process.
+          Get clear answers to common questions about visa applications,
+          documentation, travel planning and the services we provide.
         </p>
 
-        <div class="faq-search">
+        <div class="hero-actions">
+
+          <a href="#faq-library" class="primary-btn">
+            Explore FAQs
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+
+          <a href="contact.html" class="text-btn">
+            Speak with an expert
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual reveal">
+
+        <div class="question-orb orb-one">
+          ?
+        </div>
+
+        <div class="question-orb orb-two">
+          !
+        </div>
+
+        <div class="faq-card-preview">
+
+          <div class="preview-top">
+            <span class="preview-icon">
+              <i class="fa-solid fa-passport"></i>
+            </span>
+
+            <span>
+              Visa Support
+            </span>
+
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+
+          <div class="preview-line large"></div>
+          <div class="preview-line"></div>
+          <div class="preview-line short"></div>
+
+          <div class="preview-answer">
+            <i class="fa-solid fa-circle-check"></i>
+
+            <span>
+              Clear guidance at every step
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUICK STATS
+    ========================== -->
+
+    <section class="quick-info" aria-label="FAQ information">
+
+      <div class="info-item reveal">
+        <i class="fa-solid fa-passport"></i>
+
+        <div>
+          <strong>Visa Questions</strong>
+          <span>Understand the process</span>
+        </div>
+      </div>
+
+
+      <div class="info-item reveal">
+        <i class="fa-solid fa-file-lines"></i>
+
+        <div>
+          <strong>Documents</strong>
+          <span>Know what to prepare</span>
+        </div>
+      </div>
+
+
+      <div class="info-item reveal">
+        <i class="fa-solid fa-clock"></i>
+
+        <div>
+          <strong>Processing</strong>
+          <span>Know what to expect</span>
+        </div>
+      </div>
+
+
+      <div class="info-item reveal">
+        <i class="fa-solid fa-headset"></i>
+
+        <div>
+          <strong>Expert Support</strong>
+          <span>Get personalised guidance</span>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ LIBRARY
+    ========================== -->
+
+    <section
+      class="faq-library"
+      id="faq-library"
+      aria-labelledby="faq-title"
+    >
+
+      <div class="section-heading reveal">
+
+        <div>
+          <span class="section-label">
+            FIND YOUR ANSWER
+          </span>
+
+          <h2 id="faq-title">
+            Frequently asked questions
+          </h2>
+        </div>
+
+        <p>
+          Browse the categories or search for a specific question.
+        </p>
+
+      </div>
+
+
+      <!-- SEARCH -->
+
+      <div class="faq-tools reveal">
+
+        <label class="search-box">
 
           <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -91,118 +254,89 @@
             id="faqSearch"
             placeholder="Search your question..."
             autocomplete="off"
+            aria-label="Search frequently asked questions"
           >
 
-          <kbd>⌘ K</kbd>
+          <kbd>Ctrl K</kbd>
+
+        </label>
+
+
+        <div
+          class="category-filter"
+          role="tablist"
+          aria-label="FAQ categories"
+        >
+
+          <button
+            class="filter-btn active"
+            type="button"
+            data-category="all"
+          >
+            All
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="visa"
+          >
+            Visa
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="documents"
+          >
+            Documents
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="process"
+          >
+            Process
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="travel"
+          >
+            Travel
+          </button>
 
         </div>
 
       </div>
 
-      <div class="hero-decoration">
-        <div class="passport-card">
-          <i class="fa-solid fa-passport"></i>
 
-          <div>
-            <strong>Travel prepared.</strong>
-            <span>Every step explained.</span>
-          </div>
-        </div>
-      </div>
+      <!-- FAQ GROUP -->
 
-    </section>
-
-
-    <!-- Categories -->
-    <section class="faq-section">
-
-      <div class="section-heading">
-        <div>
-          <span class="section-label">EXPLORE</span>
-          <h2>Find what you need</h2>
-        </div>
-
-        <p>
-          Browse the questions by topic or search for a specific
-          answer.
-        </p>
-      </div>
-
-
-      <div class="category-list" role="tablist">
-
-        <button
-          class="category active"
-          data-category="all"
-          type="button"
-        >
-          All questions
-        </button>
-
-        <button
-          class="category"
-          data-category="visa"
-          type="button"
-        >
-          Visa
-        </button>
-
-        <button
-          class="category"
-          data-category="study"
-          type="button"
-        >
-          Study abroad
-        </button>
-
-        <button
-          class="category"
-          data-category="travel"
-          type="button"
-        >
-          Travel
-        </button>
-
-        <button
-          class="category"
-          data-category="documents"
-          type="button"
-        >
-          Documents
-        </button>
-
-        <button
-          class="category"
-          data-category="process"
-          type="button"
-        >
-          Application process
-        </button>
-
-      </div>
-
-
-      <!-- FAQ list -->
       <div class="faq-layout">
 
-        <aside class="faq-sidebar">
+        <aside class="faq-sidebar reveal">
 
           <div class="sidebar-card">
 
             <span class="sidebar-icon">
-              <i class="fa-solid fa-headset"></i>
+              <i class="fa-solid fa-lightbulb"></i>
             </span>
 
-            <h3>Need personalised help?</h3>
+            <h3>
+              Can't find what you need?
+            </h3>
 
             <p>
-              Every applicant has a different situation. If your
-              question isn't answered here, our team can guide you
-              through your options.
+              Every application is different. If your question
+              isn't covered here, our team can help you understand
+              the next step.
             </p>
 
             <a href="contact.html">
-              Contact PEDANI
+              Ask an expert
               <i class="fa-solid fa-arrow-right"></i>
             </a>
 
@@ -213,401 +347,657 @@
 
         <div class="faq-list" id="faqList">
 
-          <!-- FAQ 1 -->
+
+          <!-- VISA -->
+
           <article
-            class="faq-item"
+            class="faq-item reveal"
             data-category="visa"
+            data-search="visa guarantee approval guaranteed application"
           >
 
-            <button class="faq-question" type="button">
+            <details>
 
-              <span>
-                What type of visa do I need for my trip?
-              </span>
+              <summary>
+                <span class="question-number">01</span>
 
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
+                <span class="question">
+                  Is getting a visa guaranteed after applying?
+                </span>
 
-            </button>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
 
-            <div class="faq-answer">
+              <div class="faq-answer">
 
-              <p>
-                The appropriate visa depends on your purpose of
-                travel, destination, nationality and intended
-                length of stay. PEDANI can help you understand the
-                available options before you begin your application.
-              </p>
+                <p>
+                  No agency can guarantee a visa decision. The final
+                  outcome belongs to the relevant embassy, consulate
+                  or immigration authority.
+                </p>
 
-            </div>
+                <p>
+                  What we can do is help you understand the requirements,
+                  review your documentation and prepare your application
+                  as carefully as possible.
+                </p>
+
+              </div>
+
+            </details>
 
           </article>
 
 
-          <!-- FAQ 2 -->
           <article
-            class="faq-item"
+            class="faq-item reveal"
+            data-category="visa"
+            data-search="apply outside Lagos Abuja location remote application"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">02</span>
+
+                <span class="question">
+                  Can I work with Pedani if I don't live in Lagos?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  Your location does not necessarily prevent you from
+                  getting guidance. Many parts of the preparation process
+                  can be handled remotely.
+                </p>
+
+                <p>
+                  Depending on the destination and application type,
+                  some steps may still require your physical presence.
+                  We'll let you know when that applies.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <article
+            class="faq-item reveal"
+            data-category="visa"
+            data-search="work visa work permit employment visa"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">03</span>
+
+                <span class="question">
+                  Do you help with work and employment visas?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  We provide guidance for eligible migration and
+                  visa pathways, including work-related routes where
+                  our service covers that destination.
+                </p>
+
+                <p>
+                  Requirements vary considerably between countries,
+                  so we recommend checking your specific destination
+                  before beginning an application.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <!-- DOCUMENTS -->
+
+          <article
+            class="faq-item reveal"
             data-category="documents"
+            data-search="documents required visa passport photograph bank statement requirements"
           >
 
-            <button class="faq-question" type="button">
+            <details>
 
-              <span>
-                What documents are normally required?
-              </span>
+              <summary>
+                <span class="question-number">04</span>
 
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
+                <span class="question">
+                  What documents will I need for my application?
+                </span>
 
-            </button>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
 
-            <div class="faq-answer">
+              <div class="faq-answer">
 
-              <p>
-                Requirements vary by destination and visa category.
-                Common documents may include a valid passport,
-                photographs, financial evidence, travel details and
-                supporting documents related to your application.
-              </p>
+                <p>
+                  The document list depends on the destination,
+                  visa category and your personal circumstances.
+                </p>
 
-              <p>
-                We recommend checking the specific requirements
-                for your destination before submitting anything.
-              </p>
+                <ul>
+                  <li>Valid international passport</li>
+                  <li>Recent passport photographs where required</li>
+                  <li>Financial evidence where applicable</li>
+                  <li>Travel or accommodation information where required</li>
+                  <li>Supporting documents relevant to your application</li>
+                </ul>
 
-            </div>
+                <p>
+                  You will receive destination-specific guidance rather
+                  than relying on a generic checklist.
+                </p>
+
+              </div>
+
+            </details>
 
           </article>
 
 
-          <!-- FAQ 3 -->
           <article
-            class="faq-item"
-            data-category="process"
-          >
-
-            <button class="faq-question" type="button">
-
-              <span>
-                How does the visa application process work?
-              </span>
-
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-              <p>
-                The process usually begins with understanding your
-                travel plans and eligibility. From there, the
-                required documents are prepared, the application is
-                completed and submitted, and any required appointment
-                or biometric step is handled.
-              </p>
-
-              <p>
-                PEDANI can guide you through the stages and help you
-                understand what is required at each point.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- FAQ 4 -->
-          <article
-            class="faq-item"
-            data-category="visa"
-          >
-
-            <button class="faq-question" type="button">
-
-              <span>
-                Is getting a visa guaranteed?
-              </span>
-
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-              <p>
-                No consultant can guarantee a visa decision.
-                Applications are assessed by the relevant
-                immigration authority or consular office.
-              </p>
-
-              <p>
-                Our role is to help you understand the requirements,
-                prepare carefully and avoid common documentation
-                mistakes.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- FAQ 5 -->
-          <article
-            class="faq-item"
-            data-category="study"
-          >
-
-            <button class="faq-question" type="button">
-
-              <span>
-                Can PEDANI help me with studying abroad?
-              </span>
-
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-              <p>
-                Yes. Our study-abroad support can help you understand
-                admission options, prepare relevant documentation
-                and navigate the stages leading toward your student
-                visa application.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- FAQ 6 -->
-          <article
-            class="faq-item"
+            class="faq-item reveal"
             data-category="documents"
+            data-search="proof funds bank account financial evidence money visa"
           >
 
-            <button class="faq-question" type="button">
+            <details>
 
-              <span>
-                How important is financial evidence?
-              </span>
+              <summary>
+                <span class="question-number">05</span>
 
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
+                <span class="question">
+                  Do I need proof of funds?
+                </span>
 
-            </button>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
 
-            <div class="faq-answer">
+              <div class="faq-answer">
 
-              <p>
-                For visa categories where financial evidence is
-                required, your documents should clearly demonstrate
-                that the financial requirement has been met.
-              </p>
+                <p>
+                  Some visa categories require applicants to demonstrate
+                  that they can financially support their trip or stay.
+                </p>
 
-              <p>
-                The exact amount and acceptable evidence depend on
-                the destination and type of application.
-              </p>
+                <p>
+                  The amount and acceptable evidence depend on the
+                  destination and visa type. We'll explain what applies
+                  to your particular application.
+                </p>
 
-            </div>
+              </div>
+
+            </details>
 
           </article>
 
 
-          <!-- FAQ 7 -->
           <article
-            class="faq-item"
-            data-category="travel"
+            class="faq-item reveal"
+            data-category="documents"
+            data-search="travel history previous travel passport visa history"
           >
 
-            <button class="faq-question" type="button">
+            <details>
 
-              <span>
-                Can I book my flight and accommodation through PEDANI?
-              </span>
+              <summary>
+                <span class="question-number">06</span>
 
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
+                <span class="question">
+                  Do I need previous international travel history?
+                </span>
 
-            </button>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
 
-            <div class="faq-answer">
+              <div class="faq-answer">
 
-              <p>
-                PEDANI can assist with travel-related arrangements
-                such as flight bookings and accommodation, depending
-                on the service you require.
-              </p>
+                <p>
+                  Not necessarily. A previous travel history can sometimes
+                  strengthen an application, but not having one does not
+                  automatically mean you cannot apply.
+                </p>
 
-              <p>
-                These arrangements can also be coordinated around
-                your approved travel dates.
-              </p>
+                <p>
+                  Your overall circumstances and the requirements of the
+                  specific visa route are what matter.
+                </p>
 
-            </div>
+              </div>
+
+            </details>
 
           </article>
 
 
-          <!-- FAQ 8 -->
+          <!-- PROCESS -->
+
           <article
-            class="faq-item"
-            data-category="visa"
-          >
-
-            <button class="faq-question" type="button">
-
-              <span>
-                Can I apply if I don't live in your city?
-              </span>
-
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-              <p>
-                In many cases, applicants can receive guidance
-                remotely. The exact process depends on the
-                destination and whether an in-person appointment or
-                biometric submission is required.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- FAQ 9 -->
-          <article
-            class="faq-item"
+            class="faq-item reveal"
             data-category="process"
+            data-search="processing time how long application embassy timeline"
           >
 
-            <button class="faq-question" type="button">
+            <details>
 
-              <span>
-                What happens if my application is refused?
-              </span>
+              <summary>
+                <span class="question-number">07</span>
 
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
+                <span class="question">
+                  How long does visa processing take?
+                </span>
 
-            </button>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
 
-            <div class="faq-answer">
+              <div class="faq-answer">
 
-              <p>
-                A refusal does not necessarily mean you can never
-                apply again. The reason for the decision should first
-                be understood so that any future application can be
-                approached more carefully.
-              </p>
+                <p>
+                  Processing times vary by country, visa category,
+                  application volume and the relevant immigration
+                  authority.
+                </p>
 
-              <p>
-                We can help you review the situation and discuss
-                possible next steps.
-              </p>
+                <p>
+                  Our own preparation and review stage may be completed
+                  before the application reaches the embassy or consulate.
+                  We will explain the expected stages for your destination.
+                </p>
 
-            </div>
+                <div class="answer-note">
+                  <i class="fa-solid fa-circle-info"></i>
+
+                  <span>
+                    Always allow additional time for appointments,
+                    document requests and unexpected delays.
+                  </span>
+                </div>
+
+              </div>
+
+            </details>
 
           </article>
 
 
-          <!-- FAQ 10 -->
           <article
-            class="faq-item"
-            data-category="travel"
+            class="faq-item reveal"
+            data-category="process"
+            data-search="visa refusal rejected refused application refund reapply"
           >
 
-            <button class="faq-question" type="button">
+            <details>
 
-              <span>
-                Can I travel as soon as my visa is approved?
-              </span>
+              <summary>
+                <span class="question-number">08</span>
 
-              <span class="faq-icon">
-                <i class="fa-solid fa-plus"></i>
-              </span>
+                <span class="question">
+                  What happens if my visa application is refused?
+                </span>
 
-            </button>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
 
-            <div class="faq-answer">
+              <div class="faq-answer">
 
-              <p>
-                Not necessarily. Always check the validity period
-                and conditions shown on your visa or travel document
-                before making final travel arrangements.
-              </p>
+                <p>
+                  A refusal does not necessarily mean you can never
+                  apply again. The next step is to understand why the
+                  application was unsuccessful.
+                </p>
 
-            </div>
+                <p>
+                  Depending on the refusal reasons, you may be able to
+                  address the issues and submit a stronger application.
+                  We can help you review the available options.
+                </p>
+
+              </div>
+
+            </details>
 
           </article>
 
 
-          <!-- No results -->
-          <div class="no-results" id="noResults" hidden>
+          <article
+            class="faq-item reveal"
+            data-category="process"
+            data-search="interview embassy visa interview preparation questions"
+          >
 
-            <i class="fa-regular fa-face-frown"></i>
+            <details>
 
-            <h3>No matching questions</h3>
+              <summary>
+                <span class="question-number">09</span>
 
-            <p>
-              Try a different search term or browse another category.
-            </p>
+                <span class="question">
+                  Will I have to attend a visa interview?
+                </span>
 
-          </div>
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  It depends on the destination and visa category.
+                  Some applications may not require an interview,
+                  while others can involve an appointment or interview.
+                </p>
+
+                <p>
+                  If an interview is required, we can help you understand
+                  what to expect and prepare appropriately.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <!-- TRAVEL -->
+
+          <article
+            class="faq-item reveal"
+            data-category="travel"
+            data-search="travel after visa approval start date visa valid travel"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">10</span>
+
+                <span class="question">
+                  Can I travel immediately after receiving my visa?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  Not always. You should first check the validity period
+                  and start date shown on your visa or travel authorisation.
+                </p>
+
+                <p>
+                  Your travel plans should also match the conditions
+                  attached to the visa.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <article
+            class="faq-item reveal"
+            data-category="travel"
+            data-search="flight ticket booking accommodation hotel after visa"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">11</span>
+
+                <span class="question">
+                  Can you help with flights and accommodation after my visa?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  Yes. Visa support can be followed by assistance with
+                  travel arrangements such as flight bookings and
+                  accommodation, depending on the service you require.
+                </p>
+
+                <p>
+                  This allows you to plan the practical side of your
+                  journey after your immigration requirements have been
+                  addressed.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <article
+            class="faq-item reveal"
+            data-category="travel"
+            data-search="flight booking hotel reservation travel planning itinerary"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">12</span>
+
+                <span class="question">
+                  Can you help me plan the rest of my trip?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  Yes. Depending on your needs, we can assist with
+                  travel-related arrangements including flights,
+                  accommodation and other trip-planning services.
+                </p>
+
+                <p>
+                  Tell us where you're going and what you need, and
+                  we'll help you identify the appropriate next steps.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <!-- GENERAL -->
+
+          <article
+            class="faq-item reveal"
+            data-category="visa"
+            data-search="trust agency registration professional visa consultation"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">13</span>
+
+                <span class="question">
+                  How can I know that I am getting professional guidance?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  A professional visa service should be transparent about
+                  what it can and cannot do. No legitimate consultant should
+                  promise a guaranteed immigration decision.
+                </p>
+
+                <p>
+                  At Pedani, our focus is on clear communication,
+                  documentation guidance and helping clients understand
+                  each stage of their application.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
+
+          <article
+            class="faq-item reveal"
+            data-category="visa"
+            data-search="eligibility consultation visa assessment advice choose visa"
+          >
+
+            <details>
+
+              <summary>
+                <span class="question-number">14</span>
+
+                <span class="question">
+                  Can someone help me decide which visa route is right for me?
+                </span>
+
+                <span class="summary-icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+
+                <p>
+                  Yes. Choosing the right route starts with understanding
+                  your purpose for travelling, your circumstances and the
+                  requirements of your intended destination.
+                </p>
+
+                <p>
+                  We can discuss your plans and explain the relevant
+                  options so you can make a more informed decision.
+                </p>
+
+              </div>
+
+            </details>
+
+          </article>
+
 
         </div>
+
+      </div>
+
+
+      <!-- EMPTY SEARCH STATE -->
+
+      <div class="no-results" id="noResults" hidden>
+
+        <span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+
+        <h3>
+          No matching questions
+        </h3>
+
+        <p>
+          Try another search term or choose a different category.
+        </p>
 
       </div>
 
     </section>
 
 
-    <!-- CTA -->
-    <section class="faq-cta">
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="faq-cta reveal">
 
       <div class="cta-content">
 
         <span class="section-label">
-          NEED MORE GUIDANCE?
+          STILL UNSURE?
         </span>
 
         <h2>
-          Your journey doesn't have to be confusing.
+          Your question might be
+          <span>unique to your journey.</span>
         </h2>
 
         <p>
-          Tell us where you want to go and what you hope to achieve.
-          We'll help you understand the next step.
+          Tell us what you're planning and we'll help you understand
+          the appropriate next step.
         </p>
 
-        <a href="contact.html" class="cta-button">
-          Speak with an Expert
+        <a href="contact.html" class="primary-btn">
+          Talk to an Expert
           <i class="fa-solid fa-arrow-right"></i>
         </a>
 
       </div>
 
-      <div class="cta-icon">
-        <i class="fa-solid fa-plane-departure"></i>
+
+      <div class="cta-decoration">
+        <i class="fa-solid fa-paper-plane"></i>
       </div>
 
     </section>
@@ -615,16 +1005,21 @@
   </main>
 
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer class="resource-footer">
 
     <p>
-      © 2026 PEDANI Migration Services. All rights reserved.
+      © 2026 Pedani Migration Services.
+      All rights reserved.
     </p>
 
-    <div>
-      <a href="privacy.html">Privacy</a>
-      <a href="index.html">Main website</a>
-    </div>
+    <a href="/index.html">
+      Back to Pedani Migration Services
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
 
   </footer>
 
