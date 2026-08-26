@@ -39,10 +39,10 @@ body {
   --border: #D5DEE8;
   --margin-btm: clamp(.625rem, 1.25rem, 1.625rem);
   --p-font-size: clamp(.35rem, 2vw, .6125rem);
-  --heading-font-size: clamp(.9125rem, 4vw, 1.215rem);
+  --heading-font-size: clamp(.925rem, 5vw, 1.625rem);
   --heading-font-size-sm: clamp(.9125rem, 3.5vw, 1.25rem);
   --preview-bk: rgba(0, 0, 123, 0.2);
-  --heading-font-size-big: clamp(.9125rem, 4.5vw, 1.3125rem);
+  --heading-font-size-big: clamp(.95rem, 6.5vw, 1.5rem);
   --heading-p-font-size: clamp(.5rem, 4vw, .825rem);
 }
 /* =========================
@@ -139,7 +139,7 @@ body {
     justify-content: left;
 }
 .hero-content{
-    margin-left: clamp(2rem, 4.5rem, 6rem);
+    margin-left: 2rem;
     width: min(650px, 50%);
 }
 .hero-content h2 span{

@@ -702,8 +702,6 @@
   box-shadow:
     0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
 }
-
-
 /* =========================================
    IMAGE
 ========================================= */
@@ -853,13 +851,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
 
   width: fit-content;
 
   color: var(--primary);
 
   font-weight: 700;
-  text-decoration: none;
 
   transition:
     color 0.3s cubic-bezier(0.66, -0.44, 0, 2.41),
@@ -876,7 +874,7 @@
   gap: 0.75rem;
 }
 
-.featured-content .read-more:hover span {
+.featured-content .read-more:hover span{
   transform: translateX(3px);
 }
 
@@ -1133,11 +1131,12 @@
 
     .news-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 
-      grid-template-columns:
-        repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
 
-      gap: 1.25rem;
+      width: min(100%, 1050px);
+      margin-inline: auto;
     }
 
 
@@ -1146,8 +1145,11 @@
     ================================================== */
 
     .news-card {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, );  
+      width: 100%;
+      min-width: 0;
+
+
+      display: block;
       overflow: hidden;
 
       border:
@@ -1177,7 +1179,9 @@
           2.41
         );
     }
-
+    .news-card[hidden] {
+  display: none;
+}
 
     .news-card:hover {
       transform:
@@ -1189,30 +1193,28 @@
 
 
     .news-image {
-      position: relative;
+  position: relative;
 
-      height: 220px;
+  width: 100%;
+  height: min(220px, 55vw);
 
-      overflow: hidden;
-    }
+  overflow: hidden;
+}
 
+.news-image img {
+  width: 100%;
+  height: 100%;
 
-    .news-image img {
-      width: 100%;
+  object-fit: cover;
 
-      height: 100%;
-
-      object-fit: cover;
-
-      transition:
-        transform 0.55s
-        cubic-bezier(
-          0.66,
-          -0.44,
-          0,
-          2.41
-        );
-    }
+  transition:
+    transform 0.55s cubic-bezier(
+      0.66,
+      -0.44,
+      0,
+      2.41
+    );
+}
 
 
     .news-card:hover
@@ -2098,51 +2100,63 @@
 
 
 
-        <!-- FILTERS -->
+       <!-- FILTERS -->
+<div class="news-toolbar">
 
-        <div class="news-toolbar">
+  <div
+    class="filter-list"
+    aria-label="Article categories"
+    role="group"
+  >
 
-          <div
-            class="filter-list"
-            aria-label="Article categories"
-          >
+    <button
+      class="filter-button active"
+      type="button"
+      data-category="all"
+      aria-pressed="true"
+    >
+      All
+    </button>
 
-            <button
-              class="filter-button active"
-              type="button"
-            >
-              All
-            </button>
+    <button
+      class="filter-button"
+      type="button"
+      data-category="visa-tips"
+      aria-pressed="false"
+    >
+      Visa Tips
+    </button>
 
-            <button
-              class="filter-button"
-              type="button"
-            >
-              Visa Tips
-            </button>
+    <button
+      class="filter-button"
+      type="button"
+      data-category="travel"
+      aria-pressed="false"
+    >
+      Travel
+    </button>
 
-            <button
-              class="filter-button"
-              type="button"
-            >
-              Travel
-            </button>
+    <button
+      class="filter-button"
+      type="button"
+      data-category="destinations"
+      aria-pressed="false"
+    >
+      Destinations
+    </button>
 
-            <button
-              class="filter-button"
-              type="button"
-            >
-              Destinations
-            </button>
+    <button
+      class="filter-button"
+      type="button"
+      data-category="study-abroad"
+      aria-pressed="false"
+    >
+      Study Abroad
+    </button>
 
-            <button
-              class="filter-button"
-              type="button"
-            >
-              Study Abroad
-            </button>
+  </div>
 
-          </div>
+</div>
 
         </div>
 
@@ -2155,357 +2169,270 @@
 
           <!-- ARTICLE 1 -->
 
-          <article class="news-card" data-category="Visa Tips">
+<article class="news-card" data-category="visa-tips">
 
-            <div class="news-image">
+  <div class="news-image">
 
-              <img
-                src="/images/news-visa.jpg"
-                alt="Visa documents and passport"
-                loading="lazy"
-              >
+    <img
+      src="/images/news-visa.jpg"
+      alt="Visa documents and passport"
+      loading="lazy"
+    >
 
-              <span class="news-category">
-                Visa Tips
-              </span>
+    <span class="news-category">
+      Visa Tips
+    </span>
 
-            </div>
+  </div>
 
+  <div class="news-content">
 
-            <div class="news-content">
+    <div class="article-meta">
+      <span>Visa Tips</span>
+      <span class="article-meta-dot"></span>
+      <span>5 min read</span>
+    </div>
 
-              <div class="article-meta">
+    <h3>
+      Building a Stronger Visa Application
+    </h3>
 
-                <span>
-                  Visa Tips
-                </span>
+    <p>
+      Discover practical ways to organise your documents
+      and prepare a clearer application before submission.
+    </p>
 
-                <span class="article-meta-dot"></span>
+    <a href="#article-1" class="read-more">
+      Read article
+      <span aria-hidden="true">→</span>
+    </a>
 
-                <span>
-                  5 min read
-                </span>
+  </div>
 
-              </div>
+</article>
 
 
-              <h3>
-                Building a Stronger Visa Application
-              </h3>
+<!-- ARTICLE 2 -->
+<article class="news-card" data-category="travel">
 
+  <div class="news-image">
 
-              <p>
-                Discover practical ways to organise your
-                documents and prepare a clearer application
-                before submission.
-              </p>
+    <img
+      src="/images/news-travel.jpg"
+      alt="Traveller looking at an airport departure board"
+      loading="lazy"
+    >
 
+    <span class="news-category">
+      Travel
+    </span>
 
-              <a href="#article-1" class="read-more">
-  Read article
-  <span aria-hidden="true">→</span>
-</a>
+  </div>
 
-            </div>
+  <div class="news-content">
 
-          </article>
+    <div class="article-meta">
+      <span>Travel</span>
+      <span class="article-meta-dot"></span>
+      <span>4 min read</span>
+    </div>
 
+    <h3>
+      Smart Travel Planning for First-Time
+      International Travellers
+    </h3>
 
+    <p>
+      A practical look at the things worth checking
+      before booking your flight and starting your journey.
+    </p>
 
-          <!-- ARTICLE 2 -->
+    <a href="#article-2" class="read-more">
+      Read article
+      <span aria-hidden="true">→</span>
+    </a>
 
-          <article class="news-card" data-category="Visa Tips">
+  </div>
 
-            <div class="news-image">
+</article>
 
-              <img
-                src="/images/news-travel.jpg"
-                alt="Traveller looking at an airport departure board"
-                loading="lazy"
-              >
 
-              <span class="news-category">
-                Travel
-              </span>
+<!-- ARTICLE 3 -->
+<article class="news-card" data-category="destinations">
 
-            </div>
+  <div class="news-image">
 
+    <img
+      src="/images/news-destination.jpg"
+      alt="Beautiful international travel destination"
+      loading="lazy"
+    >
 
-            <div class="news-content">
+    <span class="news-category">
+      Destinations
+    </span>
 
-              <div class="article-meta">
+  </div>
 
-                <span>
-                  Travel
-                </span>
+  <div class="news-content">
 
-                <span class="article-meta-dot"></span>
+    <div class="article-meta">
+      <span>Destinations</span>
+      <span class="article-meta-dot"></span>
+      <span>6 min read</span>
+    </div>
 
-                <span>
-                  4 min read
-                </span>
+    <h3>
+      Destinations Worth Exploring This Year
+    </h3>
 
-              </div>
+    <p>
+      Explore destinations that offer exciting experiences
+      for travellers with different interests and travel goals.
+    </p>
 
+    <a href="#article-3" class="read-more">
+      Read article
+      <span aria-hidden="true">→</span>
+    </a>
 
-              <h3>
-                Smart Travel Planning for First-Time
-                International Travellers
-              </h3>
+  </div>
 
+</article>
 
-              <p>
-                A practical look at the things worth
-                checking before booking your flight and
-                starting your journey.
-              </p>
 
+<!-- ARTICLE 4 -->
+<article class="news-card" data-category="study-abroad">
 
-              <a href="#article-2" class="read-more">
-  Read article
-  <span aria-hidden="true">→</span>
-</a>
+  <div class="news-image">
 
-            </div>
+    <img
+      src="/images/news-student.jpg"
+      alt="Student preparing for study abroad"
+      loading="lazy"
+    >
 
-          </article>
+    <span class="news-category">
+      Study Abroad
+    </span>
 
+  </div>
 
+  <div class="news-content">
 
-          <!-- ARTICLE 3 -->
+    <div class="article-meta">
+      <span>Study Abroad</span>
+      <span class="article-meta-dot"></span>
+      <span>7 min read</span>
+    </div>
 
-          <article class="news-card" data-category="Visa Tips">
+    <h3>
+      Preparing for Your Study Abroad Journey
+    </h3>
 
-            <div class="news-image">
+    <p>
+      From choosing a programme to organising important
+      paperwork, preparation starts long before departure day.
+    </p>
 
-              <img
-                src="/images/news-destination.jpg"
-                alt="Beautiful international travel destination"
-                loading="lazy"
-              >
+    <a href="#article-4" class="read-more">
+      Read article
+      <span aria-hidden="true">→</span>
+    </a>
 
-              <span class="news-category">
-                Destinations
-              </span>
+  </div>
 
-            </div>
+</article>
 
 
-            <div class="news-content">
+<!-- ARTICLE 5 -->
+<article class="news-card" data-category="visa-tips">
 
-              <div class="article-meta">
+  <div class="news-image">
 
-                <span>
-                  Destinations
-                </span>
+    <img
+      src="/images/news-passport.jpg"
+      alt="Passport and travel documents"
+      loading="lazy"
+    >
 
-                <span class="article-meta-dot"></span>
+    <span class="news-category">
+      Visa Tips
+    </span>
 
-                <span>
-                  6 min read
-                </span>
+  </div>
 
-              </div>
+  <div class="news-content">
 
+    <div class="article-meta">
+      <span>Visa Tips</span>
+      <span class="article-meta-dot"></span>
+      <span>5 min read</span>
+    </div>
 
-              <h3>
-                Destinations Worth Exploring This Year
-              </h3>
+    <h3>
+      Common Visa Preparation Mistakes to Avoid
+    </h3>
 
+    <p>
+      Small mistakes can create unnecessary delays.
+      Learn what to review carefully before submitting
+      your application.
+    </p>
 
-              <p>
-                Explore destinations that offer exciting
-                experiences for travellers with different
-                interests and travel goals.
-              </p>
+    <a href="#article-5" class="read-more">
+      Read article
+      <span aria-hidden="true">→</span>
+    </a>
 
+  </div>
 
-              <a href="#article-3" class="read-more">
-  Read article
-  <span aria-hidden="true">→</span>
-</a>
+</article>
 
-            </div>
 
-          </article>
+<!-- ARTICLE 6 -->
+<article class="news-card" data-category="travel">
 
+  <div class="news-image">
 
+    <img
+      src="/images/news-airport.jpg"
+      alt="Passenger walking through an airport"
+      loading="lazy"
+    >
 
-          <!-- ARTICLE 4 -->
+    <span class="news-category">
+      Travel
+    </span>
 
-          <article class="news-card" data-category="Visa Tips">
+  </div>
 
-            <div class="news-image">
+  <div class="news-content">
 
-              <img
-                src="/images/news-student.jpg"
-                alt="Student preparing for study abroad"
-                loading="lazy"
-              >
+    <div class="article-meta">
+      <span>Travel</span>
+      <span class="article-meta-dot"></span>
+      <span>4 min read</span>
+    </div>
 
-              <span class="news-category">
-                Study Abroad
-              </span>
+    <h3>
+      A Simple Checklist Before Your Flight
+    </h3>
 
-            </div>
+    <p>
+      Make departure day easier by checking your essential
+      travel documents, bookings and personal essentials
+      ahead of time.
+    </p>
 
+    <a href="#article-6" class="read-more">
+      Read article
+      <span aria-hidden="true">→</span>
+    </a>
 
-            <div class="news-content">
+  </div>
 
-              <div class="article-meta">
-
-                <span>
-                  Study Abroad
-                </span>
-
-                <span class="article-meta-dot"></span>
-
-                <span>
-                  7 min read
-                </span>
-
-              </div>
-
-
-              <h3>
-                Preparing for Your Study Abroad Journey
-              </h3>
-
-
-              <p>
-                From choosing a programme to organising
-                important paperwork, preparation starts
-                long before departure day.
-              </p>
-
-
-              <a href="#article-4" class="read-more">
-  Read article
-  <span aria-hidden="true">→</span>
-</a>
-
-            </div>
-
-          </article>
-
-
-
-          <!-- ARTICLE 5 -->
-
-          <article class="news-card" data-category="Visa Tips">
-
-            <div class="news-image">
-
-              <img
-                src="/images/news-passport.jpg"
-                alt="Passport and travel documents"
-                loading="lazy"
-              >
-
-              <span class="news-category">
-                Visa Tips
-              </span>
-
-            </div>
-
-
-            <div class="news-content">
-
-              <div class="article-meta">
-
-                <span>
-                  Visa Tips
-                </span>
-
-                <span class="article-meta-dot"></span>
-
-                <span>
-                  5 min read
-                </span>
-
-              </div>
-
-
-              <h3>
-                Common Visa Preparation Mistakes to Avoid
-              </h3>
-
-
-              <p>
-                Small mistakes can create unnecessary
-                delays. Learn what to review carefully
-                before submitting your application.
-              </p>
-
-
-              <a href="#article-5" class="read-more">
-  Read article
-  <span aria-hidden="true">→</span>
-</a>
-
-            </div>
-
-          </article>
-
-
-
-          <!-- ARTICLE 6 -->
-
-          <article class="news-card" data-category="Visa Tips">
-
-            <div class="news-image">
-
-              <img
-                src="/images/news-airport.jpg"
-                alt="Passenger walking through an airport"
-                loading="lazy"
-              >
-
-              <span class="news-category">
-                Travel
-              </span>
-
-            </div>
-
-
-            <div class="news-content">
-
-              <div class="article-meta">
-
-                <span class="news-category">
-                  Travel
-                </span>
-
-                <span class="article-meta-dot"></span>
-
-                <span>
-                  4 min read
-                </span>
-
-              </div>
-
-
-              <h3>
-                A Simple Checklist Before Your Flight
-              </h3>
-
-
-              <p>
-                Make departure day easier by checking
-                your essential travel documents, bookings
-                and personal essentials ahead of time.
-              </p>
-
-
-              <a href="#article-6" class="read-more">
-  Read article
-  <span aria-hidden="true">→</span>
-</a>
-
-            </div>
-
-          </article>
-
+</article>
         </div>
 
       </div>
@@ -2685,59 +2612,84 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const filterButtons = document.querySelectorAll(".filter-button");
-  const newsCards = document.querySelectorAll(".news-card");
 
+  const filterButtons =
+    document.querySelectorAll(".filter-button");
+
+  const newsCards =
+    document.querySelectorAll(".news-card");
+
+
+  // Stop if the elements don't exist
   if (!filterButtons.length || !newsCards.length) {
+    console.warn("News filter elements were not found.");
     return;
   }
 
+
   filterButtons.forEach((button) => {
+
     button.addEventListener("click", () => {
 
-      // Get the category from the button
-      const selectedCategory = button.textContent
-        .trim()
-        .toLowerCase();
+      // Get the category directly from the button
+      const selectedCategory =
+        button.dataset.category;
 
 
       // Update active button
       filterButtons.forEach((btn) => {
+
         btn.classList.remove("active");
+
+        btn.setAttribute(
+          "aria-pressed",
+          "false"
+        );
+
       });
+
 
       button.classList.add("active");
 
+      button.setAttribute(
+        "aria-pressed",
+        "true"
+      );
 
-      // Filter cards
+
+      // Filter the cards
       newsCards.forEach((card) => {
 
-        // Find the category displayed on the card
-        const categoryElement =
-          card.querySelector(".news-category");
-
-        if (!categoryElement) {
-          return;
-        }
-
-        const cardCategory = categoryElement.textContent
-          .trim()
-          .toLowerCase();
+        const cardCategory =
+          card.dataset.category;
 
 
-        // Show / hide
-        if (
+        const shouldShow =
           selectedCategory === "all" ||
-          cardCategory === selectedCategory
-        ) {
+          cardCategory === selectedCategory;
+
+
+        if (shouldShow) {
+
           card.hidden = false;
+
+          // Optional animation
+          requestAnimationFrame(() => {
+            card.classList.add("filter-visible");
+          });
+
         } else {
+
           card.hidden = true;
+
+          card.classList.remove("filter-visible");
+
         }
 
       });
 
     });
+
   });
 
 });

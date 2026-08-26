@@ -29,10 +29,10 @@ body {
   --navbar-clr: hsla(215, 40%, 80%, 0.625);
   --banner-btn-active: linear-gradient(135deg, #2563EB, #3B82F6);
   --margin-btm: clamp(.625rem, 1.25rem, 1.625rem);
-  --primary-hover: hsl(from var(--primary) h s calc(l - 8%));
-  --primary-light: hsl(from var(--primary) h s calc(l + 35%));
-  --primary-soft: hsl(from var(--primary) h s 92%);
-  --primary-transparent: hsl(from var(--primary) h s l / 0.15);
+  --primary-hover: #1c61af;
+  --primary-light: #297ddd;
+  --primary-soft: oklch(from var(--primary) 92% c h);
+  --primary-transparent: oklch(from var(--primary) l c h / 0.15);
   --text: #172B3A;
   --text-muted: #64748B;
   --text-light: #F8FAFC;
