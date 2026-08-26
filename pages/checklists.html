@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pedani Migration Services — practical migration checklists and document preparation resources.">
+  <title>Checklists | Pedani Migration Services</title>
+  <link rel="shortcut icon" href="/images/favicon2.png" type="image/x-icon">
+  <style>
+    :root {
+      --primary: #164e8c;
+      --primary-dark: #0d355f;
+      --primary-light: #eaf3fc;
+      --accent: #d99a27;
+      --accent-light: #fff6df;
+      --text: #17202a;
+      --text-muted: #667085;
+      --surface: #ffffff;
+      --surface-soft: #f7f9fc;
+      --surface-dark: #eef2f6;
+      --border: #e2e7ee;
+      --success: #247a4d;
+      --danger: #a13b3b;
+      --shadow-sm: 0 4px 16px rgba(15, 23, 42, .06);
+      --shadow-md: 0 12px 35px rgba(15, 23, 42, .09);
+      --shadow-lg: 0 28px 70px rgba(13, 53, 95, .13);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --container: 1180px;
+      --ease: cubic-bezier(.22, .61, .36, 1);
+    }
+
+    html[data-theme="dark"] {
+      --primary: #5ea7ef;
+      --primary-dark: #2c6ca9;
+      --primary-light: #102a46;
+      --accent: #e4ad4b;
+      --accent-light: #3a2d14;
+      --text: #f4f7fb;
+      --text-muted: #aab7c7;
+      --surface: #0d1724;
+      --surface-soft: #111f2f;
+      --surface-dark: #17283a;
+      --border: #24374b;
+      --success: #62b789;
+      --danger: #e17c7c;
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, .18);
+      --shadow-md: 0 12px 35px rgba(0, 0, 0, .24);
+      --shadow-lg: 0 28px 70px rgba(0, 0, 0, .32);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background: var(--surface);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 90% 0%, rgba(22, 78, 140, .09), transparent 28%),
+        radial-gradient(circle at 0% 35%, rgba(217, 154, 39, .055), transparent 24%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -4rem;
+      left: 1rem;
+      z-index: 999;
+      padding: .65rem 1rem;
+      border-radius: .7rem;
+      color: #fff;
+      background: var(--primary-dark);
+    }
+
+    .skip-link:focus { top: 1rem; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: .7rem;
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .section { padding: 5.5rem 0; }
+
+    .section-heading { max-width: 720px; margin-bottom: 2.4rem; }
+
+    .section-heading h2 {
+      margin: 0 0 .75rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    /* Header — intentionally follows the existing Pedani resource-centre language. */
+    .guide-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(16px);
+    }
+
+    .guide-nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .guide-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      min-width: 160px;
+    }
+
+    .guide-logo-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .guide-logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .guide-logo-text {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    html[data-theme="dark"] .guide-logo-text { color: var(--text); }
+
+    .guide-nav-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      color: var(--text-muted);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .guide-nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    .guide-nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: .65rem;
+      margin-left: auto;
+    }
+
+    .guide-back-link,
+    .guide-contact-btn,
+    .theme-toggle {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      border-radius: 10px;
+      font-weight: 800;
+      transition: transform .2s var(--ease), background .2s ease, border-color .2s ease;
+    }
+
+    .guide-back-link { padding: 0 .75rem; color: var(--text-muted); }
+    .guide-back-link:hover { color: var(--primary); transform: translateX(-2px); }
+
+    .guide-contact-btn {
+      padding: 0 .95rem;
+      color: #fff;
+      background: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .guide-contact-btn:hover { transform: translateY(-2px); background: var(--primary-dark); }
+
+    .theme-toggle {
+      width: 42px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .theme-toggle:hover { background: var(--surface-soft); transform: translateY(-2px); }
+
+
+    /* Hero — inspired by the existing Pedani Visa Resource Centre hero. */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 7rem 0 5rem;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--primary-light) 65%, var(--surface)), var(--surface) 64%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      top: -170px;
+      border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 70px color-mix(in srgb, var(--primary) 5%, transparent),
+        0 0 0 140px color-mix(in srgb, var(--accent) 3%, transparent);
+      pointer-events: none;
+    }
+
+    .hero-content { max-width: 760px; position: relative; z-index: 1; }
+
+    .hero h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: .96;
+      letter-spacing: -.06em;
+      color: var(--primary-dark);
+    }
+
+    html[data-theme="dark"] .hero h1 { color: var(--text); }
+
+    .hero p {
+      max-width: 680px;
+      margin: 1.4rem 0 0;
+      color: var(--text-muted);
+      font-size: 1.12rem;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.8rem; }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: 0 1.15rem;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      font-weight: 850;
+      transition: transform .2s var(--ease), box-shadow .2s ease, background .2s ease;
+    }
+
+    .button-primary { color: #fff; background: var(--primary); box-shadow: 0 10px 24px color-mix(in srgb, var(--primary) 24%, transparent); }
+    .button-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 30px color-mix(in srgb, var(--primary) 28%, transparent); background: var(--primary-dark); }
+    .button-secondary { color: var(--text); background: var(--surface); border-color: var(--border); box-shadow: var(--shadow-sm); }
+    .button-secondary:hover { transform: translateY(-2px); background: var(--surface-soft); }
+
+    /* Finder */
+    .finder { margin-top: -2rem; position: relative; z-index: 4; }
+
+    .finder-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(18px);
+    }
+
+    .finder-label { display: block; margin-bottom: .5rem; color: var(--text); font-size: .88rem; font-weight: 850; }
+
+    .search-wrap { position: relative; }
+
+    .search-wrap span {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .finder-input {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 1rem 0 2.8rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      color: var(--text);
+      background: var(--surface-soft);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .finder-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 12%, transparent); }
+
+    /* Quick info */
+    .quick-info { padding: 2rem 0 0; }
+
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    .info-card {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-number { display: block; margin-bottom: 1.1rem; color: var(--accent); font-family: Georgia, serif; font-size: 2.2rem; line-height: 1; }
+    .info-card h3 { margin: 0 0 .45rem; font-size: 1.08rem; }
+    .info-card p { margin: 0; color: var(--text-muted); font-size: .94rem; }
+
+    /* Checklist destinations */
+    .destinations { padding-top: 5rem; }
+
+    .destination-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+    .destination-card {
+      position: relative;
+      min-height: 235px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: #fff;
+      background: var(--primary);
+      text-align: left;
+      isolation: isolate;
+      box-shadow: var(--shadow-sm);
+      transition: transform .28s var(--ease), box-shadow .28s ease;
+    }
+
+    .destination-card::before {
+      content: attr(data-code);
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: -1;
+      font-size: 5.5rem;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.09em;
+      opacity: .12;
+    }
+
+    .destination-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to top, rgba(0,0,0,.76), rgba(0,0,0,.2) 70%, rgba(0,0,0,.03));
+    }
+
+    .destination-art {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(255,255,255,.28), transparent 18%),
+        radial-gradient(circle at 18% 70%, rgba(217,154,39,.25), transparent 28%),
+        linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transition: transform .5s var(--ease);
+    }
+
+    .destination-card:nth-child(2n) .destination-art { background: linear-gradient(135deg, #153d6d, #4f7ba7); }
+    .destination-card:nth-child(3n) .destination-art { background: linear-gradient(135deg, #174f54, #164e8c); }
+    .destination-card:nth-child(4n) .destination-art { background: linear-gradient(135deg, #24355b, #164e8c); }
+
+    .destination-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .destination-card:hover .destination-art { transform: scale(1.07); }
+
+    .destination-card-content { width: 100%; padding: 1.25rem; }
+    .destination-code { display: inline-flex; margin-bottom: .4rem; padding: .2rem .45rem; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; font-size: .68rem; font-weight: 900; letter-spacing: .1em; }
+    .destination-card h3 { margin: 0 0 .25rem; font-size: 1.3rem; }
+    .destination-card p { margin: 0; color: rgba(255,255,255,.82); font-size: .84rem; }
+
+    /* Checklist workspace */
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, .7fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .checklist-panel,
+    .sidebar-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .checklist-panel { overflow: hidden; }
+
+    .checklist-head { padding: 1.5rem; border-bottom: 1px solid var(--border); }
+
+    .checklist-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: .8rem; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      font-size: .72rem;
+      font-weight: 850;
+    }
+
+    html[data-theme="dark"] .pill { color: #cde5fb; }
+
+    .checklist-head h2 { margin: 0 0 .45rem; font-size: clamp(1.55rem, 3vw, 2.2rem); line-height: 1.1; }
+    .checklist-head p { margin: 0; color: var(--text-muted); }
+
+    .progress-block { margin-top: 1.25rem; }
+    .progress-top { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .45rem; font-size: .82rem; font-weight: 800; }
+    .progress-track { height: 8px; overflow: hidden; border-radius: 999px; background: var(--surface-dark); }
+    .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width .4s var(--ease); }
+
+    .checklist-items { padding: .5rem 1.5rem 1.5rem; }
+
+    .check-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: .9rem;
+      align-items: start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .check-item:last-child { border-bottom: 0; }
+
+    .check-box {
+      width: 22px;
+      height: 22px;
+      margin-top: .15rem;
+      appearance: none;
+      border: 1.5px solid #aab5c3;
+      border-radius: 7px;
+      background: var(--surface);
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+
+    .check-box:checked { border-color: var(--success); background: var(--success); transform: scale(1.04); }
+    .check-box:checked::after { content: "✓"; display: grid; place-items: center; height: 100%; color: #fff; font-size: .82rem; font-weight: 900; }
+
+    .check-copy strong { display: block; font-size: .96rem; }
+    .check-copy p { margin: .18rem 0 0; color: var(--text-muted); font-size: .82rem; }
+
+    .required { color: var(--danger); background: color-mix(in srgb, var(--danger) 9%, var(--surface)); }
+    .recommended { color: var(--success); background: color-mix(in srgb, var(--success) 9%, var(--surface)); }
+
+    .check-item.completed .check-copy strong { color: var(--text-muted); text-decoration: line-through; }
+    .check-item.completed { opacity: .72; }
+
+    .sidebar { display: grid; gap: 1rem; position: sticky; top: 96px; }
+    .sidebar-card { padding: 1.35rem; }
+    .sidebar-card h3 { margin: 0 0 .55rem; font-size: 1.05rem; }
+    .sidebar-card p { margin: 0; color: var(--text-muted); font-size: .88rem; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; margin-top: 1rem; }
+    .stat { padding: .85rem; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-soft); }
+    .stat strong { display: block; font-size: 1.35rem; }
+    .stat span { color: var(--text-muted); font-size: .72rem; font-weight: 700; }
+
+    .action-list { display: grid; gap: .55rem; margin-top: 1rem; }
+    .action-list button { width: 100%; justify-content: space-between; padding: .75rem .85rem; border: 1px solid var(--border); border-radius: 10px; color: var(--text); background: var(--surface-soft); font-weight: 800; }
+    .action-list button:hover { background: var(--primary-light); }
+
+    /* Preparation roadmap */
+    .roadmap { background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+    .step {
+      position: relative;
+      padding: 1.45rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1rem;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--primary);
+      font-weight: 900;
+    }
+
+    .step h3 { margin: 0 0 .4rem; font-size: 1rem; }
+    .step p { margin: 0; color: var(--text-muted); font-size: .85rem; }
+
+    .notice {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.35rem;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+      border-radius: var(--radius-md);
+      background: var(--accent-light);
+    }
+
+    .notice-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--accent); font-weight: 900; }
+    .notice strong { display: block; margin-bottom: .25rem; }
+    .notice p { margin: 0; color: var(--text-muted); font-size: .88rem; }
+
+    /* CTA */
+    .cta { padding: 1rem 0 5.5rem; }
+
+    .cta-card {
+      position: relative;
+      overflow: hidden;
+      padding: 3.5rem;
+      border-radius: var(--radius-lg);
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cta-card::after { content: ""; position: absolute; width: 300px; height: 300px; right: -90px; top: -130px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; box-shadow: 0 0 0 55px rgba(255,255,255,.04), 0 0 0 110px rgba(255,255,255,.025); }
+    .cta-card > * { position: relative; z-index: 1; }
+    .cta-card h2 { max-width: 680px; margin: 0 0 .75rem; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -.035em; }
+    .cta-card p { max-width: 680px; margin: 0; color: rgba(255,255,255,.8); }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.35rem; }
+    .cta .button-secondary { color: #fff; border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); }
+
+    /* Footer follows the existing resource footer content. */
+    .footer { color: rgba(255,255,255,.82); background: #0d355f; }
+    .footer-main { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 2rem; padding: 4rem 0 2.5rem; width: min(calc(100% - 2rem), var(--container)); margin-inline: auto; }
+    .footer-brand img { width: 145px; height: auto; padding: .4rem; border-radius: 10px; background: #fff; }
+    .footer-brand p { margin: 1rem 0 0; color: rgba(255,255,255,.7); font-size: .88rem; }
+    .footer-column { display: grid; align-content: start; gap: .5rem; }
+    .footer-column h4 { margin: 0 0 .35rem; color: #fff; font-size: .84rem; }
+    .footer-column a, .footer-column span { color: rgba(255,255,255,.68); font-size: .78rem; }
+    .footer-column a:hover { color: #fff; }
+    .footer-bottom { width: min(calc(100% - 2rem), var(--container)); margin-inline: auto; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.16); display: flex; justify-content: space-between; gap: 1rem; font-size: .7rem; }
+    .footer-bottom p { margin: 0; color: rgba(255,255,255,.62); }
+
+    /* Scroll-reveal system — activated by IntersectionObserver in JS. */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .reveal-left { transform: translateX(-38px); }
+    .reveal-right { transform: translateX(38px); }
+    .reveal-scale { transform: scale(.96); }
+    .reveal.is-visible,
+    .reveal-left.is-visible,
+    .reveal-right.is-visible,
+    .reveal-scale.is-visible { opacity: 1; transform: none; }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1000px) {
+      .destination-grid { grid-template-columns: repeat(3, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .workspace { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-template-columns: repeat(2, 1fr); }
+      .footer-main { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 760px) {
+      .guide-nav { min-height: 68px; }
+      .guide-logo-text { display: none; }
+      .guide-logo-mark { width: 42px; height: 42px; }
+      .guide-nav-actions { margin-left: auto; gap: .45rem; }
+      .guide-back-link { padding: 0 .55rem; font-size: .84rem; }
+      .guide-contact-btn { padding-inline: .78rem; font-size: .84rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .destination-grid { grid-template-columns: repeat(2, 1fr); }
+      .finder-card { grid-template-columns: 1fr; }
+      .sidebar { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 520px) {
+      .guide-back-link span:last-child { display: none; }
+      .guide-back-link { width: 40px; padding: 0; }
+      .guide-contact-btn { font-size: .78rem; padding-inline: .68rem; }
+      .section { padding: 4rem 0; }
+      .hero { padding: 5rem 0 4rem; }
+      .hero h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      .destination-grid,
+      .steps-grid { grid-template-columns: 1fr; }
+      .cta-card { padding: 2.1rem 1.4rem; }
+      .footer-main { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; }
+      .checklist-items { padding-inline: 1rem; }
+      .checklist-head { padding: 1.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="guide-header">
+    <div class="container guide-nav">
+      <a class="guide-logo" href="/" aria-label="Back to Pedani Migration Services website">
+        <span class="guide-logo-mark"><img src="data:image/webp;base64,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" alt="Pedani Migration Services logo"></span>
+        <span class="guide-logo-text">Pedani</span>
+      </a>
+
+      <div class="guide-nav-actions" aria-label="Resource navigation">
+        <a class="guide-back-link" href="/">
+          <span aria-hidden="true">←</span>
+          <span>Back to Website</span>
+        </a>
+        <a class="guide-contact-btn" href="/contact.html">
+          Book a Consultation
+          <span aria-hidden="true">→</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme" title="Switch theme">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-content reveal">
+          <span class="eyebrow">Pedani Resource Centre</span>
+          <h1>Prepare the right documents. Move with confidence.</h1>
+          <p>Use practical, destination-focused checklists to organise your passport, application information, financial evidence and other supporting documents before you begin your visa process.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#checklists">Explore Checklists →</a>
+            <a class="button button-secondary" href="mailto:info@pedanimigration.com">Speak With Pedani</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="finder" aria-label="Checklist finder">
+      <div class="container">
+        <div class="finder-card reveal reveal-scale">
+          <div>
+            <label class="finder-label" for="checklistSearch">Looking for a particular destination or visa route?</label>
+            <div class="search-wrap">
+              <span aria-hidden="true">⌕</span>
+              <input class="finder-input" id="checklistSearch" type="search" placeholder="Search Canada, UK, student visa, visitor visa..." autocomplete="off">
+            </div>
+          </div>
+          <a class="button button-primary" href="#checklists">Find a Checklist</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-info section">
+      <div class="container">
+        <div class="info-grid">
+          <article class="info-card reveal" style="--delay: 80ms">
+            <span class="info-number">01</span>
+            <h3>Identify Your Route</h3>
+            <p>Start with your travel purpose and the visa category that best matches your plans.</p>
+          </article>
+          <article class="info-card reveal" style="--delay: 160ms">
+            <span class="info-number">02</span>
+            <h3>Prepare Your Documents</h3>
+            <p>Use the checklist to organise common documents and supporting evidence before applying.</p>
+          </article>
+          <article class="info-card reveal" style="--delay: 240ms">
+            <span class="info-number">03</span>
+            <h3>Plan With Confidence</h3>
+            <p>Work through each item, track your progress and seek professional support where you need it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section destinations" id="checklists">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Destination Checklists</span>
+          <h2>Explore preparation checklists by destination</h2>
+          <p>Select a destination to see the visa categories and typical preparation documents referenced in Pedani's existing Visa Resource Centre.</p>
+        </div>
+
+        <div class="destination-grid" id="destinationGrid">
+          <button class="destination-card reveal" data-country="canada" data-code="CA" data-search="Canada CA study permit visitor visa work permit" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">CA</span><h3>Canada</h3><p>Study, visitor and work pathways.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="uk" data-code="UK" data-search="United Kingdom UK student visa standard visitor visa work visa" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">UK</span><h3>United Kingdom</h3><p>Visiting, study and work routes.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="australia" data-code="AU" data-search="Australia AU student visa visitor visa work-related visas" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">AU</span><h3>Australia</h3><p>Visitor, student and work pathways.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="germany" data-code="DE" data-search="Germany DE student visa Schengen visitor visa employment visa" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">DE</span><h3>Germany</h3><p>Study, travel and employment routes.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="ireland" data-code="IE" data-search="Ireland IE study visa short stay visa employment routes" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">IE</span><h3>Ireland</h3><p>Study, short-stay and employment routes.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="dubai" data-code="AE" data-search="Dubai UAE AE tourist visa visit visa transit visa" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">AE</span><h3>Dubai</h3><p>Tourist, visit and transit options.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="italy" data-code="IT" data-search="Italy IT Schengen visitor visa study visa long stay visa" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">IT</span><h3>Italy</h3><p>Short-stay and long-stay routes.</p></div>
+          </button>
+          <button class="destination-card reveal" data-country="spain" data-code="ES" data-search="Spain ES Schengen visitor visa study visa long stay visa" type="button">
+            <span class="destination-art"></span>
+            <div class="destination-card-content"><span class="destination-code">ES</span><h3>Spain</h3><p>Short visits, study and longer-term routes.</p></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="workspace">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Interactive Checklist</span>
+          <h2 id="checklistTitle">Canada preparation checklist</h2>
+          <p id="checklistIntro">A practical starting point based on the destination information currently published in Pedani's Visa Resource Centre.</p>
+        </div>
+
+        <div class="workspace">
+          <article class="checklist-panel reveal reveal-left">
+            <div class="checklist-head">
+              <div class="checklist-meta" id="checklistCategories"></div>
+              <h2 id="panelTitle">Canada</h2>
+              <p id="panelDescription">Canada offers several visa pathways depending on the purpose of your journey, including study, visitor and other temporary travel options.</p>
+              <div class="progress-block">
+                <div class="progress-top"><span id="progressText">0 of 5 completed</span><span id="progressPercent">0%</span></div>
+                <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+              </div>
+            </div>
+            <div class="checklist-items" id="checklistItems"></div>
+          </article>
+
+          <aside class="sidebar">
+            <div class="sidebar-card reveal reveal-right">
+              <h3>Checklist snapshot</h3>
+              <p>Use this as a preparation aid, not as a substitute for the current instructions of the relevant visa authority.</p>
+              <div class="stat-grid">
+                <div class="stat"><strong id="statDocuments">5</strong><span>Typical items</span></div>
+                <div class="stat"><strong id="statRequired">0</strong><span>Required in this guide</span></div>
+                <div class="stat"><strong id="statDone">0</strong><span>Completed</span></div>
+                <div class="stat"><strong id="statCategories">3</strong><span>Visa routes</span></div>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal reveal-right" style="--delay: 120ms">
+              <h3>Checklist actions</h3>
+              <p>Keep your preparation organised as you work through the list.</p>
+              <div class="action-list">
+                <button type="button" id="resetChecklist"><span>Reset checklist</span><span>↺</span></button>
+                <button type="button" id="printChecklist"><span>Print checklist</span><span>⎙</span></button>
+                <button type="button" id="shareChecklist"><span>Share checklist</span><span>↗</span></button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Application Roadmap</span>
+          <h2>A clearer way to prepare</h2>
+          <p>Pedani's existing resource guidance recommends starting with your purpose and visa category, gathering documents, reviewing before submission and keeping your records organised afterwards.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step reveal" style="--delay: 50ms"><span class="step-number">1</span><h3>Identify Your Route</h3><p>Establish your travel purpose and research the appropriate visa category.</p></article>
+          <article class="step reveal" style="--delay: 100ms"><span class="step-number">2</span><h3>Gather Documents</h3><p>Prepare your passport, forms and supporting documentation.</p></article>
+          <article class="step reveal" style="--delay: 150ms"><span class="step-number">3</span><h3>Submit Carefully</h3><p>Review your information before submitting through the appropriate channel.</p></article>
+          <article class="step reveal" style="--delay: 200ms"><span class="step-number">4</span><h3>Track Your Application</h3><p>Keep records organised and follow the relevant post-submission instructions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="notice reveal">
+          <span class="notice-icon">!</span>
+          <div>
+            <strong>Important visa information</strong>
+            <p>Visa requirements, application procedures, fees and processing arrangements can change. Always confirm current requirements with the relevant government or visa authority before submitting an application. These checklists are general preparation resources and do not replace official immigration guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card reveal reveal-scale">
+          <span class="eyebrow">Need Personal Guidance?</span>
+          <h2>Not sure which visa option fits your plans?</h2>
+          <p>Tell Pedani where you want to go and what you intend to do there. The team can help you understand the next steps and the documents you may need to prepare.</p>
+          <div class="cta-actions">
+            <a class="button button-primary" style="background:#fff;color:#0d355f" href="mailto:info@pedanimigration.com">Talk to Pedani →</a>
+            <a class="button button-secondary" href="tel:+2347039112857">+234 703 911 2857</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="data:image/webp;base64,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" alt="Pedani Migration Services">
+        <p>Your trusted partner in global<br>migration and travel solutions.</p>
+      </div>
+      <div class="footer-column"><h4>Quick Links</h4><a href="#top">Home</a><a href="#checklists">Checklists</a><a href="#workspace">Resources</a><a href="mailto:info@pedanimigration.com">Contact</a></div>
+      <div class="footer-column"><h4>Our Services</h4><a href="#">Visa On Arrival</a><a href="#">Transit Visa</a><a href="#">Maternity Visa</a><a href="#">Flight Tickets</a></div>
+      <div class="footer-column"><h4>Resources</h4><a href="#checklists">Visa Guides</a><a href="#workspace">Checklists</a><a href="#">FAQs</a><a href="#">News</a></div>
+      <div class="footer-column"><h4>Contact Us</h4><a href="tel:+2347039112857">+234 703 911 2857</a><a href="mailto:info@pedanimigration.com">info@pedanimigration.com</a><span>Lagos, Nigeria</span></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Pedani Migration Services. All rights reserved.</p><span>Bridging Dreams Across Borders</span></div>
+  </footer>
+
+  <script>
+    /* =====================================================
+       PEDANI CHECKLIST DATA
+       Sourced from the supplied Pedani Visa Resource Centre.
+       The site describes these as typical/general preparation
+       points, so the UI deliberately avoids presenting them
+       as exhaustive official requirements.
+    ===================================================== */
+    const checklistData = {
+      canada: {
+        name: "Canada",
+        code: "CA",
+        description: "Canada offers several visa pathways depending on the purpose of your journey, including study, visitor and other temporary travel options.",
+        categories: ["Study Permit", "Visitor Visa", "Work Permit"],
+        documents: [
+          ["Valid passport", "Confirm your passport is available for the application and travel process.", "Required"],
+          ["Completed application forms", "Prepare the forms and application information relevant to your chosen route.", "Required"],
+          ["Proof of financial support", "Prepare financial evidence where the selected route calls for it.", "Required"],
+          ["Supporting documents related to your purpose of travel", "Examples can include study, travel or employment evidence relevant to your route.", "Recommended"],
+          ["Additional documents where required", "Check the current official instructions for route-specific or personal-circumstance documents.", "Recommended"]
+        ]
+      },
+      uk: {
+        name: "United Kingdom",
+        code: "UK",
+        description: "The United Kingdom has different immigration and visit routes depending on whether you intend to study, work, visit or undertake another permitted activity.",
+        categories: ["Student Visa", "Standard Visitor Visa", "Work Visa"],
+        documents: [
+          ["Valid passport", "Have your current travel document ready for the application process.", "Required"],
+          ["Application information", "Gather the information needed for the route you intend to apply under.", "Required"],
+          ["Financial evidence where applicable", "Prepare evidence of funds when required by your selected route.", "Required"],
+          ["Supporting documents", "Organise documents that support the purpose and circumstances of your application.", "Recommended"],
+          ["Evidence relevant to your chosen visa route", "Keep route-specific evidence together so it is easy to review before submission.", "Recommended"]
+        ]
+      },
+      australia: {
+        name: "Australia",
+        code: "AU",
+        description: "Australia provides different visa pathways for visitors, students and eligible workers. The appropriate option depends on your purpose and circumstances.",
+        categories: ["Student Visa", "Visitor Visa", "Work-related Visas"],
+        documents: [
+          ["Valid passport", "Prepare the passport used for your application and travel.", "Required"],
+          ["Visa application information", "Collect the personal and application information required for your route.", "Required"],
+          ["Financial evidence where applicable", "Prepare financial evidence if your route or circumstances require it.", "Required"],
+          ["Evidence supporting your travel purpose", "Keep study, travel, employment or other purpose evidence organised.", "Recommended"],
+          ["Additional supporting documents", "Check the current official requirements for documents specific to your visa type.", "Recommended"]
+        ]
+      },
+      germany: {
+        name: "Germany",
+        code: "DE",
+        description: "Germany offers several visa routes for visitors, students and people pursuing eligible employment or other long-term purposes.",
+        categories: ["Student Visa", "Schengen Visitor Visa", "Employment-related Visas"],
+        documents: [
+          ["Valid passport", "Keep your passport ready and check the current validity rules for your route.", "Required"],
+          ["Completed application", "Prepare the application information and forms relevant to your visa category.", "Required"],
+          ["Proof of financial means where required", "Organise financial evidence when applicable to the route.", "Required"],
+          ["Travel or study documentation", "Prepare evidence that supports your travel, study or other stated purpose.", "Recommended"],
+          ["Supporting evidence for your visa category", "Check the official instructions for additional category-specific evidence.", "Recommended"]
+        ]
+      },
+      ireland: {
+        name: "Ireland",
+        code: "IE",
+        description: "Ireland's visa requirements depend on the purpose and duration of your proposed stay, with different routes for visitors, students and other eligible travellers.",
+        categories: ["Study Visa", "Short Stay Visa", "Employment-related Routes"],
+        documents: [
+          ["Valid passport", "Have the passport you will use for the application and travel available.", "Required"],
+          ["Application documentation", "Gather the application information and forms relevant to your route.", "Required"],
+          ["Evidence of financial circumstances", "Prepare financial information or supporting evidence where applicable.", "Required"],
+          ["Accommodation or travel information where applicable", "Organise relevant booking or travel information if required for your purpose.", "Recommended"],
+          ["Supporting documents", "Keep other documents supporting your route, circumstances and purpose together.", "Recommended"]
+        ]
+      },
+      dubai: {
+        name: "Dubai",
+        code: "AE",
+        description: "Dubai offers a range of entry options for travellers visiting for tourism, business or other permitted purposes. The appropriate visa route depends on the purpose and length of your stay.",
+        categories: ["Tourist Visa", "Visit Visa", "Transit Visa"],
+        documents: [
+          ["International passport valid for at least 6 months", "The Pedani resource specifically lists this as a typical document for Dubai travel pathways.", "Required"],
+          ["Recent passport photograph with a suitable background", "Prepare a recent photograph that meets the current application specifications.", "Required"],
+          ["Completed visa application details", "Have the application information needed for your selected route ready.", "Required"],
+          ["Travel information where applicable", "Keep relevant itinerary or travel information available if the route requires it.", "Recommended"],
+          ["Additional supporting documents depending on the visa type", "Confirm route-specific requirements before submission.", "Recommended"]
+        ]
+      },
+      italy: {
+        name: "Italy",
+        code: "IT",
+        description: "Italy offers short-stay and long-stay visa routes depending on your travel purpose, nationality and intended duration of stay.",
+        categories: ["Schengen Visitor Visa", "Study Visa", "Long-Stay Visa Routes"],
+        documents: [
+          ["Valid passport", "Prepare the passport used for your application and travel.", "Required"],
+          ["Application documentation", "Gather the application information and forms relevant to your route.", "Required"],
+          ["Proof of accommodation where required", "Organise accommodation evidence when required by your chosen route.", "Required"],
+          ["Financial evidence", "Prepare evidence of financial means where applicable.", "Required"],
+          ["Supporting travel or study documents", "Keep documents supporting the purpose of your trip or study organised.", "Recommended"]
+        ]
+      },
+      spain: {
+        name: "Spain",
+        code: "ES",
+        description: "Spain has different visa options for short visits, study and other longer-term purposes. Requirements depend on the route you choose.",
+        categories: ["Schengen Visitor Visa", "Study Visa", "Long-Stay Visa Routes"],
+        documents: [
+          ["Valid passport", "Have your current travel document ready for the application process.", "Required"],
+          ["Completed application", "Prepare the relevant application information and forms.", "Required"],
+          ["Financial evidence where applicable", "Organise financial evidence when your route requires it.", "Required"],
+          ["Travel or study documentation", "Prepare evidence supporting your stated purpose of travel or study.", "Recommended"],
+          ["Supporting documents", "Review current official guidance for additional documents relevant to your route.", "Recommended"]
+        ]
+      }
+    };
+
+    const state = {
+      country: "canada",
+      completed: JSON.parse(localStorage.getItem("pedaniChecklistState") || "{}")
+    };
+
+    const title = document.querySelector("#checklistTitle");
+    const intro = document.querySelector("#checklistIntro");
+    const panelTitle = document.querySelector("#panelTitle");
+    const panelDescription = document.querySelector("#panelDescription");
+    const categories = document.querySelector("#checklistCategories");
+    const items = document.querySelector("#checklistItems");
+    const progressText = document.querySelector("#progressText");
+    const progressPercent = document.querySelector("#progressPercent");
+    const progressFill = document.querySelector("#progressFill");
+    const statDocuments = document.querySelector("#statDocuments");
+    const statRequired = document.querySelector("#statRequired");
+    const statDone = document.querySelector("#statDone");
+    const statCategories = document.querySelector("#statCategories");
+
+    function saveState() {
+      localStorage.setItem("pedaniChecklistState", JSON.stringify(state.completed));
+    }
+
+    function renderChecklist(countryKey) {
+      state.country = countryKey;
+      const data = checklistData[countryKey];
+      const saved = state.completed[countryKey] || [];
+
+      title.textContent = `${data.name} preparation checklist`;
+      intro.textContent = "A practical starting point based on the destination information currently published in Pedani's Visa Resource Centre.";
+      panelTitle.textContent = data.name;
+      panelDescription.textContent = data.description;
+      categories.innerHTML = data.categories.map(category => `<span class="pill">${category}</span>`).join("");
+      statDocuments.textContent = data.documents.length;
+      statRequired.textContent = data.documents.filter(item => item[2] === "Required").length;
+      statCategories.textContent = data.categories.length;
+
+      items.innerHTML = data.documents.map((item, index) => {
+        const [name, explanation, status] = item;
+        const checked = saved.includes(index);
+        return `
+          <label class="check-item ${checked ? "completed" : ""}">
+            <input class="check-box" type="checkbox" data-index="${index}" ${checked ? "checked" : ""}>
+            <span class="check-copy">
+              <strong>${name}</strong>
+              <p>${explanation}</p>
+            </span>
+            <span class="pill ${status === "Required" ? "required" : "recommended"}">${status}</span>
+          </label>
+        `;
+      }).join("");
+
+      items.querySelectorAll(".check-box").forEach(input => {
+        input.addEventListener("change", () => {
+          const index = Number(input.dataset.index);
+          const current = new Set(state.completed[countryKey] || []);
+          if (input.checked) current.add(index); else current.delete(index);
+          state.completed[countryKey] = [...current].sort((a, b) => a - b);
+          saveState();
+          updateProgress();
+          input.closest(".check-item").classList.toggle("completed", input.checked);
+        });
+      });
+
+      updateProgress();
+      document.querySelector("#workspace").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function updateProgress() {
+      const data = checklistData[state.country];
+      const done = (state.completed[state.country] || []).length;
+      const total = data.documents.length;
+      const percent = Math.round((done / total) * 100);
+      progressText.textContent = `${done} of ${total} completed`;
+      progressPercent.textContent = `${percent}%`;
+      progressFill.style.width = `${percent}%`;
+      statDone.textContent = done;
+    }
+
+    document.querySelectorAll(".destination-card").forEach(card => {
+      card.addEventListener("click", () => renderChecklist(card.dataset.country));
+    });
+
+    const search = document.querySelector("#checklistSearch");
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+      document.querySelectorAll(".destination-card").forEach(card => {
+        card.classList.toggle("hidden", query && !card.dataset.search.toLowerCase().includes(query));
+      });
+    });
+
+    document.querySelector("#resetChecklist").addEventListener("click", () => {
+      state.completed[state.country] = [];
+      saveState();
+      renderChecklist(state.country);
+    });
+
+    document.querySelector("#printChecklist").addEventListener("click", () => window.print());
+
+    document.querySelector("#shareChecklist").addEventListener("click", async () => {
+      const data = checklistData[state.country];
+      const text = `${data.name} checklist — Pedani Migration Services`;
+      try {
+        await navigator.clipboard.writeText(`${text}\n${location.href}#workspace`);
+        alert("Checklist link copied to your clipboard.");
+      } catch {
+        alert("Copy was not available in this browser. You can copy the page URL from your address bar.");
+      }
+    });
+
+    /* =====================================================
+       THEME SWITCH — persisted locally.
+    ===================================================== */
+    const themeToggle = document.querySelector("#themeToggle");
+    const savedTheme = localStorage.getItem("pedaniTheme");
+    if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+
+    function updateThemeButton() {
+      const dark = document.documentElement.dataset.theme === "dark";
+      themeToggle.textContent = dark ? "☀" : "☾";
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("pedaniTheme", next);
+      updateThemeButton();
+    });
+    updateThemeButton();
+
+    /* =====================================================
+       SCROLL ANIMATIONS — IntersectionObserver as requested.
+       Elements are observed once and receive .is-visible when
+       they enter the viewport.
+    ===================================================== */
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -60px 0px"
+      });
+
+      revealElements.forEach(element => revealObserver.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("is-visible"));
+    }
+
+    renderChecklist("canada");
+  </script>
+</body>
+</html>
