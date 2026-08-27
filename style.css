@@ -37,6 +37,7 @@ body {
   --text-muted: #64748B;
   --text-light: #F8FAFC;
   --border: #D5DEE8;
+  --heading-font-size: clamp(1.625rem, 2vw, 3rem);
 }
 
 /* =========================
@@ -207,6 +208,7 @@ body {
 .hero-text h2 {
   margin-bottom: .4rem;
   opacity: 0;
+  font-size: var(--heading-font-size);
   transform: translateY(20px);
   animation: heroItem 0.7s ease-out 0.5s forwards;
 }

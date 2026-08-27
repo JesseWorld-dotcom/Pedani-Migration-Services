@@ -266,7 +266,12 @@ a {
   transition: color 0.2s ease;
 
 }
-
+.back-link i{
+  transition: all 0.2s cubic-bezier(0.77, -0.79, 0, 2.47);
+}
+.back-link:hover i{
+  translate: -2px;
+}
 
 .back-link:hover {
   color: var(--primary);
@@ -332,7 +337,12 @@ a {
     background 0.25s ease;
 
 }
-
+.header-cta i{
+  transition: all 205ms cubic-bezier(0.77, -0.79, 0, 2.47);
+}
+.header-cta:hover i{
+  transform: translateX(3px);
+}
 
 .header-cta:hover {
 
@@ -498,8 +508,12 @@ html[data-theme="dark"]
     box-shadow 0.25s cubic-bezier(0.77, -0.79, 0, 2.47);
 
 }
-
-
+.primary-btn i{
+  transition: 0.27s cubic-bezier(0.77, -0.79, 0, 2.47);
+}
+.primary-btn:hover i{
+  translate: 2px;
+}
 .primary-btn:hover {
 
   transform: translateY(-3px);

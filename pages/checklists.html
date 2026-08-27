@@ -226,7 +226,13 @@
       transition: transform .2s var(--ease), background .2s ease, border-color .2s ease;
     }
 
-    .guide-back-link { padding: 0 .75rem; color: var(--text-muted); }
+    .guide-back-link { padding: 0 .75rem; color: var(--text-muted); transition: all 0.3s cubic-bezier(0.77, -0.79, 0, 2.47);}
+    .guide-back-link span:last-child{
+      transition: all 0.3s cubic-bezier(0.77, -0.79, 0, 2.47);
+    }
+    .guide-back-link:hover span:last-child{
+      translate: 2px;
+    }
     .guide-back-link:hover { color: var(--primary); transform: translateX(-2px); }
 
     .guide-contact-btn {
@@ -531,7 +537,7 @@
     .stat span { color: var(--text-muted); font-size: .72rem; font-weight: 700; }
 
     .action-list { display: grid; gap: .55rem; margin-top: 1rem; }
-    .action-list button { width: 100%; justify-content: space-between; padding: .75rem .85rem; border: 1px solid var(--border); border-radius: 10px; color: var(--text); background: var(--surface-soft); font-weight: 800; }
+    .action-list button {display: flex; gap: 1px; width: 400px; justify-content: space-between; padding: .75rem .85rem; border: 1px solid var(--border); border-radius: 10px; color: var(--text); background: var(--surface-soft); font-weight: 800; }
     .action-list button:hover { background: var(--primary-light); }
 
     /* Preparation roadmap */
@@ -903,7 +909,7 @@
       </div>
       <div class="footer-column"><h4>Quick Links</h4><a href="#top">Home</a><a href="#checklists">Checklists</a><a href="#workspace">Resources</a><a href="mailto:info@pedanimigration.com">Contact</a></div>
       <div class="footer-column"><h4>Our Services</h4><a href="#">Visa On Arrival</a><a href="#">Transit Visa</a><a href="#">Maternity Visa</a><a href="#">Flight Tickets</a></div>
-      <div class="footer-column"><h4>Resources</h4><a href="#checklists">Visa Guides</a><a href="#workspace">Checklists</a><a href="#">FAQs</a><a href="#">News</a></div>
+      <div class="footer-column"><h4>Resources</h4><a href="/pages/visa-guides.html">Visa Guides</a><a href="/pages/blog.html">Blog</a><a href="/pages/faqs.html">FAQs</a><a href="/pages/news.html">News</a></div>
       <div class="footer-column"><h4>Contact Us</h4><a href="tel:+2347039112857">+234 703 911 2857</a><a href="mailto:info@pedanimigration.com">info@pedanimigration.com</a><span>Lagos, Nigeria</span></div>
     </div>
     <div class="footer-bottom"><p>© 2025 Pedani Migration Services. All rights reserved.</p><span>Bridging Dreams Across Borders</span></div>
