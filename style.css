@@ -649,14 +649,15 @@ section.about {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mask-image: linear-gradient(
+
+  -webkit-mask-image: linear-gradient(
   to left,
   transparent 0%,
   rgba(0, 0, 0, 0.3) 12%,
   black 35%
   );
 
-  -webkit-mask-image: linear-gradient(
+  mask-image: linear-gradient(
   to left,
   transparent 0%,
   rgba(0, 0, 0, 0.3) 12%,
@@ -780,11 +781,20 @@ section.about {
   line-height: 1.8;
 }
 
+.footer-column a:hover,
+.footer-column span:hover{
+  color: rgb(255, 255, 255);
+} 
+
 .contact a,
 .contact span {
   display: flex;
   align-items: center;
   gap: .45rem;
+}
+
+.contact span{
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .contact i {
@@ -858,6 +868,7 @@ section.about {
     padding: 0;
     background: transparent;
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: none;
     transform: none;
     transition: none;
@@ -1266,6 +1277,7 @@ section.about {
     padding: 5rem 1.5rem 2rem;
     background: rgba(248,250,252,.96);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: -10px 0 30px rgba(0,0,0,.15);
     transform: translateX(100%);
     transition: transform 350ms cubic-bezier(.4,0,.2,1);
@@ -1338,6 +1350,7 @@ section.about {
     inset: 0;
     background: rgba(0,0,0,.3125);
     backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
     opacity: 0;
     visibility: hidden;
     transition: opacity 300ms ease, visibility 300ms ease;

@@ -604,16 +604,116 @@
     .cta .button-secondary { color: #fff; border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); }
 
     /* Footer follows the existing resource footer content. */
-    .footer { color: rgba(255,255,255,.82); background: #0d355f; }
-    .footer-main { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 2rem; padding: 4rem 0 2.5rem; width: min(calc(100% - 2rem), var(--container)); margin-inline: auto; }
-    .footer-brand img { width: 145px; height: auto; padding: .4rem; border-radius: 10px; background: var(--primary-dark); }
-    .footer-brand p { margin: 1rem 0 0; color: rgba(255,255,255,.7); font-size: .88rem; }
-    .footer-column { display: grid; align-content: start; gap: .5rem; }
-    .footer-column h4 { margin: 0 0 .35rem; color: #fff; font-size: .84rem; }
-    .footer-column a, .footer-column span { color: rgba(255,255,255,.68); font-size: .78rem; }
+        .footer {
+      background: var(--primary-dark);
+      color: var(--text-light);
+      padding: 2rem 3rem .75rem;
+    }
+
+    .footer-main {
+      max-width: 75rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr repeat(3, 1fr) 1.5fr;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo img {
+      width: 7rem;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand p {
+      margin: .6rem 0;
+      color: rgba(255,255,255,.75);
+      font-size: .7rem;
+      line-height: 1.5;
+    }
+
+    .social-links {
+      display: flex;
+      gap: .7rem;
+    }
+
+    .social-links a {
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      text-decoration: none;
+      border-radius: 50%;
+      padding: 0.3125rem;
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary);
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column h4 {
+      margin: 0 0 .6rem;
+      font-size: .75rem;
+      color: white;
+    }
+
+    .footer-column a,
+    .footer-column span {
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-size: .65rem;
+      line-height: 1.8;
+    }
+
     .footer-column a:hover { color: #fff; }
-    .footer-bottom { width: min(calc(100% - 2rem), var(--container)); margin-inline: auto; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.16); display: flex; justify-content: space-between; gap: 1rem; font-size: .7rem; }
-    .footer-bottom p { margin: 0; color: rgba(255,255,255,.62); }
+
+    .contact a,
+    .contact span {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .contact i {
+      width: .8rem;
+      color: var(--text-light);
+    }
+
+    .footer-bottom {
+      max-width: 75rem;
+      margin: 1.2rem auto 0;
+      padding-top: .7rem;
+      border-top: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .6rem;
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,.7);
+    }
+
+    .footer-bottom div {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+    }
 
     /* Scroll-reveal system — activated by IntersectionObserver in JS. */
     .reveal {
@@ -902,20 +1002,181 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <img src="/images/logo 3 modified.png" alt="footer logo">
-        <p>Your trusted partner in global<br>migration and travel solutions.</p>
+
+  <div class="footer-main">
+
+    <div class="footer-brand">
+
+      <div class="footer-logo">
+        <img
+          src="/images/logo 3 modified.png"
+          alt="Pedani Migration Services"
+        >
       </div>
-      <div class="footer-column"><h4>Quick Links</h4><a href="#top">Home</a><a href="#checklists">Checklists</a><a href="#workspace">Resources</a><a href="mailto:info@pedanimigration.com">Contact</a></div>
-      <div class="footer-column"><h4>Our Services</h4><a href="#">Visa On Arrival</a><a href="#">Transit Visa</a><a href="#">Maternity Visa</a><a href="#">Flight Tickets</a></div>
-      <div class="footer-column"><h4>Resources</h4><a href="/pages/visa-guides.html">Visa Guides</a><a href="/pages/blog.html">Blog</a><a href="/pages/faqs.html">FAQs</a><a href="/pages/news.html">News</a></div>
-      <div class="footer-column"><h4>Contact Us</h4><a href="tel:+2347039112857">+234 703 911 2857</a><a href="mailto:info@pedanimigration.com">info@pedanimigration.com</a><span>Lagos, Nigeria</span></div>
+
+      <p>
+        Your trusted partner in global<br>
+        migration and travel solutions.
+      </p>
+
+      <div class="social-links">
+
+        <a
+          href="https://x.com/odalopeezie?s=11"
+          aria-label="Twitter"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a
+          href="tel:+2347039112857"
+          aria-label="Whatsapp"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+
     </div>
-    <div class="footer-bottom"><p>© 2025 Pedani Migration Services. All rights reserved.</p><span>Bridging Dreams Across Borders</span></div>
-  </footer>
+
+
+    <div class="footer-column">
+
+      <h4>
+        Quick Links
+      </h4>
+
+      <a href="/">
+        Home
+      </a>
+
+      <a href="/about.html">
+        About Us
+      </a>
+
+      <a href="/services.html">
+        Services
+      </a>
+
+      <a href="/destinations.html">
+        Destinations
+      </a>
+
+      <a href="/contact.html">
+        Contact
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        Our Services
+      </h4>
+
+      <a href="#">
+        Visa On Arrival
+      </a>
+
+      <a href="#">
+        Transit Visa
+      </a>
+
+      <a href="#">
+        Maternity Visa
+      </a>
+
+      <a href="#">
+        Flight Tickets
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        Resources
+      </h4>
+
+      <a href="/pages/visa-guides.html">
+        Visa Guides
+      </a>
+
+      <a href="/pages/blog.html">
+        Blog
+      </a>
+
+      <a href="/pages/faqs.html">
+        FAQs
+      </a>
+
+      <a href="/pages/checklists.html">
+        Checklists
+      </a>
+
+      <a href="/pages/news.html">
+        News
+      </a>
+
+    </div>
+
+
+    <div class="footer-column contact">
+
+      <h4>
+        Contact Us
+      </h4>
+
+      <a href="tel:+2347039112857">
+        <i class="fa-solid fa-phone"></i>
+        +234 703 911 2857
+      </a>
+
+      <a href="mailto:info@pedanimigration.com">
+        <i class="fa-solid fa-envelope"></i>
+        info@pedanimigration.com
+      </a>
+
+      <span>
+        <i class="fa-solid fa-location-dot"></i>
+        Lagos, Nigeria
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <p>
+      © <span id="currentYear"></span> Pedani Migration Services.
+      All rights reserved.
+    </p>
+
+    <div>
+
+      <a href="#">
+        Privacy Policy
+      </a>
+
+      <span>|</span>
+
+      <a href="#">
+        Terms & Conditions
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
 
   <script>
+    const currentYear = document.getElementById("currentYear");
+    currentYear.textContent = new Date().getFullYear();
     /* =====================================================
        PEDANI CHECKLIST DATA
        Sourced from the supplied Pedani Visa Resource Centre.

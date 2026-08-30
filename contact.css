@@ -116,6 +116,11 @@
   margin-top: 38px;
 }
 
+.contact-info{
+  position: sticky;
+  top: calc(55px + var(--header-height, 1rem));
+}
+
 .contact-item {
   display: flex;
   align-items: center;
