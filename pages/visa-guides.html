@@ -9,6 +9,7 @@
   >
 
   <link rel="shortcut icon" href="/images/favicon2.png" type="image/x-icon">
+
   <meta
     name="description"
     content="Pedani Migration Services Visa Guide — practical visa information, document guidance and application resources for popular destinations."
@@ -52,38 +53,49 @@
       --radius-lg: 24px;
 
       --container: 1180px;
+
+      /* =====================================================
+         ADDED: ANIMATION VARIABLES
+      ===================================================== */
+
+      --animation-ease:
+        cubic-bezier(.22, 1, .36, 1);
+
+      --animation-duration:
+        700ms;
     }
-    html[data-theme="dark"]{
-  --primary: #4f8dcc;
-  --primary-dark: #7eb1e5;
-  --primary-light: #172d44;
 
-  --accent: #e4ad45;
-  --accent-light: #3a2f1c;
+    html[data-theme="dark"] {
+      --primary: #4f8dcc;
+      --primary-dark: #7eb1e5;
+      --primary-light: #172d44;
 
-  --text: #f1f5f9;
-  --text-muted: #98a2b3;
-  --text-light: #ffffff;
+      --accent: #e4ad45;
+      --accent-light: #3a2f1c;
 
-  --surface: #101820;
-  --surface-soft: #151f2b;
-  --surface-dark: #1d2935;
+      --text: #f1f5f9;
+      --text-muted: #98a2b3;
+      --text-light: #ffffff;
 
-  --border: #2d3a48;
+      --surface: #101820;
+      --surface-soft: #151f2b;
+      --surface-dark: #1d2935;
 
-  --success: #4caf78;
+      --border: #2d3a48;
 
-  --shadow-sm:
-    0 4px 16px rgba(0, 0, 0, 0.25);
+      --success: #4caf78;
 
-  --shadow-md:
-    0 12px 35px rgba(0, 0, 0, 0.35);
+      --shadow-sm:
+        0 4px 16px rgba(0, 0, 0, 0.25);
 
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+      --shadow-md:
+        0 12px 35px rgba(0, 0, 0, 0.35);
 
-  --container: 1180px;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+
+      --container: 1180px;
     }
 
 
@@ -119,6 +131,11 @@
 
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
     }
 
     img {
@@ -198,849 +215,958 @@
       font-size: 1rem;
     }
 
-/* =====================================================
-   DESTINATION CARD
-===================================================== */
 
-.destination-card {
-  position: relative;
+    /* =====================================================
+       ADDED: THEME SWITCHER
+    ===================================================== */
 
-  min-height: 240px;
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
 
-  display: flex;
-  align-items: flex-end;
+      display: inline-grid;
+      place-items: center;
 
-  overflow: hidden;
+      padding: 0;
 
-  padding: 0;
+      border:
+        1px solid var(--border);
 
-  border: 0;
+      border-radius: 50%;
 
-  border-radius: var(--radius-md);
+      background:
+        var(--surface);
 
-  background: var(--primary);
+      color:
+        var(--text);
 
-  color: #fff;
+      font-size: 1rem;
 
-  text-align: left;
+      box-shadow:
+        var(--shadow-sm);
 
-  font: inherit;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+    }
 
-  cursor: pointer;
+    .theme-toggle:hover {
+      transform:
+        translateY(-2px)
+        rotate(4deg);
 
-  isolation: isolate;
+      border-color:
+        var(--primary);
 
-  box-shadow: var(--shadow-sm);
+      color:
+        var(--primary);
+    }
 
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
+    .theme-toggle:focus-visible {
+      outline:
+        3px solid
+        rgba(22, 78, 140, 0.25);
 
+      outline-offset: 3px;
+    }
 
-.destination-card img {
-  position: absolute;
-  inset: 0;
+    .theme-icon {
+      display: block;
 
-  width: 100%;
-  height: 100%;
+      line-height: 1;
 
-  object-fit: cover;
+      transition:
+        transform 0.35s ease;
+    }
 
-  z-index: -2;
+    .theme-toggle:hover .theme-icon {
+      transform:
+        rotate(20deg);
+    }
 
-  transition:
-    transform 0.45s ease;
-}
 
+    /* =====================================================
+       DESTINATION CARD
+    ===================================================== */
 
-.destination-card::after {
-  content: "";
+    .destination-card {
+      position: relative;
 
-  position: absolute;
-  inset: 0;
+      min-height: 240px;
 
-  z-index: -1;
+      display: flex;
+      align-items: flex-end;
 
-  background:
-    linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.78) 0%,
-      rgba(0, 0, 0, 0.35) 50%,
-      rgba(0, 0, 0, 0.05) 100%
-    );
-}
+      overflow: hidden;
 
+      padding: 0;
 
-.destination-card:hover {
-  transform:
-    translateY(-5px);
+      border: 0;
 
-  box-shadow:
-    var(--shadow-md);
-}
+      border-radius: var(--radius-md);
 
+      background: var(--primary);
 
-.destination-card:hover img {
-  transform:
-    scale(1.07);
-}
+      color: #fff;
 
+      text-align: left;
 
-.destination-card:focus-visible {
-  outline:
-    3px solid
-    rgba(22, 78, 140, 0.3);
+      font: inherit;
 
-  outline-offset: 4px;
-}
+      cursor: pointer;
 
+      isolation: isolate;
 
-/* =====================================================
-   CARD CONTENT
-===================================================== */
+      box-shadow: var(--shadow-sm);
 
-.destination-card-content {
-  position: relative;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
 
-  width: 100%;
 
-  padding: 1.4rem;
+    .destination-card img {
+      position: absolute;
+      inset: 0;
 
-  z-index: 1;
-}
+      width: 100%;
+      height: 100%;
 
+      object-fit: cover;
 
-.destination-code {
-  display: inline-flex;
+      z-index: -2;
 
-  align-items: center;
-  justify-content: center;
+      transition:
+        transform 0.45s ease;
+    }
 
-  margin-bottom: 0.55rem;
 
-  padding:
-    0.25rem 0.55rem;
+    .destination-card::after {
+      content: "";
 
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.2);
+      position: absolute;
+      inset: 0;
 
-  border-radius: 999px;
+      z-index: -1;
 
-  background:
-    rgba(255, 255, 255, 0.14);
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.35) 50%,
+          rgba(0, 0, 0, 0.05) 100%
+        );
+    }
 
-  backdrop-filter:
-    blur(8px);
 
-  font-size: 0.7rem;
+    .destination-card:hover {
+      transform:
+        translateY(-5px);
 
-  font-weight: 800;
+      box-shadow:
+        var(--shadow-md);
+    }
 
-  letter-spacing: 0.08em;
-}
 
+    .destination-card:hover img {
+      transform:
+        scale(1.07);
+    }
 
-.destination-card h3 {
-  margin: 0 0 0.35rem;
 
-  color: #fff;
+    .destination-card:focus-visible {
+      outline:
+        3px solid
+        rgba(22, 78, 140, 0.3);
 
-  font-size: 1.3rem;
+      outline-offset: 4px;
+    }
 
-  line-height: 1.15;
-}
 
+    /* =====================================================
+       CARD CONTENT
+    ===================================================== */
 
-.destination-card p {
-  margin: 0;
+    .destination-card-content {
+      position: relative;
 
-  color:
-    rgba(255, 255, 255, 0.84);
+      width: 100%;
 
-  font-size: 0.85rem;
+      padding: 1.4rem;
 
-  line-height: 1.5;
-}
+      z-index: 1;
+    }
 
 
-/* =====================================================
-   VISA MODAL
-===================================================== */
+    .destination-code {
+      display: inline-flex;
 
-.visa-modal {
-  width:
-    min(680px, calc(100% - 2rem));
+      align-items: center;
+      justify-content: center;
 
-  max-height:
-    min(720px, calc(100dvh - 2rem));
+      margin-bottom: 0.55rem;
 
-  margin: auto;
+      padding:
+        0.25rem 0.55rem;
 
-  padding: 0;
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.2);
 
-  border:
-    1px solid var(--border);
+      border-radius: 999px;
 
-  border-radius:
-    var(--radius-lg);
+      background:
+        rgba(255, 255, 255, 0.14);
 
-  background:
-    var(--surface);
+      backdrop-filter:
+        blur(8px);
 
-  color:
-    var(--text);
+      font-size: 0.7rem;
 
-  box-shadow:
-    0 25px 80px
-    rgba(15, 23, 42, 0.25);
+      font-weight: 800;
 
-  overflow: hidden;
-}
+      letter-spacing: 0.08em;
+    }
 
 
-.visa-modal::backdrop {
-  background:
-    rgba(9, 24, 40, 0.58);
+    .destination-card h3 {
+      margin: 0 0 0.35rem;
 
-  backdrop-filter:
-    blur(5px);
-}
+      color: #fff;
 
+      font-size: 1.3rem;
 
-/* =====================================================
-   MODAL CONTENT
-===================================================== */
+      line-height: 1.15;
+    }
 
-.visa-modal-content {
-  position: relative;
 
-  max-height:
-    min(720px, calc(100dvh - 2rem));
+    .destination-card p {
+      margin: 0;
 
-  display: flex;
+      color:
+        rgba(255, 255, 255, 0.84);
 
-  flex-direction: column;
-}
+      font-size: 0.85rem;
 
+      line-height: 1.5;
+    }
 
-/* =====================================================
-   CLOSE BUTTON
-===================================================== */
 
-.visa-modal-close {
-  position: absolute;
+    /* =====================================================
+       VISA MODAL
+    ===================================================== */
 
-  top: 1rem;
-  right: 1rem;
+    .visa-modal {
+      width:
+        min(680px, calc(100% - 2rem));
 
-  z-index: 5;
+      max-height:
+        min(720px, calc(100dvh - 2rem));
 
-  width: 40px;
-  height: 40px;
+      margin: auto;
 
-  display: grid;
-  place-items: center;
+      padding: 0;
 
-  padding: 0;
+      border:
+        1px solid var(--border);
 
-  border:
-    1px solid var(--border);
+      border-radius:
+        var(--radius-lg);
 
-  border-radius: 50%;
+      background:
+        var(--surface);
 
-  background:
-    rgba(255, 255, 255, 0.9);
+      color:
+        var(--text);
 
-  color:
-    var(--text-muted);
+      box-shadow:
+        0 25px 80px
+        rgba(15, 23, 42, 0.25);
 
-  font-size: 1.5rem;
+      overflow: hidden;
 
-  line-height: 1;
+      /* ADDED */
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
 
-  cursor: pointer;
 
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
-}
+    .visa-modal::backdrop {
+      background:
+        rgba(9, 24, 40, 0.58);
 
+      backdrop-filter:
+        blur(5px);
+    }
 
-.visa-modal-close:hover {
-  background:
-    var(--primary);
 
-  color: #fff;
+    /* =====================================================
+       MODAL CONTENT
+    ===================================================== */
 
-  transform:
-    rotate(5deg);
-}
+    .visa-modal-content {
+      position: relative;
 
+      max-height:
+        min(720px, calc(100dvh - 2rem));
 
-/* =====================================================
-   MODAL HEADER
-===================================================== */
+      display: flex;
 
-.visa-modal-header {
-  display: flex;
+      flex-direction: column;
+    }
 
-  align-items: center;
 
-  gap: 1rem;
+    /* =====================================================
+       CLOSE BUTTON
+    ===================================================== */
 
-  padding:
-    2rem 2rem 1.5rem;
+    .visa-modal-close {
+      position: absolute;
 
-  border-bottom:
-    1px solid var(--border);
+      top: 1rem;
+      right: 1rem;
 
-  background:
-    var(--surface-soft);
-}
+      z-index: 5;
 
+      width: 40px;
+      height: 40px;
 
-.visa-modal-code {
-  width: 58px;
-  height: 58px;
+      display: grid;
+      place-items: center;
 
-  flex-shrink: 0;
+      padding: 0;
 
-  display: grid;
-  place-items: center;
+      border:
+        1px solid var(--border);
 
-  border-radius: 16px;
+      border-radius: 50%;
 
-  background:
-    var(--primary);
+      background:
+        var(--surface);
 
-  color: #fff;
+      color:
+        var(--text-muted);
 
-  font-size: 0.85rem;
+      font-size: 1.5rem;
 
-  font-weight: 800;
+      line-height: 1;
 
-  letter-spacing: 0.08em;
-}
+      cursor: pointer;
 
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
 
-.visa-modal-header .eyebrow {
-  margin-bottom: 0.15rem;
 
-  font-size: 0.68rem;
-}
+    .visa-modal-close:hover {
+      background:
+        var(--primary);
 
+      color: #fff;
 
-.visa-modal-header h2 {
-  margin: 0;
+      transform:
+        rotate(5deg);
+    }
 
-  color:
-    var(--primary-dark);
 
-  font-size:
-    clamp(1.6rem, 4vw, 2.2rem);
+    /* =====================================================
+       MODAL HEADER
+    ===================================================== */
 
-  line-height: 1.1;
-}
+    .visa-modal-header {
+      display: flex;
 
+      align-items: center;
 
-/* =====================================================
-   MODAL BODY
-===================================================== */
+      gap: 1rem;
 
-.visa-modal-body {
-  flex: 1;
+      padding:
+        2rem 2rem 1.5rem;
 
-  overflow-y: auto;
+      border-bottom:
+        1px solid var(--border);
 
-  padding:
-    1.75rem 2rem;
-}
+      background:
+        var(--surface-soft);
+    }
 
 
-.visa-modal-body h3 {
-  margin:
-    0 0 0.6rem;
+    .visa-modal-code {
+      width: 58px;
+      height: 58px;
 
-  color:
-    var(--primary-dark);
+      flex-shrink: 0;
 
-  font-size: 1.1rem;
-}
+      display: grid;
+      place-items: center;
 
+      border-radius: 16px;
 
-.visa-modal-body p {
-  margin:
-    0 0 1.25rem;
+      background:
+        var(--primary);
 
-  color:
-    var(--text-muted);
+      color: #fff;
 
-  font-size: 0.92rem;
-}
+      font-size: 0.85rem;
 
+      font-weight: 800;
 
-.visa-modal-body ul {
-  display: grid;
+      letter-spacing: 0.08em;
+    }
 
-  gap: 0.55rem;
 
-  margin:
-    0 0 1.5rem;
+    .visa-modal-header .eyebrow {
+      margin-bottom: 0.15rem;
 
-  padding-left: 1.2rem;
+      font-size: 0.68rem;
+    }
 
-  color:
-    var(--text-muted);
 
-  font-size: 0.9rem;
-}
+    .visa-modal-header h2 {
+      margin: 0;
 
+      color:
+        var(--primary-dark);
 
-.visa-modal-body li::marker {
-  color:
-    var(--primary);
-}
+      font-size:
+        clamp(1.6rem, 4vw, 2.2rem);
 
+      line-height: 1.1;
+    }
 
-/* =====================================================
-   MODAL FOOTER
-===================================================== */
 
-.visa-modal-footer {
-  display: flex;
+    /* =====================================================
+       MODAL BODY
+    ===================================================== */
 
-  justify-content: flex-end;
+    .visa-modal-body {
+      flex: 1;
 
-  padding:
-    1.25rem 2rem;
+      overflow-y: auto;
 
-  border-top:
-    1px solid var(--border);
+      padding:
+        1.75rem 2rem;
+    }
 
-  background:
-    var(--surface-soft);
-}
 
+    .visa-modal-body h3 {
+      margin:
+        0 0 0.6rem;
 
-.visa-modal-footer .button {
-  display: inline-flex;
+      color:
+        var(--primary-dark);
 
-  align-items: center;
+      font-size: 1.1rem;
+    }
 
-  gap: 0.5rem;
-}
 
+    .visa-modal-body p {
+      margin:
+        0 0 1.25rem;
 
-/* =====================================================
-   MOBILE MODAL
-===================================================== */
+      color:
+        var(--text-muted);
 
-@media (max-width: 520px) {
+      font-size: 0.92rem;
+    }
 
-  .visa-modal {
-    width:
-      calc(100% - 1rem);
 
-    max-height:
-      calc(100dvh - 1rem);
+    .visa-modal-body ul {
+      display: grid;
 
-    border-radius:
-      18px;
-  }
+      gap: 0.55rem;
 
+      margin:
+        0 0 1.5rem;
 
-  .visa-modal-header {
-    padding:
-      1.5rem 1.25rem 1.25rem;
-  }
+      padding-left: 1.2rem;
 
+      color:
+        var(--text-muted);
 
-  .visa-modal-body {
-    padding:
-      1.5rem 1.25rem;
-  }
+      font-size: 0.9rem;
+    }
 
 
-  .visa-modal-footer {
-    padding:
-      1rem 1.25rem;
-  }
+    .visa-modal-body li::marker {
+      color:
+        var(--primary);
+    }
 
 
-  .visa-modal-footer .button {
-    width: 100%;
-  }
+    /* =====================================================
+       MODAL FOOTER
+    ===================================================== */
 
-}
+    .visa-modal-footer {
+      display: flex;
 
+      justify-content: flex-end;
 
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
+      padding:
+        1.25rem 2rem;
 
-@media (prefers-reduced-motion: reduce) {
+      border-top:
+        1px solid var(--border);
 
-  .destination-card,
-  .destination-card img,
-  .visa-modal-close {
-    transition: none;
-  }
+      background:
+        var(--surface-soft);
+    }
 
-}    
 
-/* =====================================================
-   VISA GUIDE HEADER
-===================================================== */
+    .visa-modal-footer .button {
+      display: inline-flex;
 
-.guide-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+      align-items: center;
 
-  width: 100%;
+      gap: 0.5rem;
+    }
 
-  background: rgba(255, 255, 255, 0.94);
 
-  border-bottom: 1px solid var(--border);
+    /* =====================================================
+       MOBILE MODAL
+    ===================================================== */
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
+    @media (max-width: 520px) {
 
+      .visa-modal {
+        width:
+          calc(100% - 1rem);
 
-/* =====================================================
-   HEADER CONTAINER
-===================================================== */
+        max-height:
+          calc(100dvh - 1rem);
 
-.guide-nav {
-  min-height: 74px;
+        border-radius:
+          18px;
+      }
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  gap: 1.5rem;
-}
+      .visa-modal-header {
+        padding:
+          1.5rem 1.25rem 1.25rem;
+      }
 
 
-/* =====================================================
-   LOGO
-===================================================== */
+      .visa-modal-body {
+        padding:
+          1.5rem 1.25rem;
+      }
 
-.guide-logo {
-  display: inline-flex;
 
-  align-items: center;
+      .visa-modal-footer {
+        padding:
+          1rem 1.25rem;
+      }
 
-  gap: 0.65rem;
 
-  flex-shrink: 0;
+      .visa-modal-footer .button {
+        width: 100%;
+      }
 
-  color: var(--primary);
+    }
 
-  text-decoration: none;
-}
 
+    /* =====================================================
+       VISA GUIDE HEADER
+    ===================================================== */
 
-.guide-logo-mark {
-  width: 38px;
-  height: 38px;
+    .guide-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
 
-  display: grid;
-  place-items: center;
+      width: 100%;
 
-  border-radius: 10px;
+      background:
+        rgba(255, 255, 255, 0.94);
 
-  background: var(--primary);
+      border-bottom:
+        1px solid var(--border);
 
-  color: #fff;
+      backdrop-filter:
+        blur(16px);
 
-  font-size: 0.95rem;
-  font-weight: 800;
+      -webkit-backdrop-filter:
+        blur(16px);
 
-  box-shadow:
-    0 5px 14px
-    rgba(22, 78, 140, 0.18);
-}
+      /* ADDED */
+      transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease;
+    }
 
 
-.guide-logo-text {
-  font-size: 1.25rem;
+    /* ADDED: DARK HEADER */
 
-  font-weight: 800;
+    html[data-theme="dark"] .guide-header {
+      background:
+        rgba(16, 24, 32, 0.94);
+    }
 
-  letter-spacing: -0.02em;
-}
 
+    /* =====================================================
+       HEADER CONTAINER
+    ===================================================== */
 
-/* =====================================================
-   RESOURCE LABEL
-===================================================== */
+    .guide-nav {
+      min-height: 74px;
 
-.guide-nav-label {
-  display: flex;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  align-items: center;
+      gap: 1.5rem;
+    }
 
-  gap: 0.5rem;
 
-  margin-left: auto;
+    /* =====================================================
+       LOGO
+    ===================================================== */
 
-  margin-right: auto;
+    .guide-logo {
+      display: inline-flex;
 
-  color: var(--text-muted);
+      align-items: center;
 
-  font-size: 0.78rem;
+      gap: 0.65rem;
 
-  font-weight: 700;
+      flex-shrink: 0;
 
-  letter-spacing: 0.08em;
+      color: var(--primary);
 
-  text-transform: uppercase;
-}
+      text-decoration: none;
+    }
 
 
-.guide-nav-dot {
-  width: 7px;
-  height: 7px;
+    .guide-logo-mark {
+      width: 38px;
+      height: 38px;
 
-  flex-shrink: 0;
+      display: grid;
+      place-items: center;
 
-  border-radius: 50%;
+      border-radius: 10px;
 
-  background: var(--accent);
-}
+      background: var(--primary);
 
+      color: #fff;
 
-/* =====================================================
-   HEADER ACTIONS
-===================================================== */
+      font-size: 0.95rem;
+      font-weight: 800;
 
-.guide-nav-actions {
-  display: flex;
+      box-shadow:
+        0 5px 14px
+        rgba(22, 78, 140, 0.18);
+    }
 
-  align-items: center;
 
-  gap: 1rem;
+    .guide-logo-mark img {
+      width: 100%;
+      height: 100%;
 
-  flex-shrink: 0;
-}
+      object-fit: contain;
+    }
 
-/* =====================================================
-   BACK TO WEBSITE
-===================================================== */
 
-.guide-back-link {
-  display: inline-flex;
+    .guide-logo-text {
+      font-size: 1.25rem;
 
-  align-items: center;
+      font-weight: 800;
 
-  gap: 0.4rem;
+      letter-spacing: -0.02em;
+    }
 
-  color: var(--text-muted);
 
-  font-size: 0.85rem;
+    /* =====================================================
+       RESOURCE LABEL
+    ===================================================== */
 
-  font-weight: 600;
+    .guide-nav-label {
+      display: flex;
 
-  text-decoration: none;
+      align-items: center;
 
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-}
+      gap: 0.5rem;
 
+      margin-left: auto;
 
-.guide-back-link:hover {
-  color: var(--primary);
+      margin-right: auto;
 
-  transform:
-    translateX(-2px);
-}
+      color: var(--text-muted);
 
+      font-size: 0.78rem;
 
-.guide-back-link span {
-  font-size: 1rem;
+      font-weight: 700;
 
-  line-height: 1;
-}
+      letter-spacing: 0.08em;
 
+      text-transform: uppercase;
+    }
 
-/* =====================================================
-   CONTACT BUTTON
-===================================================== */
 
-.guide-contact-btn {
-  min-height: 42px;
+    .guide-nav-dot {
+      width: 7px;
+      height: 7px;
 
-  display: inline-flex;
+      flex-shrink: 0;
 
-  align-items: center;
-  justify-content: center;
+      border-radius: 50%;
 
-  gap: 0.55rem;
+      background: var(--accent);
+    }
 
-  padding:
-    0.65rem 1rem;
 
-  border-radius: 999px;
+    /* =====================================================
+       HEADER ACTIONS
+    ===================================================== */
 
-  background: var(--primary);
+    .guide-nav-actions {
+      display: flex;
 
-  color: #fff;
+      align-items: center;
 
-  font-size: 0.84rem;
+      gap: 1rem;
 
-  font-weight: 700;
+      flex-shrink: 0;
+    }
 
-  text-decoration: none;
 
-  box-shadow:
-    0 5px 14px
-    rgba(22, 78, 140, 0.15);
+    /* =====================================================
+       BACK TO WEBSITE
+    ===================================================== */
 
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
+    .guide-back-link {
+      display: inline-flex;
 
+      align-items: center;
 
-.guide-contact-btn:hover {
-  background: var(--primary-dark);
+      gap: 0.4rem;
 
-  transform:
-    translateY(-2px);
+      color: var(--text-muted);
 
-  box-shadow:
-    0 8px 20px
-    rgba(22, 78, 140, 0.2);
-}
+      font-size: 0.85rem;
 
+      font-weight: 600;
 
-.guide-contact-btn span {
-  font-size: 1rem;
+      text-decoration: none;
 
-  line-height: 1;
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
 
-  transition:
-    transform 0.2s ease;
-}
 
+    .guide-back-link:hover {
+      color: var(--primary);
 
-.guide-contact-btn:hover span {
-  transform:
-    translateX(3px);
-}
+      transform:
+        translateX(-2px);
+    }
 
 
-/* =====================================================
-   KEYBOARD FOCUS
-===================================================== */
+    .guide-back-link span {
+      font-size: 1rem;
 
-.guide-logo:focus-visible,
-.guide-back-link:focus-visible,
-.guide-contact-btn:focus-visible {
-  outline:
-    3px solid
-    rgba(22, 78, 140, 0.25);
+      line-height: 1;
+    }
 
-  outline-offset: 4px;
 
-  border-radius: 6px;
-}
+    /* =====================================================
+       CONTACT BUTTON
+    ===================================================== */
 
+    .guide-contact-btn {
+      min-height: 42px;
 
-/* =====================================================
-   TABLET
-===================================================== */
+      display: inline-flex;
 
-@media (max-width: 760px) {
+      align-items: center;
+      justify-content: center;
 
-  .guide-nav {
-    min-height: 68px;
+      gap: 0.55rem;
 
-    gap: 1rem;
-  }
+      padding:
+        0.65rem 1rem;
 
+      border-radius: 999px;
 
-  .guide-nav-label {
-    display: none;
-  }
+      background: var(--primary);
 
+      color: #fff;
 
-  .guide-back-link {
-    font-size: 0.8rem;
-  }
+      font-size: 0.84rem;
 
+      font-weight: 700;
 
-  .guide-contact-btn {
-    min-height: 40px;
+      text-decoration: none;
 
-    padding:
-      0.6rem 0.9rem;
-  }
+      box-shadow:
+        0 5px 14px
+        rgba(22, 78, 140, 0.15);
 
-}
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+    .guide-contact-btn:hover {
+      background: var(--primary-dark);
 
-@media (max-width: 520px) {
+      transform:
+        translateY(-2px);
 
-  .guide-nav {
-    min-height: 64px;
-  }
+      box-shadow:
+        0 8px 20px
+        rgba(22, 78, 140, 0.2);
+    }
 
 
-  .guide-logo-mark {
-    width: 34px;
-    height: 34px;
+    .guide-contact-btn span {
+      font-size: 1rem;
 
-    border-radius: 9px;
+      line-height: 1;
 
-    font-size: 0.85rem;
-  }
+      transition:
+        transform 0.2s ease;
+    }
 
 
-  .guide-logo-text {
-    font-size: 1.1rem;
-  }
+    .guide-contact-btn:hover span {
+      transform:
+        translateX(3px);
+    }
 
 
-  .guide-back-link {
-    display: none;
-  }
+    /* =====================================================
+       KEYBOARD FOCUS
+    ===================================================== */
 
+    .guide-logo:focus-visible,
+    .guide-back-link:focus-visible,
+    .guide-contact-btn:focus-visible {
+      outline:
+        3px solid
+        rgba(22, 78, 140, 0.25);
 
-  .guide-contact-btn {
-    min-height: 38px;
+      outline-offset: 4px;
 
-    padding:
-      0.55rem 0.8rem;
+      border-radius: 6px;
+    }
 
-    font-size: 0.78rem;
-  }
 
-}
+    /* =====================================================
+       ADDED: THEME TOGGLE HEADER POSITION
+    ===================================================== */
 
+    .theme-toggle-wrapper {
+      display: flex;
+      align-items: center;
+    }
 
-/* =====================================================
-   VERY SMALL DEVICES
-===================================================== */
 
-@media (max-width: 340px) {
+    /* =====================================================
+       TABLET
+    ===================================================== */
 
-  .guide-logo-text {
-    display: none;
-  }
+    @media (max-width: 760px) {
 
-}
+      .guide-nav {
+        min-height: 68px;
+
+        gap: 1rem;
+      }
+
+
+      .guide-nav-label {
+        display: none;
+      }
+
+
+      .guide-back-link {
+        font-size: 0.8rem;
+      }
+
+
+      .guide-contact-btn {
+        min-height: 40px;
+
+        padding:
+          0.6rem 0.9rem;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 520px) {
+
+      .guide-nav {
+        min-height: 64px;
+      }
+
+
+      .guide-logo-mark {
+        width: 34px;
+        height: 34px;
+
+        border-radius: 9px;
+
+        font-size: 0.85rem;
+      }
+
+
+      .guide-logo-text {
+        font-size: 1.1rem;
+      }
+
+
+      .guide-back-link {
+        display: none;
+      }
+
+
+      .guide-contact-btn {
+        min-height: 38px;
+
+        padding:
+          0.55rem 0.8rem;
+
+        font-size: 0.78rem;
+      }
+
+
+      /* ADDED */
+
+      .theme-toggle {
+        width: 38px;
+        height: 38px;
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL DEVICES
+    ===================================================== */
+
+    @media (max-width: 340px) {
+
+      .guide-logo-text {
+        display: none;
+      }
+
+    }
 
 
     /* =====================================================
@@ -1063,7 +1189,25 @@
           #ffffff 55%,
           #fffaf0 100%
         );
+
+      /* ADDED */
+      transition:
+        background 0.4s ease;
     }
+
+
+    /* ADDED: DARK HERO */
+
+    html[data-theme="dark"] .hero {
+      background:
+        linear-gradient(
+          135deg,
+          #0d1722 0%,
+          #101820 55%,
+          #211d14 100%
+        );
+    }
+
 
     .hero::before {
       content: "";
@@ -1245,7 +1389,9 @@
 
       transition:
         border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        background-color 0.3s ease,
+        color 0.3s ease;
     }
 
     #visa-search:focus {
@@ -1285,6 +1431,11 @@
 
       background:
         var(--surface-soft);
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .info-number {
@@ -1329,6 +1480,10 @@
 
     .destinations {
       background: var(--surface-soft);
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease;
     }
 
     .destination-grid {
@@ -1530,6 +1685,11 @@
 
       box-shadow:
         var(--shadow-sm);
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .side-card + .side-card {
@@ -1599,6 +1759,10 @@
 
     .steps {
       background: var(--surface-soft);
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease;
     }
 
     .steps-grid {
@@ -1622,6 +1786,11 @@
 
       border-radius:
         var(--radius-md);
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .step-number {
@@ -1681,6 +1850,11 @@
 
       background:
         var(--accent-light);
+
+      /* ADDED */
+      transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .notice-icon {
@@ -1713,6 +1887,10 @@
       color: #6d5a31;
 
       font-size: 0.88rem;
+    }
+
+    html[data-theme="dark"] .notice p {
+      color: #dbc88f;
     }
 
 
@@ -1804,105 +1982,113 @@
        FOOTER
     ===================================================== */
 
-    
-.footer {
-  background: var(--primary-dark);
-  color: var(--text-light);
-  padding: 2rem 3rem .75rem;
-}
+    .footer {
+      background: var(--primary-dark);
+      color: var(--text-light);
+      padding: 2rem 3rem .75rem;
+    }
 
-.footer-main {
-  max-width: 75rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.6fr repeat(3, 1fr) 1.5fr;
-  gap: 2rem;
-}
+    .footer-main {
+      max-width: 75rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr repeat(3, 1fr) 1.5fr;
+      gap: 2rem;
+    }
 
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-}
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+    }
 
-.footer-logo img {
-  width: 7rem;
-  height: auto;
-  object-fit: contain;
-}
+    .footer-logo img {
+      width: 7rem;
+      height: auto;
+      object-fit: contain;
+    }
 
-.footer-brand p {
-  margin: .6rem 0;
-  color: rgba(255,255,255,.75);
-  font-size: .7rem;
-  line-height: 1.5;
-}
+    .footer-brand p {
+      margin: .6rem 0;
+      color: rgba(255,255,255,.75);
+      font-size: .7rem;
+      line-height: 1.5;
+    }
 
-.social-links {
-  display: flex;
-  gap: .7rem;
-}
+    .social-links {
+      display: flex;
+      gap: .7rem;
+    }
 
-.social-links a {
-  width: 1.6rem;
-  height: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light);
-  text-decoration: none;
-  border-radius: 50%;
-  padding: 0.3125rem;
-}
-.social-links a:hover{
-  background-color: var(--primary);
-}
-.footer-column {
-  display: flex;
-  flex-direction: column;
-}
+    .social-links a {
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      text-decoration: none;
+      border-radius: 50%;
+      padding: 0.3125rem;
+    }
 
-.footer-column h4 {
-  margin: 0 0 .6rem;
-  font-size: .75rem;
-}
+    .social-links a:hover {
+      background-color: var(--primary);
+    }
 
-.footer-column a,
-.footer-column span {
-  color: rgba(255,255,255,.78);
-  text-decoration: none;
-  font-size: .65rem;
-  line-height: 1.8;
-}
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
 
-.contact a,
-.contact span {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-}
+    .footer-column h4 {
+      margin: 0 0 .6rem;
+      font-size: .75rem;
+    }
 
-.contact i {
-  width: .8rem;
-  color: var(--text-light);
-}
+    .footer-column a,
+    .footer-column span {
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-size: .65rem;
+      line-height: 1.8;
+    }
 
-.footer-bottom {
-  max-width: 75rem;
-  margin: 1.2rem auto 0;
-  padding-top: .7rem;
-  border-top: 1px solid rgba(255,255,255,.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: .6rem;
-}
+    .contact a,
+    .contact span {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
 
-.footer-bottom p { color: rgba(255,255,255,.7); }
-.footer-bottom div { display: flex; gap: .5rem; }
-.footer-bottom a {
-  color: rgba(255,255,255,.75);
-  text-decoration: none;
-}
+    .contact i {
+      width: .8rem;
+      color: var(--text-light);
+    }
+
+    .footer-bottom {
+      max-width: 75rem;
+      margin: 1.2rem auto 0;
+      padding-top: .7rem;
+      border-top: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .6rem;
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,.7);
+    }
+
+    .footer-bottom div {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+    }
 
 
     /* =====================================================
@@ -2021,6 +2207,115 @@
 
 
     /* =====================================================
+       ADDED: SCROLL REVEAL ANIMATIONS
+    ===================================================== */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(45px);
+
+      transition:
+        opacity var(--animation-duration)
+          var(--animation-ease),
+        transform var(--animation-duration)
+          var(--animation-ease);
+    }
+
+
+    .reveal-left {
+      opacity: 0;
+
+      transform:
+        translateX(-45px);
+
+      transition:
+        opacity var(--animation-duration)
+          var(--animation-ease),
+        transform var(--animation-duration)
+          var(--animation-ease);
+    }
+
+
+    .reveal-right {
+      opacity: 0;
+
+      transform:
+        translateX(45px);
+
+      transition:
+        opacity var(--animation-duration)
+          var(--animation-ease),
+        transform var(--animation-duration)
+          var(--animation-ease);
+    }
+
+
+    .reveal-scale {
+      opacity: 0;
+
+      transform:
+        scale(.92);
+
+      transition:
+        opacity var(--animation-duration)
+          var(--animation-ease),
+        transform var(--animation-duration)
+          var(--animation-ease);
+    }
+
+
+    .reveal.is-visible,
+    .reveal-left.is-visible,
+    .reveal-right.is-visible,
+    .reveal-scale.is-visible {
+      opacity: 1;
+
+      transform:
+        translate(0)
+        scale(1);
+    }
+
+
+    /* =====================================================
+       ADDED: STAGGERED CARD ANIMATIONS
+    ===================================================== */
+
+    .stagger-item:nth-child(1) {
+      transition-delay: 80ms;
+    }
+
+    .stagger-item:nth-child(2) {
+      transition-delay: 160ms;
+    }
+
+    .stagger-item:nth-child(3) {
+      transition-delay: 240ms;
+    }
+
+    .stagger-item:nth-child(4) {
+      transition-delay: 320ms;
+    }
+
+    .stagger-item:nth-child(5) {
+      transition-delay: 400ms;
+    }
+
+    .stagger-item:nth-child(6) {
+      transition-delay: 480ms;
+    }
+
+    .stagger-item:nth-child(7) {
+      transition-delay: 560ms;
+    }
+
+    .stagger-item:nth-child(8) {
+      transition-delay: 640ms;
+    }
+
+
+    /* =====================================================
        REDUCED MOTION
     ===================================================== */
 
@@ -2034,6 +2329,15 @@
       *::before,
       *::after {
         transition: none !important;
+        animation: none !important;
+      }
+
+      .reveal,
+      .reveal-left,
+      .reveal-right,
+      .reveal-scale {
+        opacity: 1;
+        transform: none;
       }
 
     }
@@ -2057,8 +2361,18 @@
       class="guide-logo"
       aria-label="Pedani Migration Services home"
     >
-      <span class="guide-logo-mark"><img src="/images/logo 3 modified.png" alt="Logo"></span>
-      <span class="guide-logo-text">Pedani</span>
+
+      <span class="guide-logo-mark">
+        <img
+          src="/images/logo 3 modified.png"
+          alt="Logo"
+        >
+      </span>
+
+      <span class="guide-logo-text">
+        Pedani
+      </span>
+
     </a>
 
 
@@ -2080,6 +2394,33 @@
         Back to website
       </a>
 
+
+      <!-- ===================================================
+           ADDED: THEME SWITCHER
+      ==================================================== -->
+
+      <div class="theme-toggle-wrapper">
+
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+          title="Switch theme"
+        >
+          <span
+            class="theme-icon"
+            id="themeIcon"
+            aria-hidden="true"
+          >
+            ☾
+          </span>
+        </button>
+
+      </div>
+
+
       <a
         href="/contact.html"
         class="guide-contact-btn"
@@ -2096,920 +2437,927 @@
 
 
 
-  <!-- ===================================================
-       HERO
-  ==================================================== -->
+<!-- ===================================================
+     HERO
+==================================================== -->
 
-  <main>
+<main>
 
-    <section class="hero">
+  <section class="hero">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="hero-content">
+      <div class="hero-content">
 
-          <span class="eyebrow">
-            Pedani Resource Centre
-          </span>
+        <span class="eyebrow reveal">
+          Pedani Resource Centre
+        </span>
 
-          <h1>
-            Your Practical Guide to Visa Applications
-          </h1>
+        <h1 class="reveal">
+          Your Practical Guide to Visa Applications
+        </h1>
 
-          <p>
-            Explore destination-specific visa information,
-            application requirements, document guidance and
-            helpful resources designed to make your travel
-            planning clearer.
-          </p>
+        <p class="reveal">
+          Explore destination-specific visa information,
+          application requirements, document guidance and
+          helpful resources designed to make your travel
+          planning clearer.
+        </p>
 
-          <div class="hero-actions">
-
-            <a
-              href="#destinations"
-              class="button button-primary"
-            >
-              Explore Visa Guides
-            </a>
-
-            <a
-              href="/contact.html"
-              class="button button-secondary"
-            >
-              Speak With Pedani
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         FINDER
-    ================================================== -->
-
-    <section class="finder">
-
-      <div class="container">
-
-        <div class="finder-card">
-
-          <div>
-
-            <label
-              class="finder-label"
-              for="destination-search"
-            >
-              Looking for a particular destination?
-            </label>
-
-            <input
-  type="search"
-  id="visa-search"
-  placeholder="Search for a country..."
-  aria-label="Search visa guides"
->
-
-          </div>
+        <div class="hero-actions">
 
           <a
             href="#destinations"
-            class="button button-primary"
+            class="button button-primary reveal"
           >
-            Find a Guide
+            Explore Visa Guides
+          </a>
+
+          <a
+            href="/contact.html"
+            class="button button-secondary reveal"
+          >
+            Speak With Pedani
           </a>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
 
-    <!-- =================================================
-         QUICK INFORMATION
-    ================================================== -->
+  <!-- =================================================
+       FINDER
+  ================================================== -->
 
-    <section class="quick-info">
+  <section class="finder">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="info-grid">
+      <div class="finder-card reveal-scale">
 
-          <article class="info-card">
+        <div>
 
-            <span class="info-number">
-              01
-            </span>
+          <label
+            class="finder-label"
+            for="destination-search"
+          >
+            Looking for a particular destination?
+          </label>
 
-            <h3>
-              Understand Your Visa
-            </h3>
-
-            <p>
-              Learn about common visa categories and
-              determine which route may be relevant to
-              your travel plans.
-            </p>
-
-          </article>
-
-
-          <article class="info-card">
-
-            <span class="info-number">
-              02
-            </span>
-
-            <h3>
-              Prepare Your Documents
-            </h3>
-
-            <p>
-              Get familiar with the documents applicants
-              commonly need before beginning an application.
-            </p>
-
-          </article>
-
-
-          <article class="info-card">
-
-            <span class="info-number">
-              03
-            </span>
-
-            <h3>
-              Plan With Confidence
-            </h3>
-
-            <p>
-              Use our guides as a starting point and get
-              professional support when you need help.
-            </p>
-
-          </article>
+          <input
+            type="search"
+            id="visa-search"
+            placeholder="Search for a country..."
+            aria-label="Search visa guides"
+          >
 
         </div>
+
+        <a
+          href="#destinations"
+          class="button button-primary"
+        >
+          Find a Guide
+        </a>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
 
-    <!-- =================================================
-         DESTINATIONS
-    ================================================== -->
+  <!-- =================================================
+       QUICK INFORMATION
+  ================================================== -->
 
-<section
-  class="section destinations"
-  id="destinations"
->
+  <section class="quick-info">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-heading">
+      <div class="info-grid">
 
-      <span class="eyebrow">
-        Destination Guides
-      </span>
+        <article class="info-card reveal stagger-item">
 
-      <h2>
-        Explore Visa Information by Destination
-      </h2>
+          <span class="info-number">
+            01
+          </span>
 
-      <p>
-        Select a destination to explore visa pathways,
-        typical documentation and important preparation
-        points.
-      </p>
+          <h3>
+            Understand Your Visa
+          </h3>
+
+          <p>
+            Learn about common visa categories and
+            determine which route may be relevant to
+            your travel plans.
+          </p>
+
+        </article>
+
+
+        <article class="info-card reveal stagger-item">
+
+          <span class="info-number">
+            02
+          </span>
+
+          <h3>
+            Prepare Your Documents
+          </h3>
+
+          <p>
+            Get familiar with the documents applicants
+            commonly need before beginning an application.
+          </p>
+
+        </article>
+
+
+        <article class="info-card reveal stagger-item">
+
+          <span class="info-number">
+            03
+          </span>
+
+          <h3>
+            Plan With Confidence
+          </h3>
+
+          <p>
+            Use our guides as a starting point and get
+            professional support when you need it.
+          </p>
+
+        </article>
+
+      </div>
 
     </div>
 
+  </section>
 
-    <div class="destination-grid">
 
 
-      <!-- CANADA -->
+  <!-- =================================================
+       DESTINATIONS
+  ================================================== -->
 
-      <button
-        type="button"
-        class="destination-card"
-        data-country="canada"
-        aria-label="View Canada visa guide"
-      >
+  <section
+    class="section destinations"
+    id="destinations"
+  >
 
-        <img
-          src="/images/canada.png"
-          alt="Canada"
-          loading="lazy"
-        >
+    <div class="container">
 
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            CA
-          </span>
-
-          <h3>
-            Canada
-          </h3>
-
-          <p>
-            Study, visitor and other travel pathways.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- UNITED KINGDOM -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="uk"
-        aria-label="View United Kingdom visa guide"
-      >
-
-        <img
-          src="/images/london.png"
-          alt="United Kingdom"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            UK
-          </span>
-
-          <h3>
-            United Kingdom
-          </h3>
-
-          <p>
-            Explore routes for visiting, studying and work.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- AUSTRALIA -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="australia"
-        aria-label="View Australia visa guide"
-      >
-
-        <img
-          src="/images/australia.png"
-          alt="Australia"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            AU
-          </span>
-
-          <h3>
-            Australia
-          </h3>
-
-          <p>
-            Understand popular Australian visa options.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- GERMANY -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="germany"
-        aria-label="View Germany visa guide"
-      >
-
-        <img
-          src="/images/germany.png"
-          alt="Germany"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            DE
-          </span>
-
-          <h3>
-            Germany
-          </h3>
-
-          <p>
-            Explore study, travel and migration pathways.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- IRELAND -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="ireland"
-        aria-label="View Ireland visa guide"
-      >
-
-        <img
-          src="/images/ireland.png"
-          alt="Ireland"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            IE
-          </span>
-
-          <h3>
-            Ireland
-          </h3>
-
-          <p>
-            Helpful information for prospective travellers.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- UNITED STATES -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="dubai"
-        aria-label="View Dubai visa guide"
-      >
-
-        <img
-          src="/images/dubai.png"
-          alt="United States"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            AE
-          </span>
-
-          <h3>
-            Dubai
-          </h3>
-
-          <p>
-            Learn about common Dubai travel pathways.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- ITALY -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="italy"
-        aria-label="View Italy visa guide"
-      >
-
-        <img
-          src="/images/italy.png"
-          alt="Italy"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            IT
-          </span>
-
-          <h3>
-            Italy
-          </h3>
-
-          <p>
-            Get started with your Italian visa research.
-          </p>
-
-        </div>
-
-      </button>
-
-
-
-      <!-- SPAIN -->
-
-      <button
-        type="button"
-        class="destination-card"
-        data-country="spain"
-        aria-label="View Spain visa guide"
-      >
-
-        <img
-          src="/images/spain.png"
-          alt="Spain"
-          loading="lazy"
-        >
-
-        <div class="destination-card-content">
-
-          <span class="destination-code">
-            ES
-          </span>
-
-          <h3>
-            Spain
-          </h3>
-
-          <p>
-            Explore visa preparation information.
-          </p>
-
-        </div>
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =================================================
-     VISA GUIDE MODAL
-================================================== -->
-
-<dialog
-  class="visa-modal"
-  id="visaModal"
-  aria-labelledby="visaModalTitle"
->
-
-  <div class="visa-modal-content">
-
-    <button
-      type="button"
-      class="visa-modal-close"
-      id="visaModalClose"
-      aria-label="Close visa guide"
-    >
-      ×
-    </button>
-
-
-    <div class="visa-modal-header">
-
-      <span
-        class="visa-modal-code"
-        id="visaModalCode"
-      >
-        CA
-      </span>
-
-      <div>
+      <div class="section-heading reveal">
 
         <span class="eyebrow">
-          Visa Guide
+          Destination Guides
         </span>
 
-        <h2 id="visaModalTitle">
-          Canada
+        <h2>
+          Explore Visa Information by Destination
         </h2>
+
+        <p>
+          Select a destination to explore visa pathways,
+          typical documentation and important preparation
+          points.
+        </p>
+
+      </div>
+
+
+      <div class="destination-grid">
+
+
+        <!-- CANADA -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="canada"
+          aria-label="View Canada visa guide"
+        >
+
+          <img
+            src="/images/canada.png"
+            alt="Canada"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              CA
+            </span>
+
+            <h3>
+              Canada
+            </h3>
+
+            <p>
+              Study, visitor and other travel pathways.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- UNITED KINGDOM -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="uk"
+          aria-label="View United Kingdom visa guide"
+        >
+
+          <img
+            src="/images/london.png"
+            alt="United Kingdom"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              UK
+            </span>
+
+            <h3>
+              United Kingdom
+            </h3>
+
+            <p>
+              Explore routes for visiting, studying and work.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- AUSTRALIA -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="australia"
+          aria-label="View Australia visa guide"
+        >
+
+          <img
+            src="/images/australia.png"
+            alt="Australia"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              AU
+            </span>
+
+            <h3>
+              Australia
+            </h3>
+
+            <p>
+              Understand popular Australian visa options.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- GERMANY -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="germany"
+          aria-label="View Germany visa guide"
+        >
+
+          <img
+            src="/images/germany.png"
+            alt="Germany"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              DE
+            </span>
+
+            <h3>
+              Germany
+            </h3>
+
+            <p>
+              Explore study, travel and migration pathways.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- IRELAND -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="ireland"
+          aria-label="View Ireland visa guide"
+        >
+
+          <img
+            src="/images/ireland.png"
+            alt="Ireland"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              IE
+            </span>
+
+            <h3>
+              Ireland
+            </h3>
+
+            <p>
+              Helpful information for prospective travellers.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- DUBAI -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="dubai"
+          aria-label="View Dubai visa guide"
+        >
+
+          <img
+            src="/images/dubai.png"
+            alt="Dubai"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              AE
+            </span>
+
+            <h3>
+              Dubai
+            </h3>
+
+            <p>
+              Learn about common Dubai travel pathways.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- ITALY -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="italy"
+          aria-label="View Italy visa guide"
+        >
+
+          <img
+            src="/images/italy.png"
+            alt="Italy"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              IT
+            </span>
+
+            <h3>
+              Italy
+            </h3>
+
+            <p>
+              Get started with your Italian visa research.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- SPAIN -->
+
+        <button
+          type="button"
+          class="destination-card reveal-scale stagger-item"
+          data-country="spain"
+          aria-label="View Spain visa guide"
+        >
+
+          <img
+            src="/images/spain.png"
+            alt="Spain"
+            loading="lazy"
+          >
+
+          <div class="destination-card-content">
+
+            <span class="destination-code">
+              ES
+            </span>
+
+            <h3>
+              Spain
+            </h3>
+
+            <p>
+              Explore visa preparation information.
+            </p>
+
+          </div>
+
+        </button>
 
       </div>
 
     </div>
 
-
-    <div
-      class="visa-modal-body"
-      id="visaModalBody"
-    >
-      <!-- JavaScript inserts content here -->
-    </div>
+  </section>
 
 
-    <div class="visa-modal-footer">
 
-      <a
-        href="/contact.html"
-        class="button button-primary"
+  <!-- =================================================
+       VISA GUIDE MODAL
+  ================================================== -->
+
+  <dialog
+    class="visa-modal"
+    id="visaModal"
+    aria-labelledby="visaModalTitle"
+  >
+
+    <div class="visa-modal-content">
+
+      <button
+        type="button"
+        class="visa-modal-close"
+        id="visaModalClose"
+        aria-label="Close visa guide"
       >
-        Get Professional Guidance
-        <span aria-hidden="true">→</span>
-      </a>
+        ×
+      </button>
+
+
+      <div class="visa-modal-header">
+
+        <span
+          class="visa-modal-code"
+          id="visaModalCode"
+        >
+          CA
+        </span>
+
+        <div>
+
+          <span class="eyebrow">
+            Visa Guide
+          </span>
+
+          <h2 id="visaModalTitle">
+            Canada
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="visa-modal-body"
+        id="visaModalBody"
+      >
+        <!-- JavaScript inserts content here -->
+      </div>
+
+
+      <div class="visa-modal-footer">
+
+        <a
+          href="/contact.html"
+          class="button button-primary"
+        >
+          Get Professional Guidance
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div>
 
     </div>
 
-  </div>
+  </dialog>
 
-</dialog>
 
-    <!-- =================================================
-         HOW TO USE GUIDE
-    ================================================== -->
 
-    <section class="section">
+  <!-- =================================================
+       HOW TO USE GUIDE
+  ================================================== -->
 
-      <div class="container">
+  <section class="section">
 
-        <div class="guide-layout">
+    <div class="container">
 
-          <div class="guide-content">
+      <div class="guide-layout">
 
-            <span class="eyebrow">
-              Before You Apply
-            </span>
+        <div class="guide-content reveal-left">
 
-            <h2>
-              Start With the Right Information
-            </h2>
+          <span class="eyebrow">
+            Before You Apply
+          </span>
 
-            <p>
-              A successful visa application begins with
-              understanding the purpose of your trip,
-              selecting the appropriate visa category and
-              preparing the required supporting documents.
-            </p>
+          <h2>
+            Start With the Right Information
+          </h2>
 
-            <p>
-              Visa rules differ from one country to another,
-              and requirements can also depend on your
-              personal circumstances, travel purpose and
-              intended length of stay.
-            </p>
+          <p>
+            A successful visa application begins with
+            understanding the purpose of your trip,
+            selecting the appropriate visa category and
+            preparing the required supporting documents.
+          </p>
 
+          <p>
+            Visa rules differ from one country to another,
+            and requirements can also depend on your
+            personal circumstances, travel purpose and
+            intended length of stay.
+          </p>
+
+
+          <h3>
+            What should you check?
+          </h3>
+
+          <ul class="guide-list">
+
+            <li>
+              The purpose and duration of your trip
+            </li>
+
+            <li>
+              The visa category that matches your plans
+            </li>
+
+            <li>
+              Passport validity and travel history
+            </li>
+
+            <li>
+              Financial and supporting documentation
+            </li>
+
+            <li>
+              Application forms and appointment requirements
+            </li>
+
+            <li>
+              Current processing and submission instructions
+            </li>
+
+          </ul>
+
+
+          <h3>
+            Why preparation matters
+          </h3>
+
+          <p>
+            Missing information or inconsistent documents
+            can create unnecessary delays. Preparing early
+            gives you time to identify gaps and make sure
+            your application is presented clearly.
+          </p>
+
+        </div>
+
+
+        <aside class="guide-sidebar reveal-right">
+
+          <div class="side-card">
 
             <h3>
-              What should you check?
+              Helpful Resources
             </h3>
 
-            <ul class="guide-list">
+            <p>
+              Continue your research with our other
+              information resources.
+            </p>
+
+            <ul class="side-links">
 
               <li>
-                The purpose and duration of your trip
+                <a href="blog.html">
+                  Blog
+                  <span>→</span>
+                </a>
               </li>
 
               <li>
-                The visa category that matches your plans
+                <a href="faqs.html">
+                  FAQs
+                  <span>→</span>
+                </a>
               </li>
 
               <li>
-                Passport validity and travel history
+                <a href="checklists.html">
+                  Checklists
+                  <span>→</span>
+                </a>
               </li>
 
               <li>
-                Financial and supporting documentation
-              </li>
-
-              <li>
-                Application forms and appointment requirements
-              </li>
-
-              <li>
-                Current processing and submission instructions
+                <a href="news.html">
+                  Latest News
+                  <span>→</span>
+                </a>
               </li>
 
             </ul>
 
-
-            <h3>
-              Why preparation matters
-            </h3>
-
-            <p>
-              Missing information or inconsistent documents
-              can create unnecessary delays. Preparing early
-              gives you time to identify gaps and make sure
-              your application is presented clearly.
-            </p>
-
           </div>
 
 
-          <aside class="guide-sidebar">
+          <div class="side-card">
 
-            <div class="side-card">
+            <h3>
+              Need Personal Guidance?
+            </h3>
 
-              <h3>
-                Helpful Resources
-              </h3>
+            <p>
+              If you are unsure about your next step,
+              our team can help you understand your
+              available options.
+            </p>
 
-              <p>
-                Continue your research with our other
-                information resources.
-              </p>
+            <a
+              href="/contact.html"
+              class="button button-primary"
+            >
+              Contact Pedani
+            </a>
 
-              <ul class="side-links">
+          </div>
 
-                <li>
-                  <a href="blog.html">
-                    Blog
-                    <span>→</span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="faqs.html">
-                    FAQs
-                    <span>→</span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="checklists.html">
-                    Checklists
-                    <span>→</span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="news.html">
-                    Latest News
-                    <span>→</span>
-                  </a>
-                </li>
-
-              </ul>
-
-            </div>
-
-
-            <div class="side-card">
-
-              <h3>
-                Need Personal Guidance?
-              </h3>
-
-              <p>
-                If you are unsure about your next step,
-                our team can help you understand your
-                available options.
-              </p>
-
-              <a
-                href="/contact.html"
-                class="button button-primary"
-              >
-                Contact Pedani
-              </a>
-
-            </div>
-
-          </aside>
-
-        </div>
+        </aside>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
 
-    <!-- =================================================
-         APPLICATION STEPS
-    ================================================== -->
+  <!-- =================================================
+       APPLICATION STEPS
+  ================================================== -->
 
-    <section class="section steps">
+  <section class="section steps">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="section-heading">
+      <div class="section-heading reveal">
 
-          <span class="eyebrow">
-            Application Roadmap
+        <span class="eyebrow">
+          Application Roadmap
+        </span>
+
+        <h2>
+          A Clearer Way to Prepare
+        </h2>
+
+        <p>
+          While every application is different, these
+          general stages can help you organise your
+          preparation.
+        </p>
+
+      </div>
+
+
+      <div class="steps-grid">
+
+        <article class="step reveal stagger-item">
+
+          <span class="step-number">
+            1
           </span>
 
-          <h2>
-            A Clearer Way to Prepare
-          </h2>
+          <h3>
+            Identify Your Route
+          </h3>
 
           <p>
-            While every application is different, these
-            general stages can help you organise your
-            preparation.
+            Establish your travel purpose and research
+            the appropriate visa category.
+          </p>
+
+        </article>
+
+
+        <article class="step reveal stagger-item">
+
+          <span class="step-number">
+            2
+          </span>
+
+          <h3>
+            Gather Documents
+          </h3>
+
+          <p>
+            Prepare your passport, forms and supporting
+            documentation.
+          </p>
+
+        </article>
+
+
+        <article class="step reveal stagger-item">
+
+          <span class="step-number">
+            3
+          </span>
+
+          <h3>
+            Submit Carefully
+          </h3>
+
+          <p>
+            Review your information before submitting
+            your application through the appropriate channel.
+          </p>
+
+        </article>
+
+
+        <article class="step reveal stagger-item">
+
+          <span class="step-number">
+            4
+          </span>
+
+          <h3>
+            Track Your Application
+          </h3>
+
+          <p>
+            Keep your records organised and follow the
+            relevant instructions after submission.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =================================================
+       IMPORTANT NOTICE
+  ================================================== -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="notice reveal-scale">
+
+        <span class="notice-icon">
+          !
+        </span>
+
+        <div>
+
+          <strong>
+            Important Visa Information
+          </strong>
+
+          <p>
+            Visa requirements, application procedures,
+            fees and processing arrangements can change.
+            Always confirm current requirements with the
+            relevant government or visa authority before
+            submitting an application. Pedani's guides
+            are provided for general information and do
+            not replace official immigration guidance.
           </p>
 
         </div>
 
+      </div>
 
-        <div class="steps-grid">
+    </div>
 
-          <article class="step">
-
-            <span class="step-number">
-              1
-            </span>
-
-            <h3>
-              Identify Your Route
-            </h3>
-
-            <p>
-              Establish your travel purpose and research
-              the appropriate visa category.
-            </p>
-
-          </article>
+  </section>
 
 
-          <article class="step">
 
-            <span class="step-number">
-              2
-            </span>
+  <!-- =================================================
+       CTA
+  ================================================== -->
 
-            <h3>
-              Gather Documents
-            </h3>
+  <section class="cta">
 
-            <p>
-              Prepare your passport, forms and supporting
-              documentation.
-            </p>
+    <div class="container">
 
-          </article>
+      <div class="cta-card reveal-scale">
 
+        <h2>
+          Not sure which visa option fits your plans?
+        </h2>
 
-          <article class="step">
+        <p>
+          Tell us where you want to go and what you
+          intend to do there. Our team can help you
+          understand the next steps and the documents
+          you may need to prepare.
+        </p>
 
-            <span class="step-number">
-              3
-            </span>
-
-            <h3>
-              Submit Carefully
-            </h3>
-
-            <p>
-              Review your information before submitting
-              your application through the appropriate channel.
-            </p>
-
-          </article>
-
-
-          <article class="step">
-
-            <span class="step-number">
-              4
-            </span>
-
-            <h3>
-              Track Your Application
-            </h3>
-
-            <p>
-              Keep your records organised and follow the
-              relevant instructions after submission.
-            </p>
-
-          </article>
-
-        </div>
+        <a
+          href="/contact.html"
+          class="button"
+        >
+          Talk to Pedani
+        </a>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
+
+</main>
 
 
 
-    <!-- =================================================
-         IMPORTANT NOTICE
-    ================================================== -->
+<!-- ===================================================
+     FOOTER
+==================================================== -->
 
-    <section class="section">
-
-      <div class="container">
-
-        <div class="notice">
-
-          <span class="notice-icon">
-            !
-          </span>
-
-          <div>
-
-            <strong>
-              Important Visa Information
-            </strong>
-
-            <p>
-              Visa requirements, application procedures,
-              fees and processing arrangements can change.
-              Always confirm current requirements with the
-              relevant government or visa authority before
-              submitting an application. Pedani's guides
-              are provided for general information and do
-              not replace official immigration guidance.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         CTA
-    ================================================== -->
-
-    <section class="cta">
-
-      <div class="container">
-
-        <div class="cta-card">
-
-          <h2>
-            Not sure which visa option fits your plans?
-          </h2>
-
-          <p>
-            Tell us where you want to go and what you
-            intend to do there. Our team can help you
-            understand the next steps and the documents
-            you may need to prepare.
-          </p>
-
-          <a
-            href="/contact.html"
-            class="button"
-          >
-            Talk to Pedani
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- ===================================================
-       FOOTER
-  ==================================================== -->
-
-  <footer class="footer">
+<footer class="footer">
 
   <div class="footer-main">
 
     <div class="footer-brand">
+
       <div class="footer-logo">
-        <img src="/images/logo 3 modified.png"
-          alt="Pedani Migration Services">
+        <img
+          src="/images/logo 3 modified.png"
+          alt="Pedani Migration Services"
+        >
       </div>
 
       <p>
@@ -3018,43 +3366,114 @@
       </p>
 
       <div class="social-links">
-        <a href="https://x.com/odalopeezie?s=11" aria-label="Twitter">
+
+        <a
+          href="https://x.com/odalopeezie?s=11"
+          aria-label="Twitter"
+        >
           <i class="fa-brands fa-x-twitter"></i>
         </a>
-        <a href="tel:+2347039112857" aria-label="Whatsapp">
+
+        <a
+          href="tel:+2347039112857"
+          aria-label="Whatsapp"
+        >
           <i class="fa-brands fa-whatsapp"></i>
         </a>
+
       </div>
+
     </div>
 
-    <div class="footer-column">
-      <h4>Quick Links</h4>
-      <a href="/">Home</a>
-      <a href="/about.html">About Us</a>
-      <a href="/services.html">Services</a>
-      <a href="/destinations.html">Destinations</a>
-      <a href="/contact.html">Contact</a>
-    </div>
 
     <div class="footer-column">
-      <h4>Our Services</h4>
-      <a href="#">Visa On Arrival</a>
-      <a href="#">Transit Visa</a>
-      <a href="#">Maternity Visa</a>
-      <a href="#">Flight Tickets</a>
+
+      <h4>
+        Quick Links
+      </h4>
+
+      <a href="/">
+        Home
+      </a>
+
+      <a href="/about.html">
+        About Us
+      </a>
+
+      <a href="/services.html">
+        Services
+      </a>
+
+      <a href="/destinations.html">
+        Destinations
+      </a>
+
+      <a href="/contact.html">
+        Contact
+      </a>
+
     </div>
 
+
     <div class="footer-column">
-      <h4>Resources</h4>
-      <a href="/pages/visa-guides.html">Visa Guides</a>
-<a href="/pages/blog.html">Blog</a>
-<a href="/pages/faqs.html">FAQs</a>
-<a href="/pages/checklists.html">Checklists</a>
-<a href="/pages/news.html">News</a>
+
+      <h4>
+        Our Services
+      </h4>
+
+      <a href="#">
+        Visa On Arrival
+      </a>
+
+      <a href="#">
+        Transit Visa
+      </a>
+
+      <a href="#">
+        Maternity Visa
+      </a>
+
+      <a href="#">
+        Flight Tickets
+      </a>
+
     </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        Resources
+      </h4>
+
+      <a href="/pages/visa-guides.html">
+        Visa Guides
+      </a>
+
+      <a href="/pages/blog.html">
+        Blog
+      </a>
+
+      <a href="/pages/faqs.html">
+        FAQs
+      </a>
+
+      <a href="/pages/checklists.html">
+        Checklists
+      </a>
+
+      <a href="/pages/news.html">
+        News
+      </a>
+
+    </div>
+
 
     <div class="footer-column contact">
-      <h4>Contact Us</h4>
+
+      <h4>
+        Contact Us
+      </h4>
 
       <a href="tel:+2347039112857">
         <i class="fa-solid fa-phone"></i>
@@ -3070,476 +3489,686 @@
         <i class="fa-solid fa-location-dot"></i>
         Lagos, Nigeria
       </span>
+
     </div>
 
   </div>
 
+
   <div class="footer-bottom">
-    <p>© 2025 Pedani Migration Services. All rights reserved.</p>
+
+    <p>
+      © 2025 Pedani Migration Services.
+      All rights reserved.
+    </p>
 
     <div>
-      <a href="#">Privacy Policy</a>
+
+      <a href="#">
+        Privacy Policy
+      </a>
+
       <span>|</span>
-      <a href="#">Terms & Conditions</a>
+
+      <a href="#">
+        Terms & Conditions
+      </a>
+
     </div>
+
   </div>
 
 </footer>
 
 
-  <!-- ===================================================
-       SIMPLE DESTINATION SEARCH
-  ==================================================== -->
 
-  <script>
-    const searchInput =
-      document.querySelector("#destination-search");
+<!-- ===================================================
+     JAVASCRIPT
+==================================================== -->
 
-    const destinationCards =
-      document.querySelectorAll(".destination-card");
+<script>
 
+  /* =====================================================
+     THEME SWITCHER
+     ADDED
+  ===================================================== */
 
-    searchInput?.addEventListener(
-      "input",
-      () => {
+  const themeToggle =
+    document.querySelector("#themeToggle");
 
-        const query =
-          searchInput.value
-            .trim()
-            .toLowerCase();
+  const themeIcon =
+    document.querySelector("#themeIcon");
 
 
-        destinationCards.forEach(card => {
+  function applyTheme(theme) {
 
-          const text =
-            card.textContent.toLowerCase();
+    document.documentElement.dataset.theme =
+      theme;
 
-          card.hidden =
-            query !== "" &&
-            !text.includes(query);
-
-        });
-
-      }
+    localStorage.setItem(
+      "pedani-theme",
+      theme
     );
+
+
+    const darkMode =
+      theme === "dark";
+
+
+    themeIcon.textContent =
+      darkMode
+        ? "☀"
+        : "☾";
+
+
+    themeToggle.setAttribute(
+      "aria-label",
+      darkMode
+        ? "Switch to light mode"
+        : "Switch to dark mode"
+    );
+
+
+    themeToggle.setAttribute(
+      "aria-pressed",
+      String(darkMode)
+    );
+
+  }
+
+
+  function initializeTheme() {
+
+    const savedTheme =
+      localStorage.getItem(
+        "pedani-theme"
+      );
+
+
+    if (savedTheme) {
+
+      applyTheme(savedTheme);
+
+      return;
+    }
+
+
+    const prefersDark =
+      window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+
+    applyTheme(
+      prefersDark
+        ? "dark"
+        : "light"
+    );
+
+  }
+
+
+  themeToggle?.addEventListener(
+    "click",
+    () => {
+
+      const currentTheme =
+        document.documentElement.dataset.theme ||
+        "light";
+
+
+      applyTheme(
+        currentTheme === "dark"
+          ? "light"
+          : "dark"
+      );
+
+    }
+  );
+
+
+  initializeTheme();
+
+
+
+  /* =====================================================
+     SIMPLE DESTINATION SEARCH
+  ===================================================== */
+
+  const searchInput =
+    document.querySelector("#visa-search");
+
+  const destinationCards =
+    document.querySelectorAll(".destination-card");
+
+
+  searchInput?.addEventListener(
+    "input",
+    () => {
+
+      const query =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+
+      destinationCards.forEach(card => {
+
+        const text =
+          card.textContent.toLowerCase();
+
+
+        card.hidden =
+          query !== "" &&
+          !text.includes(query);
+
+      });
+
+    }
+  );
+
+
 
   /* =====================================================
      VISA GUIDE MODAL
   ===================================================== */
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    const modal =
-      document.querySelector("#visaModal");
+      const modal =
+        document.querySelector("#visaModal");
 
-    const modalTitle =
-      document.querySelector("#visaModalTitle");
+      const modalTitle =
+        document.querySelector("#visaModalTitle");
 
-    const modalCode =
-      document.querySelector("#visaModalCode");
+      const modalCode =
+        document.querySelector("#visaModalCode");
 
-    const modalBody =
-      document.querySelector("#visaModalBody");
+      const modalBody =
+        document.querySelector("#visaModalBody");
 
-    const closeButton =
-      document.querySelector("#visaModalClose");
+      const closeButton =
+        document.querySelector("#visaModalClose");
 
-    const destinationCards =
-      document.querySelectorAll(
-        ".destination-card"
-      );
-
-
-    if (
-      !modal ||
-      !modalTitle ||
-      !modalCode ||
-      !modalBody ||
-      !closeButton ||
-      !destinationCards.length
-    ) {
-      return;
-    }
+      const destinationCards =
+        document.querySelectorAll(
+          ".destination-card"
+        );
 
 
-    /* =================================================
-       DESTINATION DATA
-    ================================================= */
-
-    const visaGuides = {
-
-      canada: {
-        name: "Canada",
-        code: "CA",
-
-        description:
-          "Canada offers several visa pathways depending on the purpose of your journey, including study, visitor and other temporary travel options.",
-
-        categories: [
-          "Study Permit",
-          "Visitor Visa",
-          "Work Permit"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Completed application forms",
-          "Proof of financial support",
-          "Supporting documents related to your purpose of travel",
-          "Additional documents where required"
-        ]
-      },
-
-
-      uk: {
-        name: "United Kingdom",
-        code: "UK",
-
-        description:
-          "The United Kingdom has different immigration and visit routes depending on whether you intend to study, work, visit or undertake another permitted activity.",
-
-        categories: [
-          "Student Visa",
-          "Standard Visitor Visa",
-          "Work Visa"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Application information",
-          "Financial evidence where applicable",
-          "Supporting documents",
-          "Evidence relevant to your chosen visa route"
-        ]
-      },
-
-
-      australia: {
-        name: "Australia",
-        code: "AU",
-
-        description:
-          "Australia provides different visa pathways for visitors, students and eligible workers. The appropriate option depends on your purpose and circumstances.",
-
-        categories: [
-          "Student Visa",
-          "Visitor Visa",
-          "Work-related Visas"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Visa application information",
-          "Financial evidence where applicable",
-          "Evidence supporting your travel purpose",
-          "Additional supporting documents"
-        ]
-      },
-
-
-      germany: {
-        name: "Germany",
-        code: "DE",
-
-        description:
-          "Germany offers several visa routes for visitors, students and people pursuing eligible employment or other long-term purposes.",
-
-        categories: [
-          "Student Visa",
-          "Schengen Visitor Visa",
-          "Employment-related Visas"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Completed application",
-          "Proof of financial means where required",
-          "Travel or study documentation",
-          "Supporting evidence for your visa category"
-        ]
-      },
-
-
-      ireland: {
-        name: "Ireland",
-        code: "IE",
-
-        description:
-          "Ireland's visa requirements depend on the purpose and duration of your proposed stay, with different routes for visitors, students and other eligible travellers.",
-
-        categories: [
-          "Study Visa",
-          "Short Stay Visa",
-          "Employment-related Routes"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Application documentation",
-          "Evidence of financial circumstances",
-          "Accommodation or travel information where applicable",
-          "Supporting documents"
-        ]
-      },
-
-
-      dubai: {
-  name: "Dubai",
-  code: "AE",
-
-  description:
-    "Dubai offers a range of entry options for travellers visiting for tourism, business or other permitted purposes. The appropriate visa route depends on the purpose and length of your stay.",
-
-  categories: [
-    "Tourist Visa",
-    "Visit Visa",
-    "Transit Visa"
-  ],
-
-  documents: [
-    "International passport valid for at least 6 months",
-    "Recent passport photograph with a suitable background",
-    "Completed visa application details",
-    "Travel information where applicable",
-    "Additional supporting documents depending on the visa type"
-  ]
-},
-
-
-      italy: {
-        name: "Italy",
-        code: "IT",
-
-        description:
-          "Italy offers short-stay and long-stay visa routes depending on your travel purpose, nationality and intended duration of stay.",
-
-        categories: [
-          "Schengen Visitor Visa",
-          "Study Visa",
-          "Long-Stay Visa Routes"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Application documentation",
-          "Proof of accommodation where required",
-          "Financial evidence",
-          "Supporting travel or study documents"
-        ]
-      },
-
-
-      spain: {
-        name: "Spain",
-        code: "ES",
-
-        description:
-          "Spain has different visa options for short visits, study and other longer-term purposes. Requirements depend on the route you choose.",
-
-        categories: [
-          "Schengen Visitor Visa",
-          "Study Visa",
-          "Long-Stay Visa Routes"
-        ],
-
-        documents: [
-          "Valid passport",
-          "Completed application",
-          "Financial evidence where applicable",
-          "Travel or study documentation",
-          "Supporting documents"
-        ]
-      }
-
-    };
-
-
-
-    /* =================================================
-       CREATE MODAL CONTENT
-    ================================================= */
-
-    function openVisaGuide(country) {
-
-      const guide =
-        visaGuides[country];
-
-      if (!guide) {
+      if (
+        !modal ||
+        !modalTitle ||
+        !modalCode ||
+        !modalBody ||
+        !closeButton ||
+        !destinationCards.length
+      ) {
         return;
       }
 
 
-      modalTitle.textContent =
-        guide.name;
+      /* =================================================
+         DESTINATION DATA
+      ================================================= */
 
-      modalCode.textContent =
-        guide.code;
+      const visaGuides = {
 
+        canada: {
 
-      modalBody.innerHTML = `
+          name: "Canada",
 
-        <h3>
-          About the Visa Options
-        </h3>
+          code: "CA",
 
-        <p>
-          ${guide.description}
-        </p>
+          description:
+            "Canada offers several visa pathways depending on the purpose of your journey, including study, visitor and other temporary travel options.",
 
+          categories: [
+            "Study Permit",
+            "Visitor Visa",
+            "Work Permit"
+          ],
 
-        <h3>
-          Common Visa Categories
-        </h3>
+          documents: [
+            "Valid passport",
+            "Completed application forms",
+            "Proof of financial support",
+            "Supporting documents related to your purpose of travel",
+            "Additional documents where required"
+          ]
 
-        <ul>
-          ${guide.categories
-            .map(
-              category =>
-                `<li>${category}</li>`
-            )
-            .join("")}
-        </ul>
-
-
-        <h3>
-          Documents You May Need
-        </h3>
-
-        <ul>
-          ${guide.documents
-            .map(
-              document =>
-                `<li>${document}</li>`
-            )
-            .join("")}
-        </ul>
+        },
 
 
-        <p>
-          Visa requirements can change depending on
-          current immigration rules and your individual
-          circumstances. Always verify the latest
-          requirements with the relevant official
-          authority before applying.
-        </p>
+        uk: {
 
-      `;
+          name: "United Kingdom",
 
+          code: "UK",
 
-      modal.showModal();
+          description:
+            "The United Kingdom has different immigration and visit routes depending on whether you intend to study, work, visit or undertake another permitted activity.",
 
-      document.body.style.overflow =
-        "hidden";
+          categories: [
+            "Student Visa",
+            "Standard Visitor Visa",
+            "Work Visa"
+          ],
 
-    }
+          documents: [
+            "Valid passport",
+            "Application information",
+            "Financial evidence where applicable",
+            "Supporting documents",
+            "Evidence relevant to your chosen visa route"
+          ]
 
-
-    /* =================================================
-       CLOSE MODAL
-    ================================================= */
-
-    function closeVisaGuide() {
-
-      modal.close();
-
-      document.body.style.overflow =
-        "";
-
-    }
+        },
 
 
-    /* =================================================
-       CARD CLICK
-    ================================================= */
+        australia: {
 
-    destinationCards.forEach(card => {
+          name: "Australia",
 
-      card.addEventListener(
-        "click",
-        () => {
+          code: "AU",
 
-          const country =
-            card.dataset.country;
+          description:
+            "Australia provides different visa pathways for visitors, students and eligible workers. The appropriate option depends on your purpose and circumstances.",
 
-          openVisaGuide(country);
+          categories: [
+            "Student Visa",
+            "Visitor Visa",
+            "Work-related Visas"
+          ],
+
+          documents: [
+            "Valid passport",
+            "Visa application information",
+            "Financial evidence where applicable",
+            "Evidence supporting your travel purpose",
+            "Additional supporting documents"
+          ]
+
+        },
+
+
+        germany: {
+
+          name: "Germany",
+
+          code: "DE",
+
+          description:
+            "Germany offers several visa routes for visitors, students and people pursuing eligible employment or other long-term purposes.",
+
+          categories: [
+            "Student Visa",
+            "Schengen Visitor Visa",
+            "Employment-related Visas"
+          ],
+
+          documents: [
+            "Valid passport",
+            "Completed application",
+            "Proof of financial means where required",
+            "Travel or study documentation",
+            "Supporting evidence for your visa category"
+          ]
+
+        },
+
+
+        ireland: {
+
+          name: "Ireland",
+
+          code: "IE",
+
+          description:
+            "Ireland's visa requirements depend on the purpose and duration of your proposed stay, with different routes for visitors, students and other eligible travellers.",
+
+          categories: [
+            "Study Visa",
+            "Short Stay Visa",
+            "Employment-related Routes"
+          ],
+
+          documents: [
+            "Valid passport",
+            "Application documentation",
+            "Evidence of financial circumstances",
+            "Accommodation or travel information where applicable",
+            "Supporting documents"
+          ]
+
+        },
+
+
+        dubai: {
+
+          name: "Dubai",
+
+          code: "AE",
+
+          description:
+            "Dubai offers a range of entry options for travellers visiting for tourism, business or other permitted purposes. The appropriate visa route depends on the purpose and length of your stay.",
+
+          categories: [
+            "Tourist Visa",
+            "Visit Visa",
+            "Transit Visa"
+          ],
+
+          documents: [
+            "International passport valid for at least 6 months",
+            "Recent passport photograph with a suitable background",
+            "Completed visa application details",
+            "Travel information where applicable",
+            "Additional supporting documents depending on the visa type"
+          ]
+
+        },
+
+
+        italy: {
+
+          name: "Italy",
+
+          code: "IT",
+
+          description:
+            "Italy offers short-stay and long-stay visa routes depending on your travel purpose, nationality and intended duration of stay.",
+
+          categories: [
+            "Schengen Visitor Visa",
+            "Study Visa",
+            "Long-Stay Visa Routes"
+          ],
+
+          documents: [
+            "Valid passport",
+            "Application documentation",
+            "Proof of accommodation where required",
+            "Financial evidence",
+            "Supporting travel or study documents"
+          ]
+
+        },
+
+
+        spain: {
+
+          name: "Spain",
+
+          code: "ES",
+
+          description:
+            "Spain has different visa options for short visits, study and other longer-term purposes. Requirements depend on the route you choose.",
+
+          categories: [
+            "Schengen Visitor Visa",
+            "Study Visa",
+            "Long-Stay Visa Routes"
+          ],
+
+          documents: [
+            "Valid passport",
+            "Completed application",
+            "Financial evidence where applicable",
+            "Travel or study documentation",
+            "Supporting documents"
+          ]
 
         }
-      );
 
-    });
-
-
-    /* =================================================
-       CLOSE BUTTON
-    ================================================= */
-
-    closeButton.addEventListener(
-      "click",
-      closeVisaGuide
-    );
+      };
 
 
-    /* =================================================
-       CLICK BACKDROP TO CLOSE
-    ================================================= */
 
-    modal.addEventListener(
-      "click",
-      event => {
+      /* =================================================
+         CREATE MODAL CONTENT
+      ================================================= */
 
-        if (
-          event.target === modal
-        ) {
+      function openVisaGuide(country) {
 
-          closeVisaGuide();
+        const guide =
+          visaGuides[country];
 
+
+        if (!guide) {
+          return;
         }
+
+
+        modalTitle.textContent =
+          guide.name;
+
+
+        modalCode.textContent =
+          guide.code;
+
+
+        modalBody.innerHTML = `
+
+          <h3>
+            About the Visa Options
+          </h3>
+
+          <p>
+            ${guide.description}
+          </p>
+
+
+          <h3>
+            Common Visa Categories
+          </h3>
+
+          <ul>
+            ${guide.categories
+              .map(
+                category =>
+                  `<li>${category}</li>`
+              )
+              .join("")}
+          </ul>
+
+
+          <h3>
+            Documents You May Need
+          </h3>
+
+          <ul>
+            ${guide.documents
+              .map(
+                document =>
+                  `<li>${document}</li>`
+              )
+              .join("")}
+          </ul>
+
+
+          <p>
+            Visa requirements can change depending on
+            current immigration rules and your individual
+            circumstances. Always verify the latest
+            requirements with the relevant official
+            authority before applying.
+          </p>
+
+        `;
+
+
+        modal.showModal();
+
+
+        document.body.style.overflow =
+          "hidden";
 
       }
-    );
 
 
-    /* =================================================
-       ESCAPE KEY
-       <dialog> normally handles this itself,
-       but restore body scrolling.
-    ================================================= */
 
-    modal.addEventListener(
-      "close",
-      () => {
+      /* =================================================
+         CLOSE MODAL
+      ================================================= */
+
+      function closeVisaGuide() {
+
+        modal.close();
+
 
         document.body.style.overflow =
           "";
 
       }
-    );
 
-  });
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.querySelector("#visa-search");
-  const destinationCards = document.querySelectorAll(".destination-card");
 
-  if (!searchInput || !destinationCards.length) return;
+      /* =================================================
+         CARD CLICK
+      ================================================= */
 
-  searchInput.addEventListener("input", () => {
-    const searchTerm = searchInput.value
-      .trim()
-      .toLowerCase();
+      destinationCards.forEach(card => {
 
-    destinationCards.forEach(card => {
-      const searchableText = card.textContent.toLowerCase();
+        card.addEventListener(
+          "click",
+          () => {
 
-      const matches = searchableText.includes(searchTerm);
+            const country =
+              card.dataset.country;
 
-      card.hidden = !matches;
+
+            openVisaGuide(country);
+
+          }
+        );
+
+      });
+
+
+
+      /* =================================================
+         CLOSE BUTTON
+      ================================================= */
+
+      closeButton.addEventListener(
+        "click",
+        closeVisaGuide
+      );
+
+
+
+      /* =================================================
+         CLICK BACKDROP TO CLOSE
+      ================================================= */
+
+      modal.addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target === modal
+          ) {
+
+            closeVisaGuide();
+
+          }
+
+        }
+      );
+
+
+
+      /* =================================================
+         ESCAPE KEY
+      ================================================= */
+
+      modal.addEventListener(
+        "close",
+        () => {
+
+          document.body.style.overflow =
+            "";
+
+        }
+      );
+
     });
-  });
-});
 
-  </script>
 
-  
+
+  /* =====================================================
+     ADDED:
+     INTERSECTION OBSERVER SCROLL ANIMATIONS
+  ===================================================== */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      const animatedElements =
+        document.querySelectorAll(
+          ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+        );
+
+
+      if (!animatedElements.length) {
+        return;
+      }
+
+
+      const motionObserver =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(entry => {
+
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
+
+
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+
+              motionObserver.unobserve(
+                entry.target
+              );
+
+            });
+
+          },
+          {
+            threshold: 0.12,
+
+            rootMargin:
+              "0px 0px -50px 0px"
+          }
+        );
+
+
+      animatedElements.forEach(
+        element => {
+
+          motionObserver.observe(
+            element
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+</script>
+
+
 </body>
 </html>

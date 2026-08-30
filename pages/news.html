@@ -71,6 +71,76 @@
       --container:
         min(1180px, calc(100% - 2rem));
 
+
+      /* =================================================
+         ADDED: THEME TRANSITIONS
+      ================================================== */
+
+      --theme-transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+      /* ADDED: SCROLL ANIMATION SETTINGS */
+
+      --reveal-distance: 42px;
+
+      --reveal-duration:
+        0.75s;
+
+      --reveal-ease:
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        );
+
+    }
+
+
+    /* =================================================
+       ADDED: DARK THEME
+    ================================================== */
+
+    html[data-theme="dark"] {
+
+      --primary: #5B9BD5;
+      --primary-dark: #8AB7DF;
+
+      --accent: #5FA8E8;
+      --accent-dark: #91C2EC;
+
+      --background: #0B131D;
+
+      --surface: #111C27;
+
+      --surface-soft: #172432;
+
+      --surface-light-blue: #162B3F;
+
+      --surface-light-blue-text: #82BFFF;
+
+      --text: #F1F5F9;
+
+      --text-muted: #9EACBB;
+
+      --text-light: #F8FAFC;
+
+      --border: #2A3948;
+
+      --gold: #F2B84B;
+
+      --shadow-sm:
+        0 4px 14px rgba(0, 0, 0, 0.25);
+
+      --shadow-md:
+        0 12px 35px rgba(0, 0, 0, 0.34);
+
+      --shadow-lg:
+        0 22px 55px rgba(0, 0, 0, 0.45);
+
     }
 
 
@@ -107,6 +177,11 @@
         sans-serif;
 
       line-height: 1.6;
+
+      /* ADDED */
+
+      transition:
+        var(--theme-transition);
     }
 
 
@@ -163,6 +238,24 @@
 
       -webkit-backdrop-filter:
         blur(16px);
+
+      /* ADDED */
+
+      transition:
+        var(--theme-transition);
+    }
+
+
+    /* =================================================
+       ADDED: DARK HEADER
+    ================================================== */
+
+    html[data-theme="dark"]
+    .site-header {
+
+      background:
+        rgba(17, 28, 39, 0.94);
+
     }
 
 
@@ -435,6 +528,89 @@
 
 
 /* =====================================================
+   ADDED: THEME SWITCHER
+===================================================== */
+
+.theme-switch {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 50%;
+
+  background:
+    var(--surface);
+
+  color:
+    var(--text);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.theme-switch:hover {
+  transform:
+    translateY(-2px)
+    rotate(5deg);
+
+  border-color:
+    var(--primary);
+
+  color:
+    var(--primary);
+}
+
+
+.theme-switch:focus-visible {
+  outline:
+    3px solid
+    rgba(22, 78, 140, 0.25);
+
+  outline-offset:
+    3px;
+}
+
+
+.theme-switch-icon {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 1.05rem;
+
+  line-height: 1;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.theme-switch:hover
+.theme-switch-icon {
+  transform:
+    rotate(20deg);
+}
+
+
+/* =====================================================
    KEYBOARD FOCUS
 ===================================================== */
 
@@ -524,6 +700,14 @@
     font-size: 0.78rem;
   }
 
+
+  /* ADDED */
+
+  .theme-switch {
+    width: 38px;
+    height: 38px;
+  }
+
 }
 
 
@@ -538,6 +722,8 @@
   }
 
 }
+
+
     /* =================================================
        HERO
     ================================================== */
@@ -560,6 +746,11 @@
         );
 
       color: #fff;
+
+      /* ADDED */
+
+      transition:
+        background 0.35s ease;
     }
 
 
@@ -677,324 +868,378 @@
 
 
     /* =========================================
-   FEATURED NEWS
-========================================= */
+       FEATURED NEWS
+    ========================================= */
 
-.featured-section {
-  width: 100%;
-  padding: clamp(2rem, 5vw, 4rem) 0;
-}
+    .featured-section {
+      width: 100%;
+      padding: clamp(2rem, 5vw, 4rem) 0;
+    }
 
-.featured-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  align-items: stretch;
+    .featured-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: stretch;
 
-  width: 100%;
-  overflow: hidden;
+      width: 100%;
+      overflow: hidden;
 
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--border);
-  border-radius: 1rem;
+      background:
+        rgba(255, 255, 255, 0.92);
 
-  color: var(--text);
+      border:
+        1px solid var(--border);
 
-  box-shadow:
-    0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
-}
-/* =========================================
-   IMAGE
-========================================= */
+      border-radius: 1rem;
 
-.featured-image {
-  position: relative;
-  min-width: 0;
-  overflow: hidden;
-}
+      color: var(--text);
 
-.featured-image img {
-  display: block;
+      box-shadow:
+        0 0.5rem 1.5rem
+        rgba(15, 23, 42, 0.06);
 
-  width: 100%;
-  height: 100%;
+      /* ADDED */
 
-  min-height: 360px;
+      transition:
+        var(--theme-transition);
+    }
 
-  object-fit: cover;
-  object-position: center;
 
-  transition:
-    transform 0.6s cubic-bezier(0.66, -0.44, 0, 2.41);
-}
+    /* ADDED: DARK FEATURED CARD */
 
-.featured-card:hover .featured-image img {
-  transform: scale(1.035);
-}
+    html[data-theme="dark"]
+    .featured-card {
 
+      background:
+        rgba(17, 28, 39, 0.96);
 
-/* =========================================
-   FEATURED BADGE
-========================================= */
+    }
 
-.featured-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
 
-  display: inline-flex;
-  align-items: center;
+    /* =========================================
+       IMAGE
+    ========================================= */
 
-  padding: 0.45rem 0.8rem;
+    .featured-image {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+    }
 
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
+    .featured-image img {
+      display: block;
 
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--accent-dark);
+      width: 100%;
+      height: 100%;
 
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+      min-height: 360px;
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
+      object-fit: cover;
+      object-position: center;
 
+      transition:
+        transform 0.6s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        );
+    }
 
-/* =========================================
-   CONTENT
-========================================= */
+    .featured-card:hover
+    .featured-image img {
+      transform: scale(1.035);
+    }
 
-.featured-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
-  min-width: 0;
+    /* =========================================
+       FEATURED BADGE
+    ========================================= */
 
-  padding: clamp(1.5rem, 4vw, 3rem);
-}
+    .featured-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
 
+      display: inline-flex;
+      align-items: center;
 
-/* =========================================
-   META
-========================================= */
+      padding: 0.45rem 0.8rem;
 
-.featured-content .article-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
 
-  margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--accent-dark);
 
-  color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
 
-  font-size: 0.8rem;
-}
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
 
-.featured-content .article-category {
-  color: var(--accent);
-  font-weight: 700;
-}
 
-.article-meta-dot {
-  width: 4px;
-  height: 4px;
+    /* =========================================
+       CONTENT
+    ========================================= */
 
-  flex: 0 0 auto;
+    .featured-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-  border-radius: 50%;
-  background: var(--text-muted);
-}
+      min-width: 0;
 
+      padding:
+        clamp(1.5rem, 4vw, 3rem);
+    }
 
-/* =========================================
-   HEADING
-========================================= */
 
-.featured-content h2 {
-  max-width: 650px;
+    /* =========================================
+       META
+    ========================================= */
 
-  margin: 0 0 1rem;
+    .featured-content .article-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
 
-  color: var(--text);
+      margin-bottom: 1rem;
 
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  line-height: 1.15;
-  text-wrap: balance;
-}
+      color: var(--text-muted);
 
+      font-size: 0.8rem;
+    }
 
-/* =========================================
-   DESCRIPTION
-========================================= */
+    .featured-content .article-category {
+      color: var(--accent);
+      font-weight: 700;
+    }
 
-.featured-content > p {
-  max-width: 600px;
+    .article-meta-dot {
+      width: 4px;
+      height: 4px;
 
-  margin: 0 0 1.5rem;
+      flex: 0 0 auto;
 
-  color: var(--text-muted);
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
 
-  font-size: 1rem;
-  line-height: 1.7;
-}
 
+    /* =========================================
+       HEADING
+    ========================================= */
 
-/* =========================================
-   READ MORE
-========================================= */
+    .featured-content h2 {
+      max-width: 650px;
 
-.featured-content .read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
+      margin: 0 0 1rem;
 
-  width: fit-content;
+      color: var(--text);
 
-  color: var(--primary);
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      text-wrap: balance;
+    }
 
-  font-weight: 700;
 
-  transition:
-    color 0.3s cubic-bezier(0.66, -0.44, 0, 2.41),
-    gap 0.3s cubic-bezier(0.66, -0.44, 0, 2.41);
-}
+    /* =========================================
+       DESCRIPTION
+    ========================================= */
 
-.featured-content .read-more span {
-  transition:
-    transform 0.3s cubic-bezier(0.66, -0.44, 0, 2.41);
-}
+    .featured-content > p {
+      max-width: 600px;
 
-.featured-content .read-more:hover {
-  color: var(--accent);
-  gap: 0.75rem;
-}
+      margin: 0 0 1.5rem;
 
-.featured-content .read-more:hover span{
-  transform: translateX(3px);
-}
+      color: var(--text-muted);
 
+      font-size: 1rem;
+      line-height: 1.7;
+    }
 
-/* =========================================
-   TABLET
-========================================= */
 
-@media (max-width: 900px) {
+    /* =========================================
+       READ MORE
+    ========================================= */
 
-  .featured-card {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
+    .featured-content .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
 
-  .featured-image img {
-    min-height: 320px;
-  }
+      width: fit-content;
 
-  .featured-content {
-    padding: 2rem;
-  }
+      color: var(--primary);
 
-  .featured-content h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-  }
+      font-weight: 700;
 
-}
+      transition:
+        color 0.3s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        ),
+        gap 0.3s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        );
+    }
+    .featured-content a{
+      text-decoration: none;
+    }
+    .featured-content .read-more span {
+      transition:
+        transform 0.3s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        );
+    }
 
+    .featured-content .read-more:hover {
+      color: var(--accent);
+      gap: 0.75rem;
+    }
 
-/* =========================================
-   MOBILE — ONE COLUMN
-========================================= */
+    .featured-content .read-more:hover span {
+      transform: translateX(3px);
+    }
 
-@media (max-width: 800px) {
 
-  .featured-card {
-    grid-template-columns: 1fr;
-  }
+    /* =========================================
+       TABLET
+    ========================================= */
 
-  .featured-image {
-    width: 100%;
-  }
+    @media (max-width: 900px) {
 
-  .featured-image img {
-    width: 100%;
-    height: auto;
-    min-height: 0;
+      .featured-card {
+        grid-template-columns:
+          minmax(0, 1fr)
+          minmax(0, 1fr);
+      }
 
-    aspect-ratio: 16 / 9;
+      .featured-image img {
+        min-height: 320px;
+      }
 
-    object-fit: cover;
-  }
+      .featured-content {
+        padding: 2rem;
+      }
 
-  .featured-content {
-    padding: clamp(1.25rem, 5vw, 2rem);
-  }
+      .featured-content h2 {
+        font-size:
+          clamp(1.6rem, 3vw, 2.2rem);
+      }
 
-  .featured-content h2 {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-  }
+    }
 
-}
 
+    /* =========================================
+       MOBILE — ONE COLUMN
+    ========================================= */
 
-/* =========================================
-   SMALL PHONES
-========================================= */
+    @media (max-width: 800px) {
 
-@media (max-width: 480px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
 
-  .featured-section {
-    padding: 2rem 0;
-  }
+      .featured-image {
+        width: 100%;
+      }
 
-  .featured-card {
-    border-radius: 0.8rem;
-  }
+      .featured-image img {
+        width: 100%;
+        height: auto;
+        min-height: 0;
 
-  .featured-badge {
-    top: 0.75rem;
-    left: 0.75rem;
+        aspect-ratio: 16 / 9;
 
-    padding: 0.4rem 0.7rem;
+        object-fit: cover;
+      }
 
-    font-size: 0.7rem;
-  }
+      .featured-content {
+        padding:
+          clamp(1.25rem, 5vw, 2rem);
+      }
 
-  .featured-content {
-    padding: 1.25rem;
-  }
+      .featured-content h2 {
+        font-size:
+          clamp(1.5rem, 6vw, 2rem);
+      }
 
-  .featured-content .article-meta {
-    margin-bottom: 0.8rem;
-  }
+    }
 
-  .featured-content > p {
-    font-size: 0.95rem;
-    line-height: 1.65;
-  }
 
-}
+    /* =========================================
+       SMALL PHONES
+    ========================================= */
 
+    @media (max-width: 480px) {
 
-/* =========================================
-   REDUCED MOTION
-========================================= */
+      .featured-section {
+        padding: 2rem 0;
+      }
 
-@media (prefers-reduced-motion: reduce) {
+      .featured-card {
+        border-radius: 0.8rem;
+      }
 
-  .featured-image img,
-  .featured-content .read-more,
-  .featured-content .read-more span {
-    transition: none;
-  }
+      .featured-badge {
+        top: 0.75rem;
+        left: 0.75rem;
 
-  .featured-card:hover .featured-image img {
-    transform: none;
-  }
+        padding:
+          0.4rem 0.7rem;
 
-}
+        font-size: 0.7rem;
+      }
+
+      .featured-content {
+        padding: 1.25rem;
+      }
+
+      .featured-content .article-meta {
+        margin-bottom: 0.8rem;
+      }
+
+      .featured-content > p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+    }
+
+
+    /* =========================================
+       REDUCED MOTION
+    ========================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .featured-image img,
+      .featured-content .read-more,
+      .featured-content .read-more span {
+        transition: none;
+      }
+
+      .featured-card:hover
+      .featured-image img {
+        transform: none;
+      }
+
+    }
 
 
     /* =================================================
@@ -1131,7 +1376,14 @@
 
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(
+            min(100%, 300px),
+            1fr
+          )
+        );
 
       gap: 1.5rem;
 
@@ -1147,7 +1399,6 @@
     .news-card {
       width: 100%;
       min-width: 0;
-
 
       display: block;
       overflow: hidden;
@@ -1177,11 +1428,44 @@
           -0.44,
           0,
           2.41
+        ),
+        background-color 0.35s ease,
+        border-color 0.35s ease;
+
+
+      /* =================================================
+         ADDED:
+         INITIAL SCROLL STATE
+      ================================================== */
+
+      opacity: 0;
+
+      transform:
+        translateY(
+          var(--reveal-distance)
         );
+
     }
+
+
+    /* =================================================
+       ADDED:
+       VISIBLE SCROLL STATE
+    ================================================== */
+
+    .news-card.scroll-visible {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+
+    }
+
+
     .news-card[hidden] {
-  display: none;
-}
+      display: none;
+    }
 
     .news-card:hover {
       transform:
@@ -1193,28 +1477,29 @@
 
 
     .news-image {
-  position: relative;
+      position: relative;
 
-  width: 100%;
-  height: min(220px, 55vw);
+      width: 100%;
+      height: min(220px, 55vw);
 
-  overflow: hidden;
-}
+      overflow: hidden;
+    }
 
-.news-image img {
-  width: 100%;
-  height: 100%;
 
-  object-fit: cover;
+    .news-image img {
+      width: 100%;
+      height: 100%;
 
-  transition:
-    transform 0.55s cubic-bezier(
-      0.66,
-      -0.44,
-      0,
-      2.41
-    );
-}
+      object-fit: cover;
+
+      transition:
+        transform 0.55s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        );
+    }
 
 
     .news-card:hover
@@ -1283,6 +1568,36 @@
       font-size: 0.84rem;
 
       line-height: 1.65;
+    }
+
+
+    /* =================================================
+       ADDED:
+       STAGGER NEWS CARD DELAYS
+    ================================================== */
+
+    .news-card:nth-child(1) {
+      transition-delay: 80ms;
+    }
+
+    .news-card:nth-child(2) {
+      transition-delay: 160ms;
+    }
+
+    .news-card:nth-child(3) {
+      transition-delay: 240ms;
+    }
+
+    .news-card:nth-child(4) {
+      transition-delay: 320ms;
+    }
+
+    .news-card:nth-child(5) {
+      transition-delay: 400ms;
+    }
+
+    .news-card:nth-child(6) {
+      transition-delay: 480ms;
     }
 
 
@@ -1458,104 +1773,184 @@
         rgba(0, 0, 0, 0.15);
     }
 
-.footer {
-  background: var(--primary-dark);
-  color: var(--text-light);
-  padding: 2rem 3rem .75rem;
-}
 
-.footer-main {
-  max-width: 75rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.6fr repeat(3, 1fr) 1.5fr;
-  gap: 2rem;
-}
+    /* =================================================
+       FOOTER
+    ================================================== */
 
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-}
+    .footer {
+      background: var(--primary-dark);
 
-.footer-logo img {
-  width: 7rem;
-  height: auto;
-  object-fit: contain;
-}
+      color: var(--text-light);
 
-.footer-brand p {
-  margin: .6rem 0;
-  color: rgba(255,255,255,.75);
-  font-size: .7rem;
-  line-height: 1.5;
-}
+      padding:
+        2rem 3rem .75rem;
+    }
 
-.social-links {
-  display: flex;
-  gap: .7rem;
-}
 
-.social-links a {
-  width: 1.6rem;
-  height: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light);
-  text-decoration: none;
-  border-radius: 50%;
-  padding: 0.3125rem;
-}
-.social-links a:hover{
-  background-color: var(--primary);
-}
-.footer-column {
-  display: flex;
-  flex-direction: column;
-}
+    .footer-main {
+      max-width: 75rem;
 
-.footer-column h4 {
-  margin: 0 0 .6rem;
-  font-size: .75rem;
-}
+      margin: 0 auto;
 
-.footer-column a,
-.footer-column span {
-  color: rgba(255,255,255,.78);
-  text-decoration: none;
-  font-size: .65rem;
-  line-height: 1.8;
-}
+      display: grid;
 
-.contact a,
-.contact span {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-}
+      grid-template-columns:
+        1.6fr
+        repeat(3, 1fr)
+        1.5fr;
 
-.contact i {
-  width: .8rem;
-  color: var(--text-light);
-}
+      gap: 2rem;
+    }
 
-.footer-bottom {
-  max-width: 75rem;
-  margin: 1.2rem auto 0;
-  padding-top: .7rem;
-  border-top: 1px solid rgba(255,255,255,.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: .6rem;
-}
 
-.footer-bottom p { color: rgba(255,255,255,.7); }
-.footer-bottom div { display: flex; gap: .5rem; }
-.footer-bottom a {
-  color: rgba(255,255,255,.75);
-  text-decoration: none;
-}
+    .footer-brand {
+      display: flex;
+
+      flex-direction: column;
+    }
+
+
+    .footer-logo img {
+      width: 7rem;
+
+      height: auto;
+
+      object-fit: contain;
+    }
+
+
+    .footer-brand p {
+      margin: .6rem 0;
+
+      color:
+        rgba(255,255,255,.75);
+
+      font-size: .7rem;
+
+      line-height: 1.5;
+    }
+
+
+    .social-links {
+      display: flex;
+
+      gap: .7rem;
+    }
+
+
+    .social-links a {
+      width: 1.6rem;
+      height: 1.6rem;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--text-light);
+
+      text-decoration: none;
+
+      border-radius: 50%;
+
+      padding: 0.3125rem;
+    }
+
+
+    .social-links a:hover {
+      background-color:
+        var(--primary);
+    }
+
+
+    .footer-column {
+      display: flex;
+
+      flex-direction: column;
+    }
+
+
+    .footer-column h4 {
+      margin:
+        0 0 .6rem;
+
+      font-size: .75rem;
+    }
+
+
+    .footer-column a,
+    .footer-column span {
+      color:
+        rgba(255,255,255,.78);
+
+      text-decoration: none;
+
+      font-size: .65rem;
+
+      line-height: 1.8;
+    }
+
+
+    .contact a,
+    .contact span {
+      display: flex;
+
+      align-items: center;
+
+      gap: .45rem;
+    }
+
+
+    .contact i {
+      width: .8rem;
+
+      color: var(--text-light);
+    }
+
+
+    .footer-bottom {
+      max-width: 75rem;
+
+      margin:
+        1.2rem auto 0;
+
+      padding-top: .7rem;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.2);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      font-size: .6rem;
+    }
+
+
+    .footer-bottom p {
+      color:
+        rgba(255,255,255,.7);
+    }
+
+
+    .footer-bottom div {
+      display: flex;
+
+      gap: .5rem;
+    }
+
+
+    .footer-bottom a {
+      color:
+        rgba(255,255,255,.75);
+
+      text-decoration: none;
+    }
 
 
     /* =====================================================
@@ -1658,7 +2053,8 @@
       }
 
       .cta-card {
-        padding: 2rem 1.5rem;
+        padding:
+          2rem 1.5rem;
       }
 
       .footer-grid {
@@ -1815,91 +2211,350 @@
 
     }
 
+
+    /* =================================================
+       ARTICLE DIALOG
+    ================================================== */
+
     .article-dialog {
-  width: min(700px, calc(100% - 2rem));
-  max-height: 85vh;
-  padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  background: var(--surface);
-  color: var(--text);
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
-}
+      width:
+        min(700px, calc(100% - 2rem));
 
-.article-dialog::backdrop {
-  background: rgba(15, 23, 42, .6);
-  backdrop-filter: blur(4px);
-}
+      max-height: 85vh;
 
-.article-dialog-content {
-  padding: clamp(1.5rem, 4vw, 3rem);
-  overflow-y: auto;
-}
+      padding: 0;
 
-.article-dialog-category {
-  display: inline-block;
-  margin-bottom: .75rem;
-  color: var(--accent);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
+      border:
+        1px solid var(--border);
 
-.article-dialog-title {
-  margin: 0 0 .75rem;
-  font-size: clamp(1.7rem, 4vw, 2.5rem);
-  line-height: 1.15;
-}
+      border-radius: 1rem;
 
-.article-dialog-meta {
-  margin-bottom: 1.5rem;
-  color: var(--text-muted);
-  font-size: .9rem;
-}
+      background: var(--surface);
 
-.article-dialog-body {
-  color: var(--text);
-  line-height: 1.75;
-}
+      color: var(--text);
 
-.article-dialog-body h3 {
-  margin-top: 1.5rem;
-}
+      box-shadow:
+        0 1.5rem 4rem
+        rgba(0, 0, 0, .2);
 
-.article-dialog-body li {
-  margin-bottom: .5rem;
-}
+      /* ADDED */
 
-.article-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+      transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+    }
 
-  width: 2.25rem;
-  height: 2.25rem;
 
-  border: 1px solid var(--border);
-  border-radius: 50%;
+    .article-dialog::backdrop {
+      background:
+        rgba(15, 23, 42, .6);
 
-  background: var(--surface);
-  color: var(--text);
+      backdrop-filter:
+        blur(4px);
+    }
 
-  font-size: 1.4rem;
-  line-height: 1;
 
-  cursor: pointer;
+    .article-dialog-content {
+      padding:
+        clamp(1.5rem, 4vw, 3rem);
 
-  transition:
-    transform .3s cubic-bezier(0.66, -0.44, 0, 2.41),
-    background-color .3s cubic-bezier(0.66, -0.44, 0, 2.41);
-}
+      overflow-y: auto;
+    }
 
-.article-close:hover {
-  background: var(--primary);
-  color: var(--text-light);
-  transform: rotate(90deg);
-}
+
+    .article-dialog-category {
+      display: inline-block;
+
+      margin-bottom: .75rem;
+
+      color: var(--accent);
+
+      font-size: .8rem;
+
+      font-weight: 700;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+    }
+
+
+    .article-dialog-title {
+      margin:
+        0 0 .75rem;
+
+      color: var(--text);
+
+      font-size:
+        clamp(1.7rem, 4vw, 2.5rem);
+
+      line-height: 1.15;
+    }
+
+
+    .article-dialog-meta {
+      margin-bottom: 1.5rem;
+
+      color: var(--text-muted);
+
+      font-size: .9rem;
+    }
+
+
+    .article-dialog-body {
+      color: var(--text);
+
+      line-height: 1.75;
+    }
+
+
+    .article-dialog-body h3 {
+      margin-top: 1.5rem;
+
+      color: var(--primary-dark);
+    }
+
+
+    .article-dialog-body li {
+      margin-bottom: .5rem;
+    }
+
+
+    .article-close {
+      position: absolute;
+
+      top: 1rem;
+
+      right: 1rem;
+
+      width: 2.25rem;
+
+      height: 2.25rem;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 50%;
+
+      background: var(--surface);
+
+      color: var(--text);
+
+      font-size: 1.4rem;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      transition:
+        transform .3s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        ),
+        background-color .3s cubic-bezier(
+          0.66,
+          -0.44,
+          0,
+          2.41
+        );
+    }
+
+
+    .article-close:hover {
+      background:
+        var(--primary);
+
+      color:
+        var(--text-light);
+
+      transform:
+        rotate(90deg);
+    }
+
+
+    /* =================================================
+       ADDED:
+       GENERAL SCROLL REVEAL
+    ================================================== */
+
+    .scroll-reveal {
+
+      opacity: 0;
+
+      transform:
+        translateY(
+          var(--reveal-distance)
+        );
+
+      transition:
+        opacity var(--reveal-duration)
+          var(--reveal-ease),
+
+        transform var(--reveal-duration)
+          var(--reveal-ease);
+    }
+
+
+    .scroll-reveal.scroll-visible {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =================================================
+       ADDED:
+       LEFT REVEAL
+    ================================================== */
+
+    .scroll-reveal-left {
+
+      opacity: 0;
+
+      transform:
+        translateX(
+          calc(
+            var(--reveal-distance) * -1
+          )
+        );
+
+      transition:
+        opacity var(--reveal-duration)
+          var(--reveal-ease),
+
+        transform var(--reveal-duration)
+          var(--reveal-ease);
+    }
+
+
+    .scroll-reveal-left.scroll-visible {
+
+      opacity: 1;
+
+      transform:
+        translateX(0);
+    }
+
+
+    /* =================================================
+       ADDED:
+       RIGHT REVEAL
+    ================================================== */
+
+    .scroll-reveal-right {
+
+      opacity: 0;
+
+      transform:
+        translateX(
+          var(--reveal-distance)
+        );
+
+      transition:
+        opacity var(--reveal-duration)
+          var(--reveal-ease),
+
+        transform var(--reveal-duration)
+          var(--reveal-ease);
+    }
+
+
+    .scroll-reveal-right.scroll-visible {
+
+      opacity: 1;
+
+      transform:
+        translateX(0);
+    }
+
+
+    /* =================================================
+       ADDED:
+       SCALE REVEAL
+    ================================================== */
+
+    .scroll-reveal-scale {
+
+      opacity: 0;
+
+      transform:
+        scale(.92);
+
+      transition:
+        opacity var(--reveal-duration)
+          var(--reveal-ease),
+
+        transform var(--reveal-duration)
+          var(--reveal-ease);
+    }
+
+
+    .scroll-reveal-scale.scroll-visible {
+
+      opacity: 1;
+
+      transform:
+        scale(1);
+    }
+
+
+    /* =================================================
+       ADDED:
+       STAGGERED REVEALS
+    ================================================== */
+
+    .stagger-1 {
+      transition-delay: 80ms;
+    }
+
+    .stagger-2 {
+      transition-delay: 160ms;
+    }
+
+    .stagger-3 {
+      transition-delay: 240ms;
+    }
+
+    .stagger-4 {
+      transition-delay: 320ms;
+    }
+
+    .stagger-5 {
+      transition-delay: 400ms;
+    }
+
+    .stagger-6 {
+      transition-delay: 480ms;
+    }
+
+
+    /* =================================================
+       ADDED:
+       REDUCED MOTION OVERRIDE
+    ================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .scroll-reveal,
+      .scroll-reveal-left,
+      .scroll-reveal-right,
+      .scroll-reveal-scale,
+      .news-card {
+
+        opacity: 1;
+
+        transform:
+          none;
+
+        transition: none !important;
+      }
+
+    }
 
   </style>
 
@@ -1915,47 +2570,103 @@
 
   <header class="site-header">
 
-     <div class="container guide-nav">
+    <div class="container guide-nav">
 
-    <!-- Logo -->
-    <a
-      href="index.html"
-      class="guide-logo"
-      aria-label="Pedani Migration Services home"
-    >
-      <span class="guide-logo-mark"><img src="/images/logo 3 modified.png" alt="Logo"></span>
-      <span class="guide-logo-text">Pedani</span>
-    </a>
-
-
-    <!-- Resource label -->
-    <div class="guide-nav-label">
-      <span class="guide-nav-dot"></span>
-      <span>Travel Journal</span>
-    </div>
-
-
-    <!-- Header actions -->
-    <div class="guide-nav-actions">
+      <!-- Logo -->
 
       <a
-        href="/index.html"
-        class="guide-back-link"
+        href="index.html"
+        class="guide-logo"
+        aria-label="Pedani Migration Services home"
       >
-        <span aria-hidden="true">←</span>
-        Back to website
+
+        <span class="guide-logo-mark">
+
+          <img
+            src="/images/logo 3 modified.png"
+            alt="Logo"
+          >
+
+        </span>
+
+        <span class="guide-logo-text">
+          Pedani
+        </span>
+
       </a>
 
-      <a
-        href="/contact.html"
-        class="guide-contact-btn"
-      >
-        Contact Us
-        <span aria-hidden="true">→</span>
-      </a>
+
+      <!-- Resource label -->
+
+      <div class="guide-nav-label">
+
+        <span class="guide-nav-dot"></span>
+
+        <span>
+          Travel Journal
+        </span>
+
+      </div>
+
+
+      <!-- Header actions -->
+
+      <div class="guide-nav-actions">
+
+        <a
+          href="/index.html"
+          class="guide-back-link"
+        >
+
+          <span aria-hidden="true">
+            ←
+          </span>
+
+          Back to website
+
+        </a>
+
+
+        <!-- =================================================
+             ADDED: THEME SWITCH
+        ================================================== -->
+
+        <button
+          type="button"
+          class="theme-switch"
+          id="themeSwitch"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+          title="Switch theme"
+        >
+
+          <span
+            class="theme-switch-icon"
+            id="themeSwitchIcon"
+            aria-hidden="true"
+          >
+            ☾
+          </span>
+
+        </button>
+
+
+        <a
+          href="/contact.html"
+          class="guide-contact-btn"
+        >
+
+          Contact Us
+
+          <span aria-hidden="true">
+            →
+          </span>
+
+        </a>
+
+      </div>
 
     </div>
-
 
   </header>
 
@@ -1969,20 +2680,32 @@
 
     <section class="news-hero">
 
-      <div class="container hero-content">
+      <div
+        class="
+          container
+          hero-content
+          scroll-reveal-scale
+        "
+      >
 
         <span class="eyebrow">
+
           Pedani Travel Journal
+
         </span>
 
         <h1>
+
           News, Travel Tips & Visa Updates
+
         </h1>
 
         <p>
+
           Stay informed with practical travel insights,
           visa updates, destination inspiration and
           helpful guidance for planning your next journey.
+
         </p>
 
       </div>
@@ -1999,7 +2722,12 @@
 
       <div class="container">
 
-        <article class="featured-card">
+        <article
+          class="
+            featured-card
+            scroll-reveal
+          "
+        >
 
           <div class="featured-image">
 
@@ -2020,7 +2748,9 @@
             <div class="article-meta">
 
               <span class="article-category">
+
                 Visa & Travel
+
               </span>
 
               <span class="article-meta-dot"></span>
@@ -2033,16 +2763,20 @@
 
 
             <h2>
+
               What Nigerian Travellers Should Know
               Before Planning an International Trip
+
             </h2>
 
 
             <p>
+
               From choosing the right destination to
               preparing your documents, good planning can
               make your international travel experience
               much smoother.
+
             </p>
 
 
@@ -2050,6 +2784,7 @@
               href="#latest-news"
               class="read-more"
             >
+
               Read the latest insights
 
               <span aria-hidden="true">
@@ -2080,83 +2815,108 @@
       <div class="container">
 
 
-        <div class="section-heading">
+        <div
+          class="
+            section-heading
+            scroll-reveal-left
+          "
+        >
 
           <span class="eyebrow">
+
             Latest Updates
+
           </span>
 
           <h2>
+
             Explore Our Latest Articles
+
           </h2>
 
           <p>
+
             Useful information to help you make more
             informed decisions about visas, travel,
             study abroad and international destinations.
+
           </p>
 
         </div>
 
 
 
-       <!-- FILTERS -->
-<div class="news-toolbar">
+        <!-- FILTERS -->
 
-  <div
-    class="filter-list"
-    aria-label="Article categories"
-    role="group"
-  >
+        <div
+          class="
+            news-toolbar
+            scroll-reveal
+          "
+        >
 
-    <button
-      class="filter-button active"
-      type="button"
-      data-category="all"
-      aria-pressed="true"
-    >
-      All
-    </button>
+          <div
+            class="filter-list"
+            aria-label="Article categories"
+            role="group"
+          >
 
-    <button
-      class="filter-button"
-      type="button"
-      data-category="visa-tips"
-      aria-pressed="false"
-    >
-      Visa Tips
-    </button>
+            <button
+              class="filter-button active"
+              type="button"
+              data-category="all"
+              aria-pressed="true"
+            >
 
-    <button
-      class="filter-button"
-      type="button"
-      data-category="travel"
-      aria-pressed="false"
-    >
-      Travel
-    </button>
+              All
 
-    <button
-      class="filter-button"
-      type="button"
-      data-category="destinations"
-      aria-pressed="false"
-    >
-      Destinations
-    </button>
+            </button>
 
-    <button
-      class="filter-button"
-      type="button"
-      data-category="study-abroad"
-      aria-pressed="false"
-    >
-      Study Abroad
-    </button>
+            <button
+              class="filter-button"
+              type="button"
+              data-category="visa-tips"
+              aria-pressed="false"
+            >
 
-  </div>
+              Visa Tips
 
-</div>
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-category="travel"
+              aria-pressed="false"
+            >
+
+              Travel
+
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-category="destinations"
+              aria-pressed="false"
+            >
+
+              Destinations
+
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-category="study-abroad"
+              aria-pressed="false"
+            >
+
+              Study Abroad
+
+            </button>
+
+          </div>
 
         </div>
 
@@ -2169,299 +2929,457 @@
 
           <!-- ARTICLE 1 -->
 
-<article class="news-card" data-category="visa-tips">
+          <article
+            class="news-card"
+            data-category="visa-tips"
+          >
 
-  <div class="news-image">
+            <div class="news-image">
 
-    <img
-      src="/images/news-visa.jpg"
-      alt="Visa documents and passport"
-      loading="lazy"
-    >
+              <img
+                src="/images/news-visa.jpg"
+                alt="Visa documents and passport"
+                loading="lazy"
+              >
 
-    <span class="news-category">
-      Visa Tips
-    </span>
+              <span class="news-category">
+                Visa Tips
+              </span>
 
-  </div>
+            </div>
 
-  <div class="news-content">
+            <div class="news-content">
 
-    <div class="article-meta">
-      <span>Visa Tips</span>
-      <span class="article-meta-dot"></span>
-      <span>5 min read</span>
-    </div>
+              <div class="article-meta">
 
-    <h3>
-      Building a Stronger Visa Application
-    </h3>
+                <span>
+                  Visa Tips
+                </span>
 
-    <p>
-      Discover practical ways to organise your documents
-      and prepare a clearer application before submission.
-    </p>
+                <span class="article-meta-dot"></span>
 
-    <a href="#article-1" class="read-more">
-      Read article
-      <span aria-hidden="true">→</span>
-    </a>
+                <span>
+                  5 min read
+                </span>
 
-  </div>
+              </div>
 
-</article>
+              <h3>
+                Building a Stronger Visa Application
+              </h3>
 
+              <p>
 
-<!-- ARTICLE 2 -->
-<article class="news-card" data-category="travel">
+                Discover practical ways to organise your documents
+                and prepare a clearer application before submission.
 
-  <div class="news-image">
+              </p>
 
-    <img
-      src="/images/news-travel.jpg"
-      alt="Traveller looking at an airport departure board"
-      loading="lazy"
-    >
+              <a
+                href="#article-1"
+                class="read-more"
+              >
 
-    <span class="news-category">
-      Travel
-    </span>
+                Read article
 
-  </div>
+                <span aria-hidden="true">
+                  →
+                </span>
 
-  <div class="news-content">
+              </a>
 
-    <div class="article-meta">
-      <span>Travel</span>
-      <span class="article-meta-dot"></span>
-      <span>4 min read</span>
-    </div>
+            </div>
 
-    <h3>
-      Smart Travel Planning for First-Time
-      International Travellers
-    </h3>
+          </article>
 
-    <p>
-      A practical look at the things worth checking
-      before booking your flight and starting your journey.
-    </p>
 
-    <a href="#article-2" class="read-more">
-      Read article
-      <span aria-hidden="true">→</span>
-    </a>
 
-  </div>
+          <!-- ARTICLE 2 -->
 
-</article>
+          <article
+            class="news-card"
+            data-category="travel"
+          >
 
+            <div class="news-image">
 
-<!-- ARTICLE 3 -->
-<article class="news-card" data-category="destinations">
+              <img
+                src="/images/news-travel.jpg"
+                alt="Traveller looking at an airport departure board"
+                loading="lazy"
+              >
 
-  <div class="news-image">
+              <span class="news-category">
+                Travel
+              </span>
 
-    <img
-      src="/images/news-destination.jpg"
-      alt="Beautiful international travel destination"
-      loading="lazy"
-    >
+            </div>
 
-    <span class="news-category">
-      Destinations
-    </span>
+            <div class="news-content">
 
-  </div>
+              <div class="article-meta">
 
-  <div class="news-content">
+                <span>
+                  Travel
+                </span>
 
-    <div class="article-meta">
-      <span>Destinations</span>
-      <span class="article-meta-dot"></span>
-      <span>6 min read</span>
-    </div>
+                <span class="article-meta-dot"></span>
 
-    <h3>
-      Destinations Worth Exploring This Year
-    </h3>
+                <span>
+                  4 min read
+                </span>
 
-    <p>
-      Explore destinations that offer exciting experiences
-      for travellers with different interests and travel goals.
-    </p>
+              </div>
 
-    <a href="#article-3" class="read-more">
-      Read article
-      <span aria-hidden="true">→</span>
-    </a>
+              <h3>
 
-  </div>
+                Smart Travel Planning for First-Time
+                International Travellers
 
-</article>
+              </h3>
 
+              <p>
 
-<!-- ARTICLE 4 -->
-<article class="news-card" data-category="study-abroad">
+                A practical look at the things worth checking
+                before booking your flight and starting your journey.
 
-  <div class="news-image">
+              </p>
 
-    <img
-      src="/images/news-student.jpg"
-      alt="Student preparing for study abroad"
-      loading="lazy"
-    >
+              <a
+                href="#article-2"
+                class="read-more"
+              >
 
-    <span class="news-category">
-      Study Abroad
-    </span>
+                Read article
 
-  </div>
+                <span aria-hidden="true">
+                  →
+                </span>
 
-  <div class="news-content">
+              </a>
 
-    <div class="article-meta">
-      <span>Study Abroad</span>
-      <span class="article-meta-dot"></span>
-      <span>7 min read</span>
-    </div>
+            </div>
 
-    <h3>
-      Preparing for Your Study Abroad Journey
-    </h3>
+          </article>
 
-    <p>
-      From choosing a programme to organising important
-      paperwork, preparation starts long before departure day.
-    </p>
 
-    <a href="#article-4" class="read-more">
-      Read article
-      <span aria-hidden="true">→</span>
-    </a>
 
-  </div>
+          <!-- ARTICLE 3 -->
 
-</article>
+          <article
+            class="news-card"
+            data-category="destinations"
+          >
 
+            <div class="news-image">
 
-<!-- ARTICLE 5 -->
-<article class="news-card" data-category="visa-tips">
+              <img
+                src="/images/news-destination.jpg"
+                alt="Beautiful international travel destination"
+                loading="lazy"
+              >
 
-  <div class="news-image">
+              <span class="news-category">
+                Destinations
+              </span>
 
-    <img
-      src="/images/news-passport.jpg"
-      alt="Passport and travel documents"
-      loading="lazy"
-    >
+            </div>
 
-    <span class="news-category">
-      Visa Tips
-    </span>
+            <div class="news-content">
 
-  </div>
+              <div class="article-meta">
 
-  <div class="news-content">
+                <span>
+                  Destinations
+                </span>
 
-    <div class="article-meta">
-      <span>Visa Tips</span>
-      <span class="article-meta-dot"></span>
-      <span>5 min read</span>
-    </div>
+                <span class="article-meta-dot"></span>
 
-    <h3>
-      Common Visa Preparation Mistakes to Avoid
-    </h3>
+                <span>
+                  6 min read
+                </span>
 
-    <p>
-      Small mistakes can create unnecessary delays.
-      Learn what to review carefully before submitting
-      your application.
-    </p>
+              </div>
 
-    <a href="#article-5" class="read-more">
-      Read article
-      <span aria-hidden="true">→</span>
-    </a>
+              <h3>
+                Destinations Worth Exploring This Year
+              </h3>
 
-  </div>
+              <p>
 
-</article>
+                Explore destinations that offer exciting experiences
+                for travellers with different interests and travel goals.
 
+              </p>
 
-<!-- ARTICLE 6 -->
-<article class="news-card" data-category="travel">
+              <a
+                href="#article-3"
+                class="read-more"
+              >
 
-  <div class="news-image">
+                Read article
 
-    <img
-      src="/images/news-airport.jpg"
-      alt="Passenger walking through an airport"
-      loading="lazy"
-    >
+                <span aria-hidden="true">
+                  →
+                </span>
 
-    <span class="news-category">
-      Travel
-    </span>
+              </a>
 
-  </div>
+            </div>
 
-  <div class="news-content">
+          </article>
 
-    <div class="article-meta">
-      <span>Travel</span>
-      <span class="article-meta-dot"></span>
-      <span>4 min read</span>
-    </div>
 
-    <h3>
-      A Simple Checklist Before Your Flight
-    </h3>
 
-    <p>
-      Make departure day easier by checking your essential
-      travel documents, bookings and personal essentials
-      ahead of time.
-    </p>
+          <!-- ARTICLE 4 -->
 
-    <a href="#article-6" class="read-more">
-      Read article
-      <span aria-hidden="true">→</span>
-    </a>
+          <article
+            class="news-card"
+            data-category="study-abroad"
+          >
 
-  </div>
+            <div class="news-image">
 
-</article>
+              <img
+                src="/images/news-student.jpg"
+                alt="Student preparing for study abroad"
+                loading="lazy"
+              >
+
+              <span class="news-category">
+                Study Abroad
+              </span>
+
+            </div>
+
+            <div class="news-content">
+
+              <div class="article-meta">
+
+                <span>
+                  Study Abroad
+                </span>
+
+                <span class="article-meta-dot"></span>
+
+                <span>
+                  7 min read
+                </span>
+
+              </div>
+
+              <h3>
+                Preparing for Your Study Abroad Journey
+              </h3>
+
+              <p>
+
+                From choosing a programme to organising important
+                paperwork, preparation starts long before departure day.
+
+              </p>
+
+              <a
+                href="#article-4"
+                class="read-more"
+              >
+
+                Read article
+
+                <span aria-hidden="true">
+                  →
+                </span>
+
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- ARTICLE 5 -->
+
+          <article
+            class="news-card"
+            data-category="visa-tips"
+          >
+
+            <div class="news-image">
+
+              <img
+                src="/images/news-passport.jpg"
+                alt="Passport and travel documents"
+                loading="lazy"
+              >
+
+              <span class="news-category">
+                Visa Tips
+              </span>
+
+            </div>
+
+            <div class="news-content">
+
+              <div class="article-meta">
+
+                <span>
+                  Visa Tips
+                </span>
+
+                <span class="article-meta-dot"></span>
+
+                <span>
+                  5 min read
+                </span>
+
+              </div>
+
+              <h3>
+                Common Visa Preparation Mistakes to Avoid
+              </h3>
+
+              <p>
+
+                Small mistakes can create unnecessary delays.
+                Learn what to review carefully before submitting
+                your application.
+
+              </p>
+
+              <a
+                href="#article-5"
+                class="read-more"
+              >
+
+                Read article
+
+                <span aria-hidden="true">
+                  →
+                </span>
+
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- ARTICLE 6 -->
+
+          <article
+            class="news-card"
+            data-category="travel"
+          >
+
+            <div class="news-image">
+
+              <img
+                src="/images/news-airport.jpg"
+                alt="Passenger walking through an airport"
+                loading="lazy"
+              >
+
+              <span class="news-category">
+                Travel
+              </span>
+
+            </div>
+
+            <div class="news-content">
+
+              <div class="article-meta">
+
+                <span>
+                  Travel
+                </span>
+
+                <span class="article-meta-dot"></span>
+
+                <span>
+                  4 min read
+                </span>
+
+              </div>
+
+              <h3>
+                A Simple Checklist Before Your Flight
+              </h3>
+
+              <p>
+
+                Make departure day easier by checking your essential
+                travel documents, bookings and personal essentials
+                ahead of time.
+
+              </p>
+
+              <a
+                href="#article-6"
+                class="read-more"
+              >
+
+                Read article
+
+                <span aria-hidden="true">
+                  →
+                </span>
+
+              </a>
+
+            </div>
+
+          </article>
+
         </div>
 
       </div>
 
     </section>
 
-<dialog id="article-dialog" class="article-dialog">
 
-  <button
-    type="button"
-    class="article-close"
-    aria-label="Close article"
-  >
-    &times;
-  </button>
 
-  <div class="article-dialog-content">
+    <!-- =================================================
+         ARTICLE DIALOG
+    ================================================== -->
 
-    <span class="article-dialog-category"></span>
+    <dialog
+      id="article-dialog"
+      class="article-dialog"
+    >
 
-    <h2 class="article-dialog-title"></h2>
+      <button
+        type="button"
+        class="article-close"
+        aria-label="Close article"
+      >
+        &times;
+      </button>
 
-    <p class="article-dialog-meta"></p>
+      <div class="article-dialog-content">
 
-    <div class="article-dialog-body"></div>
+        <span
+          class="article-dialog-category"
+        ></span>
 
-  </div>
+        <h2
+          class="article-dialog-title"
+        ></h2>
 
-</dialog>
+        <p
+          class="article-dialog-meta"
+        ></p>
+
+        <div
+          class="article-dialog-body"
+        ></div>
+
+      </div>
+
+    </dialog>
+
+
 
     <!-- =================================================
          NEWSLETTER
@@ -2471,16 +3389,23 @@
 
       <div class="container">
 
-        <div class="newsletter-box">
+        <div
+          class="
+            newsletter-box
+            scroll-reveal-scale
+          "
+        >
 
           <h2>
             Stay Ahead of Your Next Journey
           </h2>
 
           <p>
+
             Get useful travel insights, visa updates
             and destination information delivered to
             your inbox.
+
           </p>
 
 
@@ -2522,403 +3447,1110 @@
 
 
 
-    <!-- ===================================================
+  <!-- ===================================================
        FOOTER
   ==================================================== -->
 
   <footer class="footer">
 
-  <div class="footer-main">
+    <div class="footer-main">
 
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <img src="/images/logo 3 modified.png"
-          alt="Pedani Migration Services">
+      <div class="footer-brand">
+
+        <div class="footer-logo">
+
+          <img
+            src="/images/logo 3 modified.png"
+            alt="Pedani Migration Services"
+          >
+
+        </div>
+
+        <p>
+
+          Your trusted partner in global<br>
+          migration and travel solutions.
+
+        </p>
+
+        <div class="social-links">
+
+          <a
+            href="https://x.com/odalopeezie?s=11"
+            aria-label="Twitter"
+          >
+
+            <i class="fa-brands fa-x-twitter"></i>
+
+          </a>
+
+          <a
+            href="tel:+2347039112857"
+            aria-label="Whatsapp"
+          >
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+          </a>
+
+        </div>
+
       </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Quick Links
+        </h4>
+
+        <a href="/">
+          Home
+        </a>
+
+        <a href="/about.html">
+          About Us
+        </a>
+
+        <a href="/services.html">
+          Services
+        </a>
+
+        <a href="/destinations.html">
+          Destinations
+        </a>
+
+        <a href="/contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Our Services
+        </h4>
+
+        <a href="#">
+          Visa On Arrival
+        </a>
+
+        <a href="#">
+          Transit Visa
+        </a>
+
+        <a href="#">
+          Maternity Visa
+        </a>
+
+        <a href="#">
+          Flight Tickets
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Resources
+        </h4>
+
+        <a href="/pages/visa-guides.html">
+          Visa Guides
+        </a>
+
+        <a href="/pages/blog.html">
+          Blog
+        </a>
+
+        <a href="/pages/faqs.html">
+          FAQs
+        </a>
+
+        <a href="/pages/checklists.html">
+          Checklists
+        </a>
+
+        <a href="/pages/news.html">
+          News
+        </a>
+
+      </div>
+
+
+      <div class="footer-column contact">
+
+        <h4>
+          Contact Us
+        </h4>
+
+        <a href="tel:+2347039112857">
+
+          <i class="fa-solid fa-phone"></i>
+
+          +234 703 911 2857
+
+        </a>
+
+        <a href="mailto:info@pedanimigration.com">
+
+          <i class="fa-solid fa-envelope"></i>
+
+          info@pedanimigration.com
+
+        </a>
+
+        <span>
+
+          <i class="fa-solid fa-location-dot"></i>
+
+          Lagos, Nigeria
+
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
 
       <p>
-        Your trusted partner in global<br>
-        migration and travel solutions.
+
+        © 2025 Pedani Migration Services.
+        All rights reserved.
+
       </p>
 
-      <div class="social-links">
-        <a href="https://x.com/odalopeezie?s=11" aria-label="Twitter">
-          <i class="fa-brands fa-x-twitter"></i>
+      <div>
+
+        <a href="#">
+          Privacy Policy
         </a>
-        <a href="tel:+2347039112857" aria-label="Whatsapp">
-          <i class="fa-brands fa-whatsapp"></i>
+
+        <span>
+          |
+        </span>
+
+        <a href="#">
+          Terms & Conditions
         </a>
+
       </div>
+
     </div>
 
-    <div class="footer-column">
-      <h4>Quick Links</h4>
-      <a href="/">Home</a>
-      <a href="/about.html">About Us</a>
-      <a href="/services.html">Services</a>
-      <a href="/destinations.html">Destinations</a>
-      <a href="/contact.html">Contact</a>
-    </div>
-
-    <div class="footer-column">
-      <h4>Our Services</h4>
-      <a href="#">Visa On Arrival</a>
-      <a href="#">Transit Visa</a>
-      <a href="#">Maternity Visa</a>
-      <a href="#">Flight Tickets</a>
-    </div>
-
-    <div class="footer-column">
-      <h4>Resources</h4>
-      <a href="/pages/visa-guides.html">Visa Guides</a>
-<a href="/pages/blog.html">Blog</a>
-<a href="/pages/faqs.html">FAQs</a>
-<a href="/pages/checklists.html">Checklists</a>
-<a href="/pages/news.html">News</a>
-    </div>
-
-    <div class="footer-column contact">
-      <h4>Contact Us</h4>
-
-      <a href="tel:+2347039112857">
-        <i class="fa-solid fa-phone"></i>
-        +234 703 911 2857
-      </a>
-
-      <a href="mailto:info@pedanimigration.com">
-        <i class="fa-solid fa-envelope"></i>
-        info@pedanimigration.com
-      </a>
-
-      <span>
-        <i class="fa-solid fa-location-dot"></i>
-        Lagos, Nigeria
-      </span>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 Pedani Migration Services. All rights reserved.</p>
-
-    <div>
-      <a href="#">Privacy Policy</a>
-      <span>|</span>
-      <a href="#">Terms & Conditions</a>
-    </div>
-  </div>
-
-</footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const filterButtons =
-    document.querySelectorAll(".filter-button");
-
-  const newsCards =
-    document.querySelectorAll(".news-card");
+  </footer>
 
 
-  // Stop if the elements don't exist
-  if (!filterButtons.length || !newsCards.length) {
-    console.warn("News filter elements were not found.");
-    return;
-  }
+
+  <script>
 
 
-  filterButtons.forEach((button) => {
+    /* =================================================
+       ADDED:
+       THEME SWITCHER
+    ================================================== */
 
-    button.addEventListener("click", () => {
+    const themeSwitch =
+      document.querySelector("#themeSwitch");
 
-      // Get the category directly from the button
-      const selectedCategory =
-        button.dataset.category;
-
-
-      // Update active button
-      filterButtons.forEach((btn) => {
-
-        btn.classList.remove("active");
-
-        btn.setAttribute(
-          "aria-pressed",
-          "false"
-        );
-
-      });
+    const themeSwitchIcon =
+      document.querySelector("#themeSwitchIcon");
 
 
-      button.classList.add("active");
+    function applyTheme(theme) {
 
-      button.setAttribute(
-        "aria-pressed",
-        "true"
+      document.documentElement.dataset.theme =
+        theme;
+
+
+      localStorage.setItem(
+        "pedani-theme",
+        theme
       );
 
 
-      // Filter the cards
-      newsCards.forEach((card) => {
-
-        const cardCategory =
-          card.dataset.category;
+      const isDark =
+        theme === "dark";
 
 
-        const shouldShow =
-          selectedCategory === "all" ||
-          cardCategory === selectedCategory;
+      themeSwitchIcon.textContent =
+        isDark
+          ? "☀"
+          : "☾";
 
 
-        if (shouldShow) {
+      themeSwitch.setAttribute(
+        "aria-label",
+        isDark
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      );
 
-          card.hidden = false;
 
-          // Optional animation
-          requestAnimationFrame(() => {
-            card.classList.add("filter-visible");
-          });
+      themeSwitch.setAttribute(
+        "aria-pressed",
+        String(isDark)
+      );
 
-        } else {
+    }
 
-          card.hidden = true;
 
-          card.classList.remove("filter-visible");
+    function initializeTheme() {
+
+      const savedTheme =
+        localStorage.getItem(
+          "pedani-theme"
+        );
+
+
+      if (savedTheme) {
+
+        applyTheme(savedTheme);
+
+        return;
+      }
+
+
+      const prefersDark =
+        window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+
+      applyTheme(
+        prefersDark
+          ? "dark"
+          : "light"
+      );
+
+    }
+
+
+    themeSwitch?.addEventListener(
+      "click",
+      () => {
+
+        const currentTheme =
+          document.documentElement.dataset.theme ||
+          "light";
+
+
+        applyTheme(
+          currentTheme === "dark"
+            ? "light"
+            : "dark"
+        );
+
+      }
+    );
+
+
+    initializeTheme();
+
+
+
+    /* =================================================
+       SIMPLE NEWS FILTER
+    ================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const filterButtons =
+          document.querySelectorAll(
+            ".filter-button"
+          );
+
+
+        const newsCards =
+          document.querySelectorAll(
+            ".news-card"
+          );
+
+
+        // Stop if the elements don't exist
+
+        if (
+          !filterButtons.length ||
+          !newsCards.length
+        ) {
+
+          console.warn(
+            "News filter elements were not found."
+          );
+
+          return;
 
         }
 
-      });
 
-    });
+        filterButtons.forEach(
+          button => {
 
-  });
+            button.addEventListener(
+              "click",
+              () => {
 
-});
-document.addEventListener("DOMContentLoaded", () => {
+                // Get category directly from button
 
-  const dialog = document.querySelector("#article-dialog");
-
-  const title = dialog.querySelector(".article-dialog-title");
-  const category = dialog.querySelector(".article-dialog-category");
-  const meta = dialog.querySelector(".article-dialog-meta");
-  const body = dialog.querySelector(".article-dialog-body");
-
-  const closeButton = dialog.querySelector(".article-close");
-
-  const articles = {
-
-    "article-1": {
-      category: "Visa Tips",
-      title: "Building a Stronger Visa Application",
-      meta: "Visa Tips • 5 min read",
-
-      content: `
-        <p>
-          A well-prepared visa application starts with
-          understanding the requirements and organising
-          your documents carefully.
-        </p>
-
-        <p>
-          Before submitting your application, review your
-          supporting documents, confirm that the information
-          is accurate and make sure your travel purpose is
-          clearly explained.
-        </p>
-
-        <h3>Key preparation points</h3>
-
-        <ul>
-          <li>Organise your supporting documents.</li>
-          <li>Check that your information is accurate.</li>
-          <li>Review the current visa requirements.</li>
-          <li>Keep copies of important documents.</li>
-        </ul>
-      `
-    },
+                const selectedCategory =
+                  button.dataset.category;
 
 
-    "article-2": {
-      category: "Travel",
-      title: "Smart Travel Planning for First-Time International Travellers",
-      meta: "Travel • 4 min read",
+                // Update active button
 
-      content: `
-        <p>
-          Your first international trip can be exciting,
-          but good preparation makes the experience much
-          easier.
-        </p>
+                filterButtons.forEach(
+                  btn => {
 
-        <p>
-          Before travelling, review your passport validity,
-          visa requirements, flight details, accommodation
-          and other important travel arrangements.
-        </p>
-
-        <h3>Before you travel</h3>
-
-        <ul>
-          <li>Check your travel documents.</li>
-          <li>Confirm your flight details.</li>
-          <li>Review your accommodation.</li>
-          <li>Keep important documents accessible.</li>
-        </ul>
-      `
-    },
+                    btn.classList.remove(
+                      "active"
+                    );
 
 
-    "article-3": {
-      category: "Destinations",
-      title: "Destinations Worth Exploring This Year",
-      meta: "Destinations • 6 min read",
+                    btn.setAttribute(
+                      "aria-pressed",
+                      "false"
+                    );
 
-      content: `
-        <p>
-          Choosing the right destination depends on your
-          travel goals, budget, timeline and personal
-          circumstances.
-        </p>
-
-        <p>
-          Whether you're interested in studying abroad,
-          visiting family or experiencing a new country,
-          researching your destination is an important
-          first step.
-        </p>
-      `
-    },
+                  }
+                );
 
 
-    "article-4": {
-      category: "Study Abroad",
-      title: "Preparing for Your Study Abroad Journey",
-      meta: "Study Abroad • 7 min read",
-
-      content: `
-        <p>
-          Studying abroad involves more than choosing a
-          university. Planning your finances, admission
-          documents and visa requirements early can make
-          the process much smoother.
-        </p>
-
-        <h3>Start early</h3>
-
-        <p>
-          Give yourself enough time to research programmes,
-          prepare your documents and understand the
-          requirements for your chosen destination.
-        </p>
-      `
-    },
+                button.classList.add(
+                  "active"
+                );
 
 
-    "article-5": {
-      category: "Visa Tips",
-      title: "Common Visa Preparation Mistakes to Avoid",
-      meta: "Visa Tips • 5 min read",
-
-      content: `
-        <p>
-          Small errors in a visa application can sometimes
-          lead to unnecessary delays or complications.
-        </p>
-
-        <p>
-          Carefully review your application and supporting
-          documents before submission.
-        </p>
-
-        <h3>Things to check</h3>
-
-        <ul>
-          <li>Passport details</li>
-          <li>Application information</li>
-          <li>Supporting documents</li>
-          <li>Financial evidence where required</li>
-          <li>Travel dates and purpose</li>
-        </ul>
-      `
-    },
+                button.setAttribute(
+                  "aria-pressed",
+                  "true"
+                );
 
 
-    "article-6": {
-      category: "Travel",
-      title: "A Simple Checklist Before Your Flight",
-      meta: "Travel • 4 min read",
+                // Filter cards
 
-      content: `
-        <p>
-          A little preparation before departure can make
-          your airport experience much easier.
-        </p>
+                newsCards.forEach(
+                  card => {
 
-        <h3>Before leaving home</h3>
-
-        <ul>
-          <li>Check your passport.</li>
-          <li>Confirm your flight details.</li>
-          <li>Review your accommodation booking.</li>
-          <li>Prepare your essential documents.</li>
-          <li>Check your luggage.</li>
-        </ul>
-      `
-    }
-
-  };
+                    const cardCategory =
+                      card.dataset.category;
 
 
-  document.querySelectorAll(".read-more").forEach(link => {
-
-    link.addEventListener("click", event => {
-
-      event.preventDefault();
-
-      const articleId = link.getAttribute("href").replace("#", "");
-
-      const article = articles[articleId];
-
-      if (!article) return;
-
-      category.textContent = article.category;
-      title.textContent = article.title;
-      meta.textContent = article.meta;
-      body.innerHTML = article.content;
-
-      dialog.showModal();
-
-    });
-
-  });
+                    const shouldShow =
+                      selectedCategory ===
+                        "all" ||
+                      cardCategory ===
+                        selectedCategory;
 
 
-  closeButton.addEventListener("click", () => {
-    dialog.close();
-  });
+                    if (shouldShow) {
+
+                      card.hidden = false;
 
 
-  dialog.addEventListener("click", event => {
+                      /*
+                        ADDED:
+                        Re-run scroll animation
+                        for filtered cards.
+                      */
 
-    if (event.target === dialog) {
-      dialog.close();
-    }
-
-  });
+                      card.classList.remove(
+                        "scroll-visible"
+                      );
 
 
-  document.addEventListener("keydown", event => {
+                      requestAnimationFrame(
+                        () => {
 
-    if (
-      event.key === "Escape" &&
-      dialog.open
-    ) {
-      dialog.close();
-    }
+                          requestAnimationFrame(
+                            () => {
 
-  });
+                              card.classList.add(
+                                "scroll-visible"
+                              );
 
-});
-</script>
+                            }
+                          );
+
+                        }
+                      );
+
+                    } else {
+
+                      card.hidden = true;
+
+                      card.classList.remove(
+                        "scroll-visible"
+                      );
+
+                    }
+
+                  }
+                );
+
+              }
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       ARTICLE MODAL
+    ================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const dialog =
+          document.querySelector(
+            "#article-dialog"
+          );
+
+
+        const title =
+          dialog.querySelector(
+            ".article-dialog-title"
+          );
+
+
+        const category =
+          dialog.querySelector(
+            ".article-dialog-category"
+          );
+
+
+        const meta =
+          dialog.querySelector(
+            ".article-dialog-meta"
+          );
+
+
+        const body =
+          dialog.querySelector(
+            ".article-dialog-body"
+          );
+
+
+        const closeButton =
+          dialog.querySelector(
+            ".article-close"
+          );
+
+
+        const articles = {
+
+          "article-1": {
+
+            category:
+              "Visa Tips",
+
+            title:
+              "Building a Stronger Visa Application",
+
+            meta:
+              "Visa Tips • 5 min read",
+
+            content: `
+
+              <p>
+                A well-prepared visa application starts with
+                understanding the requirements and organising
+                your documents carefully.
+              </p>
+
+              <p>
+                Before submitting your application, review your
+                supporting documents, confirm that the information
+                is accurate and make sure your travel purpose is
+                clearly explained.
+              </p>
+
+              <h3>
+                Key preparation points
+              </h3>
+
+              <ul>
+
+                <li>
+                  Organise your supporting documents.
+                </li>
+
+                <li>
+                  Check that your information is accurate.
+                </li>
+
+                <li>
+                  Review the current visa requirements.
+                </li>
+
+                <li>
+                  Keep copies of important documents.
+                </li>
+
+              </ul>
+
+            `
+
+          },
+
+
+          "article-2": {
+
+            category:
+              "Travel",
+
+            title:
+              "Smart Travel Planning for First-Time International Travellers",
+
+            meta:
+              "Travel • 4 min read",
+
+            content: `
+
+              <p>
+                Your first international trip can be exciting,
+                but good preparation makes the experience much
+                easier.
+              </p>
+
+              <p>
+                Before travelling, review your passport validity,
+                visa requirements, flight details, accommodation
+                and other important travel arrangements.
+              </p>
+
+              <h3>
+                Before you travel
+              </h3>
+
+              <ul>
+
+                <li>
+                  Check your travel documents.
+                </li>
+
+                <li>
+                  Confirm your flight details.
+                </li>
+
+                <li>
+                  Review your accommodation.
+                </li>
+
+                <li>
+                  Keep important documents accessible.
+                </li>
+
+              </ul>
+
+            `
+
+          },
+
+
+          "article-3": {
+
+            category:
+              "Destinations",
+
+            title:
+              "Destinations Worth Exploring This Year",
+
+            meta:
+              "Destinations • 6 min read",
+
+            content: `
+
+              <p>
+                Choosing the right destination depends on your
+                travel goals, budget, timeline and personal
+                circumstances.
+              </p>
+
+              <p>
+                Whether you're interested in studying abroad,
+                visiting family or experiencing a new country,
+                researching your destination is an important
+                first step.
+              </p>
+
+            `
+
+          },
+
+
+          "article-4": {
+
+            category:
+              "Study Abroad",
+
+            title:
+              "Preparing for Your Study Abroad Journey",
+
+            meta:
+              "Study Abroad • 7 min read",
+
+            content: `
+
+              <p>
+                Studying abroad involves more than choosing a
+                university. Planning your finances, admission
+                documents and visa requirements early can make
+                the process much smoother.
+              </p>
+
+              <h3>
+                Start early
+              </h3>
+
+              <p>
+                Give yourself enough time to research programmes,
+                prepare your documents and understand the
+                requirements for your chosen destination.
+              </p>
+
+            `
+
+          },
+
+
+          "article-5": {
+
+            category:
+              "Visa Tips",
+
+            title:
+              "Common Visa Preparation Mistakes to Avoid",
+
+            meta:
+              "Visa Tips • 5 min read",
+
+            content: `
+
+              <p>
+                Small errors in a visa application can sometimes
+                lead to unnecessary delays or complications.
+              </p>
+
+              <p>
+                Carefully review your application and supporting
+                documents before submission.
+              </p>
+
+              <h3>
+                Things to check
+              </h3>
+
+              <ul>
+
+                <li>
+                  Passport details
+                </li>
+
+                <li>
+                  Application information
+                </li>
+
+                <li>
+                  Supporting documents
+                </li>
+
+                <li>
+                  Financial evidence where required
+                </li>
+
+                <li>
+                  Travel dates and purpose
+                </li>
+
+              </ul>
+
+            `
+
+          },
+
+
+          "article-6": {
+
+            category:
+              "Travel",
+
+            title:
+              "A Simple Checklist Before Your Flight",
+
+            meta:
+              "Travel • 4 min read",
+
+            content: `
+
+              <p>
+                A little preparation before departure can make
+                your airport experience much easier.
+              </p>
+
+              <h3>
+                Before leaving home
+              </h3>
+
+              <ul>
+
+                <li>
+                  Check your passport.
+                </li>
+
+                <li>
+                  Confirm your flight details.
+                </li>
+
+                <li>
+                  Review your accommodation booking.
+                </li>
+
+                <li>
+                  Prepare your essential documents.
+                </li>
+
+                <li>
+                  Check your luggage.
+                </li>
+
+              </ul>
+
+            `
+
+          }
+
+        };
+
+
+        document
+          .querySelectorAll(
+            ".read-more"
+          )
+          .forEach(
+            link => {
+
+              link.addEventListener(
+                "click",
+                event => {
+
+                  event.preventDefault();
+
+
+                  const articleId =
+                    link
+                      .getAttribute(
+                        "href"
+                      )
+                      .replace(
+                        "#",
+                        ""
+                      );
+
+
+                  const article =
+                    articles[articleId];
+
+
+                  if (!article) {
+                    return;
+                  }
+
+
+                  category.textContent =
+                    article.category;
+
+
+                  title.textContent =
+                    article.title;
+
+
+                  meta.textContent =
+                    article.meta;
+
+
+                  body.innerHTML =
+                    article.content;
+
+
+                  dialog.showModal();
+
+                }
+              );
+
+            }
+          );
+
+
+        closeButton.addEventListener(
+          "click",
+          () => {
+
+            dialog.close();
+
+          }
+        );
+
+
+        dialog.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target === dialog
+            ) {
+
+              dialog.close();
+
+            }
+
+          }
+        );
+
+
+        document.addEventListener(
+          "keydown",
+          event => {
+
+            if (
+              event.key === "Escape" &&
+              dialog.open
+            ) {
+
+              dialog.close();
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       ADDED:
+       SCROLL ANIMATION ENGINE
+       USING INTERSECTIONOBSERVER
+    ================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const animatedElements =
+          document.querySelectorAll(
+            `
+              .scroll-reveal,
+              .scroll-reveal-left,
+              .scroll-reveal-right,
+              .scroll-reveal-scale
+            `
+          );
+
+
+        const newsCards =
+          document.querySelectorAll(
+            ".news-card"
+          );
+
+
+        /*
+          Respect users who have requested reduced motion.
+        */
+
+        const reduceMotion =
+          window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches;
+
+
+        if (reduceMotion) {
+
+          animatedElements.forEach(
+            element => {
+
+              element.classList.add(
+                "scroll-visible"
+              );
+
+            }
+          );
+
+
+          newsCards.forEach(
+            card => {
+
+              card.classList.add(
+                "scroll-visible"
+              );
+
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+          Create the observer.
+        */
+
+        const scrollObserver =
+          new IntersectionObserver(
+            entries => {
+
+              entries.forEach(
+                entry => {
+
+                  if (
+                    !entry.isIntersecting
+                  ) {
+                    return;
+                  }
+
+
+                  entry.target.classList.add(
+                    "scroll-visible"
+                  );
+
+
+                  /*
+                    Once an element has entered the
+                    viewport, stop observing it.
+
+                    This prevents the animation from
+                    replaying every time the user scrolls
+                    past the same element.
+                  */
+
+                  scrollObserver.unobserve(
+                    entry.target
+                  );
+
+                }
+              );
+
+            },
+            {
+
+              threshold: 0.12,
+
+              rootMargin:
+                "0px 0px -45px 0px"
+
+            }
+          );
+
+
+        /*
+          Observe the normal reveal elements.
+        */
+
+        animatedElements.forEach(
+          element => {
+
+            scrollObserver.observe(
+              element
+            );
+
+          }
+        );
+
+
+        /*
+          Observe news cards separately.
+        */
+
+        newsCards.forEach(
+          card => {
+
+            scrollObserver.observe(
+              card
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       ADDED:
+       NEWSLETTER INTERACTION
+       (keeps existing form but prevents page reload)
+    ================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const newsletterForm =
+          document.querySelector(
+            ".newsletter-form"
+          );
+
+
+        newsletterForm?.addEventListener(
+          "submit",
+          event => {
+
+            event.preventDefault();
+
+
+            const emailInput =
+              newsletterForm.querySelector(
+                "input[type='email']"
+              );
+
+
+            const email =
+              emailInput.value.trim();
+
+
+            if (!email) {
+              return;
+            }
+
+
+            /*
+              Front-end demo interaction.
+              Connect this to your backend/email
+              service later.
+            */
+
+            alert(
+              `Thanks! ${email} has been submitted.`
+            );
+
+
+            newsletterForm.reset();
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
 
 </body>
 </html>
