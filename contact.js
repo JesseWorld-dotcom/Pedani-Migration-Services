@@ -1,43 +1,66 @@
 /* =========================================
+   PEDANI MIGRATION SERVICES
    CONTACT FORM
+   PHP + RESEND
 ========================================= */
 
-const contactForm = document.querySelector("#contactForm");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (contactForm) {
+  const contactForm = document.querySelector("#contactForm");
 
-  const messageInput = document.querySelector("#message");
-  const characterCount = document.querySelector("#characterCount");
-  const formStatus = document.querySelector("#formStatus");
-  const submitButton = contactForm.querySelector(".submit-button");
+  if (!contactForm) {
+    return;
+  }
 
 
-  /* -----------------------------------------
-     Character Counter
-  ----------------------------------------- */
+  const messageInput =
+    contactForm.querySelector("#message");
+
+  const characterCount =
+    contactForm.querySelector("#characterCount");
+
+  const formStatus =
+    contactForm.querySelector("#formStatus");
+
+  const submitButton =
+    contactForm.querySelector(".submit-button");
+
+  const buttonText =
+    submitButton?.querySelector(".button-text");
+
+
+  /* =========================================
+     CHARACTER COUNTER
+  ========================================= */
 
   if (messageInput && characterCount) {
 
     const updateCharacterCount = () => {
+
       characterCount.textContent =
         `${messageInput.value.length} / ${messageInput.maxLength}`;
+
     };
 
-    messageInput.addEventListener("input", updateCharacterCount);
+    messageInput.addEventListener(
+      "input",
+      updateCharacterCount
+    );
 
     updateCharacterCount();
   }
 
 
-  /* -----------------------------------------
-     Validation Helpers
-  ----------------------------------------- */
+  /* =========================================
+     VALIDATION
+  ========================================= */
 
   const showError = (field, message) => {
 
-    const errorElement = document.querySelector(
-      `[data-error="${field.name}"]`
-    );
+    const errorElement =
+      contactForm.querySelector(
+        `[data-error="${field.name}"]`
+      );
 
     field.classList.add("input-error");
 
@@ -49,9 +72,10 @@ if (contactForm) {
 
   const clearError = (field) => {
 
-    const errorElement = document.querySelector(
-      `[data-error="${field.name}"]`
-    );
+    const errorElement =
+      contactForm.querySelector(
+        `[data-error="${field.name}"]`
+      );
 
     field.classList.remove("input-error");
 
@@ -63,10 +87,20 @@ if (contactForm) {
 
   const validateField = (field) => {
 
-    const value = field.value.trim();
+    const value =
+      field.value.trim();
 
-    if (field.hasAttribute("required") && !value) {
-      showError(field, "This field is required.");
+
+    if (
+      field.hasAttribute("required") &&
+      !value
+    ) {
+
+      showError(
+        field,
+        "This field is required."
+      );
+
       return false;
     }
 
@@ -76,7 +110,12 @@ if (contactForm) {
       value &&
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
     ) {
-      showError(field, "Please enter a valid email address.");
+
+      showError(
+        field,
+        "Please enter a valid email address."
+      );
+
       return false;
     }
 
@@ -87,117 +126,264 @@ if (contactForm) {
   };
 
 
-  /* -----------------------------------------
-     Validate While Typing
-  ----------------------------------------- */
+  const fieldsToValidate =
+    contactForm.querySelectorAll(
+      "input[required], select[required], textarea[required]"
+    );
 
-  const fieldsToValidate = contactForm.querySelectorAll(
-    "input[required], select[required], textarea[required]"
-  );
 
   fieldsToValidate.forEach((field) => {
 
-    field.addEventListener("blur", () => {
-      validateField(field);
-    });
-
-    field.addEventListener("input", () => {
-
-      if (field.classList.contains("input-error")) {
+    field.addEventListener(
+      "blur",
+      () => {
         validateField(field);
       }
+    );
 
-    });
 
-    field.addEventListener("change", () => {
-      validateField(field);
-    });
+    field.addEventListener(
+      "input",
+      () => {
+
+        if (
+          field.classList.contains(
+            "input-error"
+          )
+        ) {
+
+          validateField(field);
+
+        }
+
+      }
+    );
+
+
+    field.addEventListener(
+      "change",
+      () => {
+        validateField(field);
+      }
+    );
 
   });
 
 
-  /* -----------------------------------------
-     Submit Form
-  ----------------------------------------- */
+  /* =========================================
+     STATUS
+  ========================================= */
 
-  contactForm.addEventListener("submit", async (event) => {
+  const setStatus = (
+    type,
+    message
+  ) => {
 
-    event.preventDefault();
-
-
-    formStatus.className = "form-status";
-    formStatus.textContent = "";
-
-
-    let isValid = true;
-
-    fieldsToValidate.forEach((field) => {
-
-      if (!validateField(field)) {
-        isValid = false;
-      }
-
-    });
-
-
-    if (!isValid) {
-
-      formStatus.className = "form-status error";
-      formStatus.textContent =
-        "Please check the highlighted fields and try again.";
-
+    if (!formStatus) {
       return;
     }
 
-
-    /* -----------------------------------------
-       Loading State
-    ----------------------------------------- */
-
-    submitButton.disabled = true;
-    submitButton.classList.add("loading");
-
-
-    /*
-      This is where your backend/email service
-      will be connected.
-
-      For now, we simulate a short request so
-      the UI can be tested properly.
-    */
-
-    await new Promise((resolve) => {
-      setTimeout(resolve, 1000);
-    });
-
-
-    /* -----------------------------------------
-       Success
-    ----------------------------------------- */
-
-    submitButton.disabled = false;
-    submitButton.classList.remove("loading");
-
-    formStatus.className = "form-status success";
+    formStatus.className =
+      `form-status ${type}`;
 
     formStatus.textContent =
-      "Thanks for contacting PEDANI. Your message has been received and our team will get back to you soon.";
+      message;
+
+  };
 
 
-    contactForm.reset();
+  /* =========================================
+     SUBMIT
+  ========================================= */
+
+  contactForm.addEventListener(
+    "submit",
+    async (event) => {
+
+      event.preventDefault();
 
 
-    if (characterCount) {
-      characterCount.textContent = "0 / 1000";
+      setStatus(
+        "",
+        ""
+      );
+
+
+      /* -------------------------------
+         Validate
+      ------------------------------- */
+
+      let isValid = true;
+
+
+      fieldsToValidate.forEach(
+        (field) => {
+
+          if (
+            !validateField(field)
+          ) {
+
+            isValid = false;
+
+          }
+
+        }
+      );
+
+
+      if (!isValid) {
+
+        setStatus(
+          "error",
+          "Please check the highlighted fields and try again."
+        );
+
+        return;
+      }
+
+
+      /* -------------------------------
+         Loading state
+      ------------------------------- */
+
+      if (submitButton) {
+
+        submitButton.disabled =
+          true;
+
+        submitButton.classList.add(
+          "loading"
+        );
+
+      }
+
+
+      if (buttonText) {
+
+        buttonText.textContent =
+          "Sending...";
+
+      }
+
+
+      try {
+
+        const formData =
+          new FormData(contactForm);
+
+
+        const response =
+          await fetch(
+            contactForm.action || "/contact.php",
+            {
+              method: "POST",
+
+              body: formData,
+
+              headers: {
+                "Accept": "application/json"
+              }
+            }
+          );
+
+
+        let result;
+
+
+        try {
+
+          result =
+            await response.json();
+
+        } catch {
+
+          throw new Error(
+            "The server returned an invalid response."
+          );
+
+        }
+
+
+        if (
+          !response.ok ||
+          !result.success
+        ) {
+
+          throw new Error(
+            result.message ||
+            "Unable to send your message."
+          );
+
+        }
+
+
+        /* -------------------------------
+           Success
+        ------------------------------- */
+
+        setStatus(
+          "success",
+          result.message ||
+          "Thanks for contacting PEDANI. Your message has been received."
+        );
+
+
+        contactForm.reset();
+
+
+        if (characterCount) {
+
+          characterCount.textContent =
+            "0 / 1000";
+
+        }
+
+
+        fieldsToValidate.forEach(
+          (field) => {
+            clearError(field);
+          }
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "Contact form error:",
+          error
+        );
+
+
+        setStatus(
+          "error",
+          error.message ||
+          "Something went wrong. Please try again later."
+        );
+
+      } finally {
+
+        if (submitButton) {
+
+          submitButton.disabled =
+            false;
+
+          submitButton.classList.remove(
+            "loading"
+          );
+
+        }
+
+
+        if (buttonText) {
+
+          buttonText.textContent =
+            "Send Message";
+
+        }
+
+      }
+
     }
+  );
 
-
-    /* Remove old validation states */
-
-    fieldsToValidate.forEach((field) => {
-      clearError(field);
-    });
-
-  });
-
-}
+});
