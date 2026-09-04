@@ -118,7 +118,7 @@
 
 .contact-info{
   position: sticky;
-  top: calc(55px + var(--header-height, 1rem));
+  top: calc(60px + var(--header-height, 1rem));
 }
 
 .contact-item {
